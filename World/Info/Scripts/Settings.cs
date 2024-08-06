@@ -61,7 +61,7 @@ namespace Server
 
 	// Here you can enter the name of your server/world
 
-		public static string S_ServerName = "Adventurers of Akalabeth";
+		public static string S_ServerName = "Memento";
 
 	// If true, your public IP address will be auto detected to help with external connections.
 
