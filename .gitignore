@@ -38,3 +38,11 @@ bld/
 
 # Files built by Visual Studio
 *.pdb
+
+# Compiled scripts
+World/Data/Data.bin
+World/Data/Data.hash
+
+# Custom
+World.exe
+World.exe.config
