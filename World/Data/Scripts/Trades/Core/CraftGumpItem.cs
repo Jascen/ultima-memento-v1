@@ -32,6 +32,13 @@ namespace Server.Engines.Craft
 			m_CraftItem = craftItem;
 			m_Tool = tool;
 
+			const int INFO_WINDOW_WIDTH = 270;
+			const int INFO_PANEL_START = 527;
+
+			const int HORIZONTAL_LINE = 2700;
+			const int VERTICAL_LINE = 2701;
+			const int BORDER_WIDTH = 2;
+
 			CraftContext context = craftSystem.GetContext( from );
 
 			from.CloseGump( typeof( CraftGump ) );
@@ -66,11 +73,11 @@ namespace Server.Engines.Craft
 					AddButton( 335, 387, 11318, 11318, 2001, GumpButtonType.Reply, 0 );
 					AddHtmlLocalized( 375, 390, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
 				}
-				else
-				{
-					AddButton( 270, 387, 4005, 4007, 1, GumpButtonType.Reply, 0 );
-					AddHtmlLocalized( 305, 390, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
-				}
+				// else
+				// {
+				// 	AddButton( 270, 387, 4005, 4007, 1, GumpButtonType.Reply, 0 );
+				// 	AddHtmlLocalized( 305, 390, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
+				// }
 
 				if ( craftItem.NameNumber > 0 )
 					AddHtmlLocalized( 330, 40, 180, 18, craftItem.NameNumber, LabelColor, false, false );
@@ -80,12 +87,42 @@ namespace Server.Engines.Craft
 				if ( craftItem.UseAllRes )
 					AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1048176, LabelColor, false, false ); // Makes as many as possible at once
 
-				DrawItem();
+				// DrawItem();
+				Type type = m_CraftItem.ItemType;
+				CraftSystem.SetDescription( m_CraftSystem.GetContext( m_From ), m_Tool, type, m_CraftSystem, m_CraftItem.NameString, m_From, m_CraftItem );
+				m_ShowExceptionalChance = m_CraftItem.IsMarkable( type ) ;
 				DrawSkill();
 				DrawResource();
 
-				if ( craftSystem.ShowGumpInfo )
-					AddHtml( 538, 7, 254, 422, @"<BODY><BASEFONT Color=" + TextColor + ">" + context.Description + "</BASEFONT></BODY>", false, true);
+				// if ( craftSystem.ShowGumpInfo )
+				// 	AddHtml( 538, 7, 254, 422, @"<BODY><BASEFONT Color=" + TextColor + ">" + context.Description + "</BASEFONT></BODY>", false, true);
+
+				// Info Panel
+				if ( craftSystem.ShowGumpInfo && context.ItemID > 0)
+				{
+					int x = INFO_PANEL_START + 11;
+					int y = 7;
+					AddItem( x, y, context.ItemID, context.Hue );
+					y += 100;
+
+					AddHtml( x, y, 254, 280, @"<BODY><BASEFONT Color=" + TextColor + ">" + context.Description + "</BASEFONT></BODY>", false, true);
+					y += 290;
+
+					AddImageTiled(INFO_PANEL_START + 10, y, INFO_WINDOW_WIDTH - 15, BORDER_WIDTH, HORIZONTAL_LINE); // Top border -- Margin
+					y += 10;
+
+					if ( CraftSystem.AllowManyCraft( m_Tool ) )
+					{
+						AddHtml( x, y, 100, 40, String.Format( "<BASEFONT COLOR={0}>Craft Amount:</BASEFONT>", TextColor ), false, false );
+						AddTextField(x + 95, y, 125, 20, 1);
+						AddButton( INFO_PANEL_START + INFO_WINDOW_WIDTH - 32, y - 3, 4023, 4024, 3001, GumpButtonType.Reply, 0 );
+					}
+					else
+					{
+						AddButton( INFO_PANEL_START + INFO_WINDOW_WIDTH - 85, y - 3, 4023, 4024, 1, GumpButtonType.Reply, 0 );
+						AddHtmlLocalized( INFO_PANEL_START + INFO_WINDOW_WIDTH - 50, y, 50, 18, 1044132, LabelColor, false, false ); // MAKE LAST
+					}
+				}
 
 				if( craftItem.RequiredExpansion != Expansion.None )
 				{
@@ -93,6 +130,12 @@ namespace Server.Engines.Craft
 					TextDefinition.AddHtmlText( this, 170, 302 + (m_OtherCount++ * 20), 310, 18, RequiredExpansionMessage( craftItem.RequiredExpansion ), false, false, supportsEx ? LabelColor : RedLabelColor, supportsEx ? LabelHue : RedLabelHue );
 				}
 			}
+		}
+
+		private void AddTextField( int x, int y, int width, int height, int index, string initialText = "" )
+		{
+			AddBackground( x - 2, y - 2, width + 4, height + 4, 0x2486 );
+			AddTextEntry( x + 2, y + 2, width - 4, height - 4, 0, index, initialText );
 		}
 
 		private TextDefinition RequiredExpansionMessage( Expansion expansion )
@@ -254,7 +297,21 @@ namespace Server.Engines.Craft
 					return;
 				}
 
-				if ( info.ButtonID > 2000 && CraftSystem.AllowManyCraft( m_Tool ) )
+				if ( info.ButtonID > 3000 && CraftSystem.AllowManyCraft( m_Tool ) )
+				{
+					int toMake;
+					TextRelay t = info.GetTextEntry(1);
+					if (t == null || !int.TryParse(t.Text, out toMake) || toMake < 1 || 100 < toMake)
+					{
+						m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, "Please pick a number between 1 and 100." ) );
+						return;
+					}
+
+					CraftSystem.CraftSetQueue( m_From, toMake );
+					((PlayerMobile)m_From).CraftSound = -1;
+					((PlayerMobile)m_From).CraftSoundAfter = -1;
+				}
+				else if ( info.ButtonID > 2000 && CraftSystem.AllowManyCraft( m_Tool ) )
 				{
 					CraftSystem.CraftSetQueue( m_From, 100 );
 					((PlayerMobile)m_From).CraftSound = -1;
