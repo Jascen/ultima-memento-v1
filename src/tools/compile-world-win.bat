@@ -24,7 +24,7 @@ if exist "%targetfile%" (
 )
 
 echo Recompiling...
-C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc /optimize /unsafe /t:exe /out:..\World\World.exe /win32icon:..\src\Server\Source\icon.ico /d:NEWTIMERS /d:NEWPARENT /recurse:..\src\Server\Source\*.cs /main:Server.Core
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc /optimize /unsafe /t:exe /out:..\..\World\World.exe /win32icon:..\..\src\Server\Source\icon.ico /d:NEWTIMERS /d:NEWPARENT /recurse:..\..\src\Server\Source\*.cs /main:Server.Core
 
 :end
 pause
