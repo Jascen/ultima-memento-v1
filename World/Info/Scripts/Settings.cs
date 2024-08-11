@@ -84,7 +84,7 @@ namespace Server
 
 	// If true, anytime a character makes a saving throw to avoid a trap will be notified. Otherwise, they will never know they avoided it.
 
-		public static bool S_AnnounceTrapSaves = false;
+		public static bool S_AnnounceTrapSaves = true;
 
 	// If true, then dungeon environments will have random sounds as you traverse the corridors.
 
@@ -92,7 +92,7 @@ namespace Server
 
 	// If true, then the strange portals that lead to deep and dangerous dungeons will have an exit portal.
 
-		public static bool S_PortalExits = false;
+		public static bool S_PortalExits = true;
 
 	// If set to 1,000 gold or higher, then the bribery system will be enabled that allows characters to give this amount of gold
 	// to the Assassin Guildmaster so they can bribe the right people and remove a murder count one at a time (never applies to
@@ -112,7 +112,7 @@ namespace Server
 	// player has to find their corpse and potentially collect their belongings. The default for this setting is 10 minutes
 	// and the below is 110 minutes for a combined 2 hours or 120 minutes.
 
-		public static int S_CorpseDecay = 7;
+		public static int S_CorpseDecay = 10;
 
 	// The below setting is the number of minutes that a player character bones will decay. This option, as well as the
 	// option above, could potentially be used to have player character corpses remain longer or for a more difficult style
@@ -120,7 +120,7 @@ namespace Server
 	// you want to use a more difficult style of play, then setting these two combined minutes to something long enough for
 	// an enemy player to take the dead character's belongings may be desired. The default is 110 minutes.
 
-		public static int S_BoneDecay = 113;
+		public static int S_BoneDecay = 1430;
 
 
 
@@ -139,7 +139,7 @@ namespace Server
 
 	// How many minutes between stat gains which helps with the above setting. This can be between 5.0 to 60.0 minutes.
 
-		public static double S_StatGainDelay = 15.0;
+		public static double S_StatGainDelay = 7.5;
 
 	// If true, new characters can choose to take the alien origin route.
 	// This is a play style where one can choose to enter a transporter and be a character that crashd
@@ -165,7 +165,7 @@ namespace Server
 	// options, but also allows for creatures such as giants and balrons. There is a more details explanation of this system
 	// using the gypsy's shelf in her starting tent.
 
-		public static int S_MonsterCharacters = 0;
+		public static int S_MonsterCharacters = 1;
 
 	// If true, then characters will not get hungry or thirsty when inside places like banks, inns, or houses...allowing you
 	// to step away from the game without your character starving eventually.
@@ -212,12 +212,12 @@ namespace Server
 	// Maximum amount of lower reagent percentage, up to 100 for 100%. For equipment with lower reagent properties.
 	// Setting it to zero will disable the attribute from the game.
 
-		public static int S_LowerReg = 50;
+		public static int S_LowerReg = 20;
 
 	// Maximum aount of lower mana percentage, up to 100 for 100%. For equipment with lower mana properties.
 	// Setting it to zero will disable the attribute from the game.
 
-		public static int S_LowerMana = 40;
+		public static int S_LowerMana = 8;
 
 	// This setting between 0.5 and 3.0 (decimal format) will give a character that much hit points, mana, or stamina based
 	// on the attribute. So a strength of 100 will give a character 200 hit points if this is set at 2.0.
@@ -226,13 +226,13 @@ namespace Server
 
 	// If true, then characters will be able to set a custom title for their character in the HELP section.
 
-		public static bool S_AllowCustomTitles = false;
+		public static bool S_AllowCustomTitles = true;
 
 	// This is the minimum and maximum gold that a player character starts with. Default is 100 and 150. The most gold a
 	// character can begin with is 10,000 gold.
 
-		public static int S_MinGold = 100;
-		public static int S_MaxGold = 150;
+		public static int S_MinGold = 500;
+		public static int S_MaxGold = 600;
 
 
 
@@ -300,7 +300,7 @@ namespace Server
 
 		public static double S_TrainDummies = 25.0;
 
-	// This decimal number can be adjusted to set the maximum skill one can gain from pickpocket dips.
+	// This decimal number can be adjusted to set the maximum Stealing skill one can gain from pickpocket dips.
 
 		public static double S_PickDips = 50.0;
 
@@ -434,12 +434,12 @@ namespace Server
 
 	// If true (default false) then vendors will buy anything they normally stock. Some items have a default rarity % that this setting does not affect.
 
-		public static bool S_BuyAll = false;
+		public static bool S_BuyAll = true;
 
 	// If false, then vendors will NOT buy some tailor materials (cotton, flax, wool, regular cloth, and string).
 	// Does not affect a custom merchant that is set to buy such items.
 
-		public static bool S_BuyCloth = false;
+		public static bool S_BuyCloth = true;
 
 	// If false, then vendors will not buy things from player characters. Merchant crates will also be disabled and act as normal containers.
 
@@ -454,9 +454,9 @@ namespace Server
 	// default levels. As gameplay occurs, this value can increase for a vendor as you buy things from them, or pay for services they offer.
 
 		public static bool S_RichMerchants = false;
-		public static bool S_UseRemainingGold = true;
-		public static int S_MinMerchant = 500;
-		public static int S_MaxMerchant = 1000;
+		public static bool S_UseRemainingGold = false;
+		public static int S_MinMerchant = 1000;
+		public static int S_MaxMerchant = 2000;
 
 	// This setting is the percentage to decrease the prices of items that player characters sell to vendors. Zero disables this.
 
@@ -494,7 +494,7 @@ namespace Server
 	// Consider leaving this true if you allow players to harvest many resources at once.
 	// (bandages, flax, ingots, cloth, boards, ore, hides, arrows, bones, scales, feathers, etc).
 
-		public static bool S_NoBuyResources = true;
+		public static bool S_NoBuyResources = false;
 
 	// If true, then some vendors will have a black market option in their context menus. When used, a different
 	// purchasing screen will be presented to the player. They can see the special crafted items they have in
@@ -502,7 +502,7 @@ namespace Server
 	// regular stocking schedule. The resources items are made of will be land specific. EXAMPLE: If you can only 
 	// get obsidian metal in the Serpent Island, then you will may only find obsidian items in that land.
 
-		public static bool S_BlackMarket = true;
+		public static bool S_BlackMarket = false;
 
 	// If true, then the custom merchant is enabled. After a [buildworld command, these merchants will appear in
 	// the various settlements with their wagon. They will sell any custom items you set in the Info/Scripts folder.
@@ -555,12 +555,12 @@ namespace Server
 
 	// The amount of houses an account's characters may own. A -1 setting will be unlimited.
 
-		public static int S_HousesPerAccount = 5;
+		public static int S_HousesPerAccount = 2;
 
 	// If true, this means that the players can dye construction contracts so their pre-designed home is
 	// entirely in that same color.
 
-		public static bool S_AllowHouseDyes = true;
+		public static bool S_AllowHouseDyes = false;
 
 	// If true, then players can make use of the custom house system. Otherwise they can only purchase the
 	// pre-built classic houses.
