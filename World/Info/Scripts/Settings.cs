@@ -320,7 +320,7 @@ namespace Server
 	// and stats will raise equatable to doing 1 or many at a time. Enabling this will also enable macroing.
 	// Enabling this will also disable the items you craft that use all resources like arrows, shafts, and kindling.
 
-		public static bool S_CraftMany = false;
+		public static bool S_CraftMany = true;
 
 	// Setting the below value to true (default false) will only apply if the S_CraftMany setting is true.
 	// When viewing crafting line items, this will show the 1, 10, and 100 buttons next to each line item.
