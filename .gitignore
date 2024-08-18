@@ -45,6 +45,8 @@ World/Data/Data.hash
 
 # Custom
 Backups/
+World/Data/Obsolete
+World/Scripts/Obsolete
 World.exe
 World.exe.config
 src/World.exe - Shortcut
