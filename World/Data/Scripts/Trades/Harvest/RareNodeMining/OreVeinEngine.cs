@@ -168,6 +168,7 @@ namespace Server.Engines.Harvest
                             if (existingSpawns.Any(spawn => Utility.RangeCheck(spawn.Location, locationCandidate, config.MinDistance))) continue;
 
                             var spawner = new OreVeinSpawner(true);
+                            spawner.OnAfterSpawn();
                             spawner.MoveToWorld(locationCandidate, map);
                             spawner.EnsureNodeCreated(nowTimestampUtc);
                             existingSpawns.Add(spawner);
