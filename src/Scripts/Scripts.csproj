@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net481</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
@@ -32,11 +32,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
   <!--<ItemGroup>
