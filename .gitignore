@@ -44,5 +44,7 @@ World/Data/Data.bin
 World/Data/Data.hash
 
 # Custom
+Backups/
 World.exe
 World.exe.config
+src/World.exe - Shortcut
