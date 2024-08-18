@@ -9,16 +9,11 @@ namespace Server.Engines.Harvest
 {
 	public class Mining : HarvestSystem
 	{
-		private static Mining m_System;
-
 		public static Mining System
 		{
 			get
 			{
-				if ( m_System == null )
-					m_System = new Mining();
-
-				return m_System;
+				return OreVeinMining.System;
 			}
 		}
 
@@ -34,7 +29,7 @@ namespace Server.Engines.Harvest
 			get{ return m_Sand; }
 		}
 
-		private Mining()
+		protected Mining()
 		{
 			HarvestResource[] res;
 			HarvestVein[] veins;
