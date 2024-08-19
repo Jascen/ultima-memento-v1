@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Server.Engines.Harvest
 {
@@ -52,7 +53,9 @@ namespace Server.Engines.Harvest
             CommandSystem.Register("OreVein-Build", AccessLevel.Administrator, OnBuild);
             CommandSystem.Register("OreVein-Clear", AccessLevel.Administrator, OnClear);
             CommandSystem.Register("OreVein-DebugMe", AccessLevel.GameMaster, OnDebugMe);
+            CommandSystem.Register("OreVein-ExportData", AccessLevel.Administrator, OnExportData);
             CommandSystem.Register("OreVein-ExportMarkers", AccessLevel.Administrator, OnExportMarkers);
+            CommandSystem.Register("OreVein-LoadData", AccessLevel.Administrator, OnLoadData);
             CommandSystem.Register("OreVein-Restart", AccessLevel.Administrator, OnRestart);
         }
 
@@ -95,7 +98,7 @@ namespace Server.Engines.Harvest
 
             if (e.Mobile != null)
             {
-                e.Mobile.SendMessage("Deleted '{0}' entities created by the OreVeinEngine");
+                e.Mobile.SendMessage("Deleted '{0}' entities created by the OreVeinEngine", toDelete.Count);
             }
         }
 
@@ -114,6 +117,64 @@ namespace Server.Engines.Harvest
                         e.Mobile.SendMessage("This is a valid location for an OreVein.");
                     },
                 message => e.Mobile.SendMessage(message));
+        }
+
+        [Usage("OreVein-ExportData <MapId> | NULL")]
+        [Description("Exports XML configuration for all maps unless a `MapId` is specified.")]
+        public static void OnExportData(CommandEventArgs e)
+        {
+            IEnumerable<Map> maps;
+            if (!TryGetMaps(e.Mobile, e.Arguments, out maps)) return;
+
+            var sw = Stopwatch.StartNew();
+            foreach (var map in maps)
+            {
+                var start = sw.ElapsedMilliseconds;
+                var filename = Path.Combine("Data/Mining", map.Name + ".xml");
+                if (File.Exists(filename)) File.Delete(filename);
+
+                Directory.CreateDirectory(Directory.GetParent(filename).FullName);
+
+                using (var filestream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    var configurations = OreVeinUtilities.Build(map, ValidateRegion).OrderBy(x => x.Region).ThenByDescending(x => x.Region == OreVeinEngine.UNKNOWN_REGION_NAME);
+
+                    var root = new XElement("XmlRoot");
+                    foreach (var config in configurations)
+                    {
+                        var regionElement = new XElement("Config");
+                        regionElement.Add(new XAttribute("region", config.Region));
+                        regionElement.Add(new XAttribute("minDistance", config.MinDistance));
+                        regionElement.Add(new XAttribute("maxNodes", config.MaxNodes));
+
+                        var wrapperElement = new XElement("Candidates");
+                        wrapperElement.Add(new XAttribute("totalCandidates", config.Candidates.Count)); // Informational only
+
+                        regionElement.Add(wrapperElement);
+
+                        config.Candidates.ForEach(c =>
+                        {
+                            var pointElement = new XElement("Point");
+                            pointElement.Add(new XAttribute("x", c.X));
+                            pointElement.Add(new XAttribute("y", c.Y));
+                            pointElement.Add(new XAttribute("z", c.Z));
+
+                            wrapperElement.Add(pointElement);
+                        });
+
+                        root.Add(regionElement);
+                    }
+
+                    root.Save(filestream);
+
+                    Console.WriteLine("Exported configuration for '{0}' in {1} ms", map.Name, sw.ElapsedMilliseconds - start);
+                }
+            }
+
+            if (e.Mobile != null)
+            {
+                e.Mobile.SendMessage("Exporting configuration for OreVeinEngine took {0} ms for: {1}.", sw.ElapsedMilliseconds, string.Join(", ", maps.Select(map => map.Name)));
+            }
         }
 
         [Usage("OreVein-ExportMarkers <MapId> | NULL")]
@@ -177,6 +238,53 @@ namespace Server.Engines.Harvest
             if (e.Mobile != null)
             {
                 e.Mobile.SendMessage("Export of mineable edge tiles for all maps has completed.");
+            }
+        }
+
+        [Usage("OreVein-LoadData <MapId> | NULL")]
+        [Description("Imports XML configuration for all maps unless a `MapId` is specified.")]
+        public static void OnLoadData(CommandEventArgs e)
+        {
+            IEnumerable<Map> maps;
+            if (!TryGetMaps(e.Mobile, e.Arguments, out maps)) return;
+
+            var sw = Stopwatch.StartNew();
+            foreach (var map in maps)
+            {
+                var start = sw.ElapsedMilliseconds;
+                var filename = Path.Combine("Data/Mining", map.Name + ".xml");
+                if (!File.Exists(filename)) continue;
+
+                using (var filestream = new FileStream(filename, FileMode.Open, FileAccess.Read))
+                {
+                    var root = XElement.Load(filestream);
+                    foreach (var configElement in root.Elements("Config"))
+                    {
+                        var configuration = new OreVeinConfig
+                        {
+                            Region = configElement.Attribute("region").Value,
+                            MinDistance = int.Parse(configElement.Attribute("minDistance").Value),
+                            MaxNodes = int.Parse(configElement.Attribute("maxNodes").Value),
+                            Candidates = configElement.Element("Candidates").Elements("Point").Select(pointElement =>
+                                {
+                                    var x = int.Parse(pointElement.Attribute("x").Value);
+                                    var y = int.Parse(pointElement.Attribute("y").Value);
+                                    var z = int.Parse(pointElement.Attribute("z").Value);
+
+                                    return new Point3D(x, y, z);
+                                }).ToList()
+                        };
+
+                        OreVeinEngine.Instance.AddConfig(map, configuration);
+                    }
+                }
+
+                Console.WriteLine("Loaded configuration for '{0}' in {1} ms", map.Name, sw.ElapsedMilliseconds - start);
+            }
+
+            if (e.Mobile != null)
+            {
+                e.Mobile.SendMessage("Loading configuration for OreVeinEngine took {0} ms for: {1}.", sw.ElapsedMilliseconds, string.Join(", ", maps.Select(map => map.Name)));
             }
         }
 
