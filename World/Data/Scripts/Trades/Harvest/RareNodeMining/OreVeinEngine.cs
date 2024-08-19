@@ -81,7 +81,9 @@ namespace Server.Engines.Harvest
                 _timer = null;
             }
 
-            _timer = new InternalTimer(TimeSpan.FromSeconds(delaySeconds), TimeSpan.FromHours(EXECUTE_INTERVAL_HOURS));
+            var nodeDef = OreVeinMining.System.RareNodeDefinition;
+            var interval = Utility.RandomMinMax((int)nodeDef.MinRespawn.TotalMilliseconds, (int)nodeDef.MaxRespawn.TotalMilliseconds);
+            _timer = new InternalTimer(TimeSpan.FromSeconds(delaySeconds), TimeSpan.FromMilliseconds(interval));
             _timer.Start();
         }
 
