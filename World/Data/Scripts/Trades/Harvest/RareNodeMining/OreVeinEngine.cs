@@ -89,7 +89,7 @@ namespace Server.Engines.Harvest
         {
             // Always start fresh
             OreVeinCommands.OnClear(new Commands.CommandEventArgs(null, null, null, null));
-            // OreVeinCommands.OnBuild(new Commands.CommandEventArgs(null, null, null, new string[] { }));
+            OreVeinCommands.OnLoadData(new Commands.CommandEventArgs(null, null, null, new string[] { }));
 
             Instance.StartTimer(30);
         }
