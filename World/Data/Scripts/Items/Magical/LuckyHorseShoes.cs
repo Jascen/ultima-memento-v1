@@ -72,6 +72,8 @@ namespace Server.Items
 					else if (target is BaseTrinket) Apply(from, ((BaseTrinket)target).Attributes);
 					else if (target is BaseArmor) Apply(from, ((BaseArmor)target).Attributes);
 					else if (target is Spellbook) Apply(from, ((Spellbook)target).Attributes);
+					else if (target is BaseQuiver) Apply(from, ((BaseQuiver)target).Attributes);
+					else if (target is BaseInstrument) Apply(from, ((BaseInstrument)target).Attributes);
 					else from.SendMessage("You cannot enhance that item with luck.");
 				}
 				else
