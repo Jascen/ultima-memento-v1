@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Items;
 
 namespace Server.Engines.Harvest
 {
@@ -67,7 +68,15 @@ namespace Server.Engines.Harvest
         {
             if (from.InRange(this.GetWorldLocation(), 2) && from.Map == Map)
             {
-                from.SendMessage("This looks like you can mine it with a pickaxe.");
+                Pickaxe pickaxe = from.FindItemOnLayer(Layer.OneHanded) as Pickaxe;
+                if (pickaxe != null)
+                {
+                    pickaxe.HarvestSystem.StartHarvesting(from, pickaxe, this);
+                }
+                else
+                {
+                    from.SendMessage("This looks like you can mine it with a pickaxe.");
+                }
             }
         }
 
