@@ -1,4 +1,6 @@
 # ultima-memento
 
-//Execute RunMe.bat
-//Don't forget to do this as Administrator
+Run PowerShell as admin
+Change directory (cd) to folder with RunMe.bat 
+Execute (./) RunMe.bat
+
