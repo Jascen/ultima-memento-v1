@@ -118,19 +118,6 @@ namespace Server.Engines.Craft
 				AddButton( 175, 402+moveUp, 4017, 4019, 0, GumpButtonType.Reply, 0 );
 				AddHtmlLocalized( 210, 405+moveUp, 150, 18, 1011441, LabelColor, false, false ); // EXIT
 
-				// if ( CraftSystem.AllowManyCraft( m_Tool ) && context.LastMade != null )
-				// {
-				// 	AddButton( 340, 404+moveUp, 11316, 11316, GetButtonID( 6, 2 ), GumpButtonType.Reply, 0 );
-				// 	AddButton( 370, 404+moveUp, 11317, 11317, 1000+GetButtonID( 6, 2 ), GumpButtonType.Reply, 0 );
-				// 	AddButton( 405, 404+moveUp, 11318, 11318, 2000+GetButtonID( 6, 2 ), GumpButtonType.Reply, 0 );
-				// 	AddHtmlLocalized( 445, 405+moveUp, 150, 18, 1044132, LabelColor, false, false ); // MAKE LAST
-				// }
-				// else if ( context.LastMade != null )
-				// {
-				// 	AddButton( 340, 402+moveUp, 4005, 4007, GetButtonID( 6, 2 ), GumpButtonType.Reply, 0 );
-				// 	AddHtmlLocalized( 375, 405+moveUp, 150, 18, 1044132, LabelColor, false, false ); // MAKE LAST
-				// }
-
 				// Break down option
 				if ( craftSystem.BreakDown )
 				{
@@ -154,8 +141,6 @@ namespace Server.Engines.Craft
 					AddHtmlLocalized( 375, 373+moveUp, 150, 18, 1061001, LabelColor, false, false ); // ENHANCE ITEM
 				}
 				// ****************************************
-
-				// DrawItem();
 
 				if ( notice is int && (int)notice > 0 )
 					AddHtmlLocalized( LEFT_WINDOW_START, 295+moveUp, LEFT_WINDOW_WIDTH, 40, (int)notice, LabelColor, false, false );
@@ -361,17 +346,15 @@ namespace Server.Engines.Craft
 					}
 				}
 
-				// if ( CraftSystem.AllowManyCraft( m_Tool ) )
-				// {
-				// 	AddButton( 220, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
-				// 	if ( MySettings.S_CraftButtons )
-				// 	{
-				// 		AddButton( 411, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
-				// 		AddButton( 441, 60+moveDown + (index * 20), 11317, 11317, 1000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
-				// 		AddButton( 476, 60+moveDown + (index * 20), 11318, 11318, 2000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
-				// 	}
-				// }
-				// else
+				if ( CraftSystem.AllowManyCraft( m_Tool ) && MySettings.S_CraftButtons)
+				{
+					AddButton( 220, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
+
+					AddButton( 411, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+					AddButton( 441, 60+moveDown + (index * 20), 11317, 11317, 1000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+					AddButton( 476, 60+moveDown + (index * 20), 11318, 11318, 2000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+				}
+				else
 				{
 					AddButton( 230, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 ); // ITEM LIST MAKE BUTTON
 					AddButton( 485, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
