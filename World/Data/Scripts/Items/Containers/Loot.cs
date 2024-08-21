@@ -5,6 +5,8 @@ using Server;
 using Server.Items;
 using Server.Misc;
 using Server.Engines.Mahjong;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Server
 {
@@ -395,27 +397,27 @@ namespace Server
 				typeof( ClumsyScroll ),			typeof( CurseWeaponScroll ),	typeof( ArmysPaeonScroll ),			typeof( Elemental_Armor_Scroll ),
 				typeof( CreateFoodScroll ),		typeof( BloodOathScroll ),		typeof( MagesBalladScroll ),		typeof( Elemental_Bolt_Scroll ),
 				typeof( FeeblemindScroll ),		typeof( CorpseSkinScroll ),		typeof( EnchantingEtudeScroll ),	typeof( Elemental_Mend_Scroll ),
-				typeof( HealScroll ),			typeof( CurseWeaponScroll ),	typeof( SheepfoeMamboScroll ),		typeof( Elemental_Sanctuary_Scroll ),
-				typeof( MagicArrowScroll ),		typeof( BloodOathScroll ),		typeof( SinewyEtudeScroll ),		typeof( Elemental_Pain_Scroll ),
-				typeof( NightSightScroll ),		typeof( CorpseSkinScroll ),		typeof( FireThrenodyScroll ),		typeof( Elemental_Protection_Scroll ),
-				typeof( ReactiveArmorScroll ),	typeof( CurseWeaponScroll ),	typeof( IceThrenodyScroll ),		typeof( Elemental_Purge_Scroll ),
-				typeof( WeakenScroll ),			typeof( BloodOathScroll ),		typeof( PoisonThrenodyScroll ),		typeof( Elemental_Steed_Scroll ),
-				typeof( AgilityScroll ),		typeof( CorpseSkinScroll ),		typeof( ArmysPaeonScroll ),			typeof( Elemental_Call_Scroll ),
-				typeof( CunningScroll ),		typeof( CurseWeaponScroll ),	typeof( MagesBalladScroll ),		typeof( Elemental_Force_Scroll ),
-				typeof( CureScroll ),			typeof( BloodOathScroll ),		typeof( EnchantingEtudeScroll ),	typeof( Elemental_Wall_Scroll ),
-				typeof( HarmScroll ),			typeof( CorpseSkinScroll ),		typeof( SheepfoeMamboScroll ),		typeof( Elemental_Warp_Scroll ),
-				typeof( MagicTrapScroll ),		typeof( CurseWeaponScroll ),	typeof( SinewyEtudeScroll ),		typeof( Elemental_Armor_Scroll ),
-				typeof( MagicUnTrapScroll ),	typeof( BloodOathScroll ),		typeof( FireThrenodyScroll ),		typeof( Elemental_Bolt_Scroll ),
-				typeof( ProtectionScroll ),		typeof( CorpseSkinScroll ),		typeof( IceThrenodyScroll ),		typeof( Elemental_Mend_Scroll ),
-				typeof( StrengthScroll ),		typeof( CurseWeaponScroll ),	typeof( PoisonThrenodyScroll ),		typeof( Elemental_Sanctuary_Scroll ),
-				typeof( BlessScroll ),			typeof( BloodOathScroll ),		typeof( ArmysPaeonScroll ),			typeof( Elemental_Pain_Scroll ),
-				typeof( FireballScroll ),		typeof( CorpseSkinScroll ),		typeof( MagesBalladScroll ),		typeof( Elemental_Protection_Scroll ),
-				typeof( MagicLockScroll ),		typeof( CurseWeaponScroll ),	typeof( EnchantingEtudeScroll ),	typeof( Elemental_Purge_Scroll ),
-				typeof( PoisonScroll ),			typeof( BloodOathScroll ),		typeof( SheepfoeMamboScroll ),		typeof( Elemental_Steed_Scroll ),
-				typeof( TelekinisisScroll ),	typeof( CorpseSkinScroll ),		typeof( SinewyEtudeScroll ),		typeof( Elemental_Call_Scroll ),
-				typeof( TeleportScroll ),		typeof( CurseWeaponScroll ),	typeof( FireThrenodyScroll ),		typeof( Elemental_Force_Scroll ),
-				typeof( UnlockScroll ),			typeof( BloodOathScroll ),		typeof( IceThrenodyScroll ),		typeof( Elemental_Wall_Scroll ),
-				typeof( WallOfStoneScroll ),	typeof( CorpseSkinScroll ),		typeof( PoisonThrenodyScroll ),		typeof( Elemental_Warp_Scroll )
+				typeof( HealScroll ),			typeof( EvilOmenScroll ),		typeof( SheepfoeMamboScroll ),		typeof( Elemental_Sanctuary_Scroll ),
+				typeof( MagicArrowScroll ),		typeof( PainSpikeScroll ),		typeof( SinewyEtudeScroll ),		typeof( Elemental_Pain_Scroll ),
+				typeof( NightSightScroll ),		typeof( WraithFormScroll ),		typeof( FireThrenodyScroll ),		typeof( Elemental_Protection_Scroll ),
+				typeof( ReactiveArmorScroll ),	typeof( MindRotScroll ),		typeof( IceThrenodyScroll ),		typeof( Elemental_Purge_Scroll ),
+				typeof( WeakenScroll ),			typeof( SummonFamiliarScroll ),	typeof( PoisonThrenodyScroll ),		typeof( Elemental_Steed_Scroll ),
+				typeof( AgilityScroll ),		typeof( CurseWeaponScroll ),	typeof( ArmysPaeonScroll ),			typeof( Elemental_Call_Scroll ),
+				typeof( CunningScroll ),		typeof( BloodOathScroll ),		typeof( MagesBalladScroll ),		typeof( Elemental_Force_Scroll ),
+				typeof( CureScroll ),			typeof( CorpseSkinScroll ),		typeof( EnchantingEtudeScroll ),	typeof( Elemental_Wall_Scroll ),
+				typeof( HarmScroll ),			typeof( EvilOmenScroll ),		typeof( SheepfoeMamboScroll ),		typeof( Elemental_Warp_Scroll ),
+				typeof( MagicTrapScroll ),		typeof( PainSpikeScroll ),		typeof( SinewyEtudeScroll ),		typeof( Elemental_Armor_Scroll ),
+				typeof( MagicUnTrapScroll ),	typeof( WraithFormScroll ),		typeof( FireThrenodyScroll ),		typeof( Elemental_Bolt_Scroll ),
+				typeof( ProtectionScroll ),		typeof( MindRotScroll ),		typeof( IceThrenodyScroll ),		typeof( Elemental_Mend_Scroll ),
+				typeof( StrengthScroll ),		typeof( SummonFamiliarScroll ),	typeof( PoisonThrenodyScroll ),		typeof( Elemental_Sanctuary_Scroll ),
+				typeof( BlessScroll ),			typeof( CurseWeaponScroll ),	typeof( ArmysPaeonScroll ),			typeof( Elemental_Pain_Scroll ),
+				typeof( FireballScroll ),		typeof( BloodOathScroll ),		typeof( MagesBalladScroll ),		typeof( Elemental_Protection_Scroll ),
+				typeof( MagicLockScroll ),		typeof( CorpseSkinScroll ),		typeof( EnchantingEtudeScroll ),	typeof( Elemental_Purge_Scroll ),
+				typeof( PoisonScroll ),			typeof( EvilOmenScroll ),		typeof( SheepfoeMamboScroll ),		typeof( Elemental_Steed_Scroll ),
+				typeof( TelekinisisScroll ),	typeof( PainSpikeScroll ),		typeof( SinewyEtudeScroll ),		typeof( Elemental_Call_Scroll ),
+				typeof( TeleportScroll ),		typeof( WraithFormScroll ),		typeof( FireThrenodyScroll ),		typeof( Elemental_Force_Scroll ),
+				typeof( UnlockScroll ),			typeof( MindRotScroll ),		typeof( IceThrenodyScroll ),		typeof( Elemental_Wall_Scroll ),
+				typeof( WallOfStoneScroll ),	typeof( SummonFamiliarScroll ),	typeof( PoisonThrenodyScroll ),		typeof( Elemental_Warp_Scroll )
 			};
 
 		public static Type[] LowScrollTypes{ get{ return m_LowScrollTypes; } }
@@ -423,26 +425,26 @@ namespace Server
 		private static Type[] m_MedScrollTypes = new Type[]
 			{
 				typeof( ArchCureScroll ),		typeof( AnimateDeadScroll ),	typeof( MagicFinaleScroll ),		typeof( Elemental_Field_Scroll ),
-				typeof( ArchProtectionScroll ),	typeof( EvilOmenScroll ),		typeof( EnergyCarolScroll ),		typeof( Elemental_Restoration_Scroll ),
-				typeof( CurseScroll ),			typeof( PainSpikeScroll ),		typeof( EnergyThrenodyScroll ),		typeof( Elemental_Strike_Scroll ),
-				typeof( FireFieldScroll ),		typeof( SummonFamiliarScroll ),	typeof( FireCarolScroll ),			typeof( Elemental_Void_Scroll ),
-				typeof( GreaterHealScroll ),	typeof( HorrificBeastScroll ),	typeof( IceCarolScroll ),			typeof( Elemental_Blast_Scroll ),
-				typeof( LightningScroll ),		typeof( MindRotScroll ),		typeof( KnightsMinneScroll ),		typeof( Elemental_Echo_Scroll ),
-				typeof( ManaDrainScroll ),		typeof( PoisonStrikeScroll ),	typeof( PoisonCarolScroll ),		typeof( Elemental_Fiend_Scroll ),
-				typeof( RecallScroll ),			typeof( AnimateDeadScroll ),	typeof( MagicFinaleScroll ),		typeof( Elemental_Hold_Scroll ),
-				typeof( BladeSpiritsScroll ),	typeof( EvilOmenScroll ),		typeof( EnergyCarolScroll ),		typeof( Elemental_Barrage_Scroll ),
-				typeof( DispelFieldScroll ),	typeof( PainSpikeScroll ),		typeof( EnergyThrenodyScroll ),		typeof( Elemental_Rune_Scroll ),
-				typeof( IncognitoScroll ),		typeof( SummonFamiliarScroll ),	typeof( FireCarolScroll ),			typeof( Elemental_Storm_Scroll ),
+				typeof( ArchProtectionScroll ),	typeof( HorrificBeastScroll ),	typeof( EnergyCarolScroll ),		typeof( Elemental_Restoration_Scroll ),
+				typeof( CurseScroll ),			typeof( PoisonStrikeScroll ),	typeof( EnergyThrenodyScroll ),		typeof( Elemental_Strike_Scroll ),
+				typeof( FireFieldScroll ),		typeof( WitherScroll ),			typeof( FireCarolScroll ),			typeof( Elemental_Void_Scroll ),
+				typeof( GreaterHealScroll ),	typeof( StrangleScroll ),		typeof( IceCarolScroll ),			typeof( Elemental_Blast_Scroll ),
+				typeof( LightningScroll ),		typeof( AnimateDeadScroll ),	typeof( KnightsMinneScroll ),		typeof( Elemental_Echo_Scroll ),
+				typeof( ManaDrainScroll ),		typeof( HorrificBeastScroll ),	typeof( PoisonCarolScroll ),		typeof( Elemental_Fiend_Scroll ),
+				typeof( RecallScroll ),			typeof( PoisonStrikeScroll ),	typeof( MagicFinaleScroll ),		typeof( Elemental_Hold_Scroll ),
+				typeof( BladeSpiritsScroll ),	typeof( WitherScroll ),			typeof( EnergyCarolScroll ),		typeof( Elemental_Barrage_Scroll ),
+				typeof( DispelFieldScroll ),	typeof( StrangleScroll ),		typeof( EnergyThrenodyScroll ),		typeof( Elemental_Rune_Scroll ),
+				typeof( IncognitoScroll ),		typeof( AnimateDeadScroll ),	typeof( FireCarolScroll ),			typeof( Elemental_Storm_Scroll ),
 				typeof( MagicReflectScroll ),	typeof( HorrificBeastScroll ),	typeof( IceCarolScroll ),			typeof( Elemental_Summon_Scroll ),
-				typeof( MindBlastScroll ),		typeof( MindRotScroll ),		typeof( KnightsMinneScroll ),		typeof( Elemental_Field_Scroll ),
-				typeof( ParalyzeScroll ),		typeof( PoisonStrikeScroll ),	typeof( PoisonCarolScroll ),		typeof( Elemental_Restoration_Scroll ),
-				typeof( PoisonFieldScroll ),	typeof( AnimateDeadScroll ),	typeof( MagicFinaleScroll ),		typeof( Elemental_Strike_Scroll ),
-				typeof( SummonCreatureScroll ),	typeof( EvilOmenScroll ),		typeof( EnergyCarolScroll ),		typeof( Elemental_Void_Scroll ),
-				typeof( DispelScroll ),			typeof( PainSpikeScroll ),		typeof( EnergyThrenodyScroll ),		typeof( Elemental_Blast_Scroll ),
-				typeof( EnergyBoltScroll ),		typeof( SummonFamiliarScroll ),	typeof( FireCarolScroll ),			typeof( Elemental_Echo_Scroll ),
-				typeof( ExplosionScroll ),		typeof( HorrificBeastScroll ),	typeof( IceCarolScroll ),			typeof( Elemental_Fiend_Scroll ),
-				typeof( InvisibilityScroll ),	typeof( MindRotScroll ),		typeof( KnightsMinneScroll ),		typeof( Elemental_Hold_Scroll ),
-				typeof( MarkScroll ),			typeof( PoisonStrikeScroll ),	typeof( PoisonCarolScroll ),		typeof( Elemental_Barrage_Scroll ),
+				typeof( MindBlastScroll ),		typeof( PoisonStrikeScroll ),	typeof( KnightsMinneScroll ),		typeof( Elemental_Field_Scroll ),
+				typeof( ParalyzeScroll ),		typeof( WitherScroll ),			typeof( PoisonCarolScroll ),		typeof( Elemental_Restoration_Scroll ),
+				typeof( PoisonFieldScroll ),	typeof( StrangleScroll ),		typeof( MagicFinaleScroll ),		typeof( Elemental_Strike_Scroll ),
+				typeof( SummonCreatureScroll ),	typeof( AnimateDeadScroll ),	typeof( EnergyCarolScroll ),		typeof( Elemental_Void_Scroll ),
+				typeof( DispelScroll ),			typeof( HorrificBeastScroll ),	typeof( EnergyThrenodyScroll ),		typeof( Elemental_Blast_Scroll ),
+				typeof( EnergyBoltScroll ),		typeof( PoisonStrikeScroll ),	typeof( FireCarolScroll ),			typeof( Elemental_Echo_Scroll ),
+				typeof( ExplosionScroll ),		typeof( WitherScroll ),			typeof( IceCarolScroll ),			typeof( Elemental_Fiend_Scroll ),
+				typeof( InvisibilityScroll ),	typeof( StrangleScroll ),		typeof( KnightsMinneScroll ),		typeof( Elemental_Hold_Scroll ),
+				typeof( MarkScroll ),											typeof( PoisonCarolScroll ),		typeof( Elemental_Barrage_Scroll ),
 				typeof( MassCurseScroll ),																			typeof( Elemental_Rune_Scroll ),
 				typeof( ParalyzeFieldScroll ),																		typeof( Elemental_Storm_Scroll ),
 				typeof( RevealScroll ),																				typeof( Elemental_Summon_Scroll )
@@ -452,22 +454,22 @@ namespace Server
 
 		private static Type[] m_HighScrollTypes = new Type[]
 			{
-				typeof( ChainLightningScroll ),			typeof( WraithFormScroll ),			typeof( MagicFinaleScroll ),	typeof( Elemental_Devastation_Scroll ),
-				typeof( EnergyFieldScroll ),			typeof( LichFormScroll ),			typeof( EnergyCarolScroll ),	typeof( Elemental_Fall_Scroll ),
-				typeof( FlamestrikeScroll ),			typeof( StrangleScroll ),			typeof( EnergyThrenodyScroll ),	typeof( Elemental_Gate_Scroll ),
-				typeof( GateTravelScroll ),				typeof( WitherScroll ),				typeof( FireCarolScroll ),		typeof( Elemental_Havoc_Scroll ),
-				typeof( ManaVampireScroll ),			typeof( ExorcismScroll ),			typeof( IceCarolScroll ),		typeof( Elemental_Apocalypse_Scroll ),
-				typeof( MassDispelScroll ),				typeof( VampiricEmbraceScroll ),	typeof( KnightsMinneScroll ),	typeof( Elemental_Lord_Scroll ),
+				typeof( ChainLightningScroll ),			typeof( LichFormScroll ),			typeof( MagicFinaleScroll ),	typeof( Elemental_Devastation_Scroll ),
+				typeof( EnergyFieldScroll ),			typeof( ExorcismScroll ),			typeof( EnergyCarolScroll ),	typeof( Elemental_Fall_Scroll ),
+				typeof( FlamestrikeScroll ),			typeof( VengefulSpiritScroll ),		typeof( EnergyThrenodyScroll ),	typeof( Elemental_Gate_Scroll ),
+				typeof( GateTravelScroll ),				typeof( VampiricEmbraceScroll ),	typeof( FireCarolScroll ),		typeof( Elemental_Havoc_Scroll ),
+				typeof( ManaVampireScroll ),			typeof( LichFormScroll ),			typeof( IceCarolScroll ),		typeof( Elemental_Apocalypse_Scroll ),
+				typeof( MassDispelScroll ),				typeof( ExorcismScroll ),			typeof( KnightsMinneScroll ),	typeof( Elemental_Lord_Scroll ),
 				typeof( MeteorSwarmScroll ),			typeof( VengefulSpiritScroll ),		typeof( PoisonCarolScroll ),	typeof( Elemental_Soul_Scroll ),
-				typeof( PolymorphScroll ),				typeof( WraithFormScroll ),			typeof( FoeRequiemScroll ),		typeof( Elemental_Spirit_Scroll ),
+				typeof( PolymorphScroll ),				typeof( VampiricEmbraceScroll ),	typeof( FoeRequiemScroll ),		typeof( Elemental_Spirit_Scroll ),
 				typeof( EarthquakeScroll ),				typeof( LichFormScroll ),			typeof( MagicFinaleScroll ),	typeof( Elemental_Devastation_Scroll ),
-				typeof( EnergyVortexScroll ),			typeof( StrangleScroll ),			typeof( EnergyCarolScroll ),	typeof( Elemental_Fall_Scroll ),
-				typeof( ResurrectionScroll ),			typeof( WitherScroll ),				typeof( EnergyThrenodyScroll ),	typeof( Elemental_Gate_Scroll ),
-				typeof( SummonAirElementalScroll ),		typeof( ExorcismScroll ),			typeof( FireCarolScroll ),		typeof( Elemental_Havoc_Scroll ),
-				typeof( SummonDaemonScroll ),			typeof( VampiricEmbraceScroll ),	typeof( IceCarolScroll ),		typeof( Elemental_Apocalypse_Scroll ),
-				typeof( SummonEarthElementalScroll ),	typeof( VengefulSpiritScroll ),		typeof( KnightsMinneScroll ),	typeof( Elemental_Lord_Scroll ),
-				typeof( SummonFireElementalScroll ),	typeof( ExorcismScroll ),			typeof( PoisonCarolScroll ),	typeof( Elemental_Soul_Scroll ),
-				typeof( SummonWaterElementalScroll ),	typeof( VengefulSpiritScroll ),		typeof( FoeRequiemScroll ),		typeof( Elemental_Spirit_Scroll )
+				typeof( EnergyVortexScroll ),			typeof( ExorcismScroll ),			typeof( EnergyCarolScroll ),	typeof( Elemental_Fall_Scroll ),
+				typeof( ResurrectionScroll ),			typeof( VengefulSpiritScroll ),		typeof( EnergyThrenodyScroll ),	typeof( Elemental_Gate_Scroll ),
+				typeof( SummonAirElementalScroll ),		typeof( VampiricEmbraceScroll ),	typeof( FireCarolScroll ),		typeof( Elemental_Havoc_Scroll ),
+				typeof( SummonDaemonScroll ),			typeof( LichFormScroll ),			typeof( IceCarolScroll ),		typeof( Elemental_Apocalypse_Scroll ),
+				typeof( SummonEarthElementalScroll ),	typeof( ExorcismScroll ),			typeof( KnightsMinneScroll ),	typeof( Elemental_Lord_Scroll ),
+				typeof( SummonFireElementalScroll ),	typeof( VengefulSpiritScroll ),		typeof( PoisonCarolScroll ),	typeof( Elemental_Soul_Scroll ),
+				typeof( SummonWaterElementalScroll ),	typeof( VampiricEmbraceScroll ),	typeof( FoeRequiemScroll ),		typeof( Elemental_Spirit_Scroll )
 			};
 
 		public static Type[] HighScrollTypes{ get{ return m_HighScrollTypes; } }
@@ -691,7 +693,7 @@ namespace Server
 				typeof( ECrystalAltarDeed ),	typeof( ECrystalBeggarStatueDeed ),		typeof( RunicUndertaker ),
 				typeof( RunicLeatherKit ),		typeof( RunicScales ),					typeof( GolemManual ),
 				typeof( SummonPrison ),			typeof( MagicalWand ),					typeof( MagicalWand ),
-				typeof( BrokenBedDeed )
+				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( RecallRune)
 			};
 
 		public static Type[] RareItemTypes{ get{ return m_RareItemTypes; } }
@@ -713,7 +715,7 @@ namespace Server
 
 		private static Type[] m_RuneMagic = new Type[]
 			{
-				typeof( RuneJournal ),		typeof( Runebook ),		typeof( RuneBag ),		typeof( RecallRune), 
+				typeof( MagicRuneBag ),		
 				typeof( An ),				typeof( Bet ),			typeof( Corp ),			typeof( Des ),			typeof( Ex ),		
 				typeof( Flam ),				typeof( Grav ),			typeof( Hur ),			typeof( In ),			typeof( Jux ),			typeof( Kal ),		
 				typeof( Lor ),				typeof( Mani ),			typeof( Nox ),			typeof( Ort ),			typeof( Por ),			typeof( Quas ),		
@@ -751,7 +753,7 @@ namespace Server
 				typeof( WritingBook ),				typeof( WritingBook ),						typeof( WritingBook ),
 				typeof( WritingBook ),				typeof( WritingBook ),						typeof( WritingBook ),
 				typeof( WritingBook ),				typeof( WritingBook ),						typeof( WritingBook ),
-				typeof( RuneJournal ),				typeof( MapRanger ),						typeof( GoldenRangers ),
+				typeof( MapRanger ),				typeof( GoldenRangers ),					typeof( MapWorld ),
 				typeof( BookDruidBrewing ),			typeof( BookWitchBrewing ),					typeof( LearnWoodBook ),
 				typeof( LearnTraps ),				typeof( LearnTitles ),						typeof( LearnTailorBook ),
 				typeof( LearnStealingBook ),		typeof( LearnScalesBook ),					typeof( LearnReagentsBook ),
@@ -759,7 +761,7 @@ namespace Server
 				typeof( LearnGraniteBook ),			typeof( AlchemicalMixtures ),				typeof( BookOfPoisons ),
 				typeof( WorkShoppes ),				typeof( SwordsAndShackles ),				typeof( QuestTake ),
 				typeof( DDRelicBook ),				typeof( JokeBook ),							typeof( SmallHollowBook ),
-				typeof( LargeHollowBook ),			typeof( AlchemicalElixirs ),				typeof( MapWorld )
+				typeof( LargeHollowBook ),			typeof( AlchemicalElixirs ),				typeof( RuneJournal )
 			};
 		public static Type[] Books{ get{ return m_Books; } }
 
@@ -951,7 +953,7 @@ namespace Server
 		{
 			Item item = null;
 
-			int var = Utility.RandomMinMax( 4, 9 );
+			int var = Utility.RandomMinMax( 4, 8 );
 			if ( Worlds.isSciFiRegion( m ) )
 				var = Utility.RandomMinMax( 0, 5 );
 
@@ -996,7 +998,6 @@ namespace Server
 							case 2: item = RandomTools(); break;
 							case 3: item = RandomCrafts(); break;
 						} break;
-					case 9: item = new MagicalWand(0); break;
 				}
 			}
 
@@ -1276,10 +1277,16 @@ namespace Server
 			if ( m != null && isBag( i ) )
 			{
 				bool bagged = false;
-				foreach( Item itm in m.Backpack.Items )
+
+				if ( m != null && m.Backpack != null )
 				{
-					if ( isBag( itm ) )
-						bagged = true;
+					List<Item> list = new List<Item>();
+					(m.Backpack).RecurseItems( list );
+					foreach ( Item im in list )
+					{
+						if ( isBag( im ) )
+							bagged = true;
+					}
 				}
 
 				if ( bagged )

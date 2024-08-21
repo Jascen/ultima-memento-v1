@@ -179,13 +179,13 @@ namespace Server.Engines.Craft
 			index = AddCraft( typeof( SmallBedSouthDeed ), 1044291, 1044321, 94.7, 119.8, typeof( Board ), 1015101, 100, 1044351 );
 			AddSkill( index, SkillName.Tailoring, 75.0, 80.0 );
 			AddRes( index, typeof( Fabric ), 1044286, 100, 1044287 );
-			index = AddCraft(typeof(SmallBedEastDeed), 1044291, 1044322, 94.7, 119.8, typeof(Log), 1015101, 100, 1044351);
+			index = AddCraft(typeof(SmallBedEastDeed), 1044291, 1044322, 94.7, 119.8, typeof( Board ), 1015101, 100, 1044351);
 			AddSkill( index, SkillName.Tailoring, 75.0, 80.0 );
 			AddRes( index, typeof( Fabric ), 1044286, 100, 1044287 );
-			index = AddCraft(typeof(LargeBedSouthDeed), 1044291, 1044323, 94.7, 119.8, typeof(Log), 1015101, 150, 1044351);
+			index = AddCraft(typeof(LargeBedSouthDeed), 1044291, 1044323, 94.7, 119.8, typeof( Board ), 1015101, 150, 1044351);
 			AddSkill( index, SkillName.Tailoring, 75.0, 80.0 );
 			AddRes( index, typeof( Fabric ), 1044286, 150, 1044287 );
-			index = AddCraft(typeof(LargeBedEastDeed), 1044291, 1044324, 94.7, 119.8, typeof(Log), 1015101, 150, 1044351);
+			index = AddCraft(typeof(LargeBedEastDeed), 1044291, 1044324, 94.7, 119.8, typeof( Board ), 1015101, 150, 1044351);
 			AddSkill( index, SkillName.Tailoring, 75.0, 80.0 );
 			AddRes( index, typeof( Fabric ), 1044286, 150, 1044287 );
 			AddCraft( typeof( DartBoardSouthDeed ), 1044291, 1044325, 15.7, 40.7, typeof( Board ), 1015101, 5, 1044351 );

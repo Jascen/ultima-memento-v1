@@ -83,7 +83,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "One of your items is covered in viscera!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items is covered in viscera!");
 						m.PlaySound( 0x364 );
 						Container box = new SlimeItem();
 						box.DropItem(iWrapped);

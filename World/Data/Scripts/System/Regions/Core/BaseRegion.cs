@@ -187,10 +187,13 @@ namespace Server.Regions
 			}
 		}
 
-		public override void OnExit(Mobile m)
+		public override void OnExit( Mobile m )
 		{
 			if ( m is PlayerMobile )
 			{
+				if ( m.HasGump( typeof( InteriorDecorator.InternalGump ) ) )
+					m.CloseGump( typeof( InteriorDecorator.InternalGump ) );
+
 				Server.Items.BaseRace.SyncRace( m, true );
 				BuffInfo.CleanupIcons( m, false );
 

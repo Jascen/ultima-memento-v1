@@ -503,7 +503,7 @@ namespace Server.Gumps
 			AddHtml( 44, 12, 226, 20, @"<BODY><BASEFONT Color=" + color + ">" + Server.Items.BagOfTricks.JokeInfo( i, "name" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddHtml( 12, 46, 294, 214, @"<BODY><BASEFONT Color=" + color + ">" + Server.Items.BagOfTricks.JokeInfo( i, "detail" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddHtml( 12, 274, 181, 20, @"<BODY><BASEFONT Color=" + color + ">Prank Points: " + Server.Items.BagOfTricks.JokeInfo( i, "points" ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-			AddHtml( 205, 274, 100, 20, @"<BODY><BASEFONT Color=" + color + "><RIGHT>Mana: " + Server.Items.BagOfTricks.JokeInfo( i, "mana" ) + "<?RIGHT></BASEFONT></BODY>", (bool)false, (bool)false);
+			AddHtml( 205, 274, 100, 20, @"<BODY><BASEFONT Color=" + color + "><RIGHT>Mana: " + Server.Items.BagOfTricks.JokeInfo( i, "mana" ) + "</RIGHT></BASEFONT></BODY>", (bool)false, (bool)false);
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)

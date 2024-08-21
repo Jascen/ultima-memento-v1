@@ -668,7 +668,7 @@ namespace Server.Mobiles
 							}
 							else
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "The daemon rusted one of your equipped items!");
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The daemon rusted one of your equipped items!");
 								RustyJunk broke = new RustyJunk();
 								broke.ItemID = iRuined.GraphicID;
 								broke.Name = "rusted item";
@@ -690,7 +690,7 @@ namespace Server.Mobiles
 							}
 							else
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "The daemon rusted one of your equipped items!");
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The daemon rusted one of your equipped items!");
 								RustyJunk broke = new RustyJunk();
 								broke.ItemID = iRuined.ItemID;
 								broke.Name = "rusted item";

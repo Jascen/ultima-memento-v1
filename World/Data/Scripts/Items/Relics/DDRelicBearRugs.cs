@@ -184,6 +184,8 @@ namespace Server.Items
 	{
 		public override void ItemIdentified( bool id )
 		{
+			ColorHue3 = null;
+			ColorText3 = null;
 			m_NotIdentified = id;
 			if ( !id )
 			{
@@ -194,8 +196,13 @@ namespace Server.Items
 
 		public override void ItemPriced( int val )
 		{
-			ColorHue3 = "FDC844";
-			ColorText3 = "Worth " + val + " Gold";
+			ColorHue3 = null;
+			ColorText3 = null;
+			if ( !m_NotIdentified )
+			{
+				ColorHue3 = "FDC844";
+				ColorText3 = "Worth " + val + " Gold";
+			}
 			m_CoinPrice = val;
 		}
 

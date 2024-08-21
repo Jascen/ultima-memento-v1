@@ -57,33 +57,6 @@ namespace Server.Misc
 			return bag;
 		}
 
-		public static void ResearchTransfer( Mobile m, int bar )
-		{
-			if ( bar == 1 )
-				((PlayerMobile)m).SpellBarsArch1 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
-			else if ( bar == 2 )
-				((PlayerMobile)m).SpellBarsArch2 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
-			else if ( bar == 3 )
-				((PlayerMobile)m).SpellBarsArch3 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
-			else if ( bar == 4 )
-				((PlayerMobile)m).SpellBarsArch4 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#";
-
-			if ( m.Backpack.FindItemByType( typeof ( ResearchBag ) ) != null )
-			{
-				Item sack = m.Backpack.FindItemByType( typeof ( ResearchBag ) );
-				ResearchBag pouch = (ResearchBag)sack;
-
-				if ( bar == 1 )
-					((PlayerMobile)m).SpellBarsArch1 = pouch.BarsCast1;
-				else if ( bar == 2 )
-					((PlayerMobile)m).SpellBarsArch2 = pouch.BarsCast1;
-				else if ( bar == 3 )
-					((PlayerMobile)m).SpellBarsArch3 = pouch.BarsCast1;
-				else if ( bar == 4 )
-					((PlayerMobile)m).SpellBarsArch4 = pouch.BarsCast1;
-			}
-		}
-
 		public static bool HasSpell( Mobile from, int spellID )
 		{
 			bool fromBook = ResearchSettings.BookCaster( from );

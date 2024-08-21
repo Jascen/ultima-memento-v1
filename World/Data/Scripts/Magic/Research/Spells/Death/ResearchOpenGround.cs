@@ -258,7 +258,7 @@ namespace Server.Items
 			owner.DoHarmful( m );
 			Server.Mobiles.BaseCreature.TeleportPets( m, b, map );
 			m.MoveToWorld( p, map );
-			m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "You fall into a deep pit!");
+			m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You fall into a deep pit!");
 		}
 
 		public OpenGround(Serial serial) : base(serial)

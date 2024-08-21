@@ -5,6 +5,8 @@ using Server.Misc;
 using Server.Regions;
 using Server.Mobiles;
 using Server.Gumps;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Server.Items
 {
@@ -16,11 +18,11 @@ namespace Server.Items
 
 			if ( m != null && m.Backpack != null )
 			{
-				foreach( Item i in m.Backpack.Items )
+				List<Item> list = new List<Item>();
+				(m.Backpack).RecurseItems( list );
+				foreach ( Item i in list )
 				{
-					if ( i is Sextant )
-						sxtnt = true;
-					else if ( i is MagicSextant )
+					if ( i is Sextant || i is MagicSextant )
 						sxtnt = true;
 				}
 			}

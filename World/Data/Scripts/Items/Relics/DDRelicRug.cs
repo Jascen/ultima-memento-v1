@@ -365,12 +365,25 @@ namespace Server.Items
 				ColorHue3 = "FDC844";
 				ColorText3 = "Worth " + CoinPrice + " Gold";
 			}
+			else
+			{
+				ColorHue3 = null;
+				ColorText3 = null;
+			}
 		}
 
 		public override void ItemPriced( int val )
 		{
-			ColorHue3 = "FDC844";
-			ColorText3 = "Worth " + val + " Gold";
+			if ( !m_NotIdentified )
+			{
+				ColorHue3 = "FDC844";
+				ColorText3 = "Worth " + val + " Gold";
+			}
+			else
+			{
+				ColorHue3 = null;
+				ColorText3 = null;
+			}
 			m_CoinPrice = val;
 		}
 

@@ -178,10 +178,15 @@ namespace Server.Mobiles
 
 			bool HasItem = false;
 
-			List<Item> belongings = new List<Item>();
-			foreach( Item i in m.Backpack.Items )
+			if ( m != null && m.Backpack != null )
 			{
-				if ( i is SummonItems && i.Name == item ){ HasItem = true; }
+				List<Item> list = new List<Item>();
+				(m.Backpack).RecurseItems( list );
+				foreach ( Item i in list )
+				{
+					if ( i is SummonItems && i.Name == item )
+						HasItem = true;
+				}
 			}
 
 			return HasItem;

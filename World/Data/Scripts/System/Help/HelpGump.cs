@@ -696,7 +696,7 @@ namespace Server.Engines.Help
 			if ( from.Region is HouseRegion )
 			    if (((HouseRegion)from.Region).House.IsOwner(from))
 					house = true;
-			if ( from.Region.GetLogoutDelay( from ) != TimeSpan.Zero && house == false && !( from.Region is PrisonArea ) && !( from.Region is GargoyleRegion ) && !( from.Region is SafeRegion ) )
+			if ( from.Region.GetLogoutDelay( from ) != TimeSpan.Zero && house == false && !( from.Region is SkyHomeDwelling ) && !( from.Region is PrisonArea ) && !( from.Region is DungeonHomeRegion ) && !( from.Region is GargoyleRegion ) && !( from.Region is SafeRegion ) )
 			{
 				button = 4005; if ( page == 15 ){ button = 4006; }
 				AddButton(15, r, button, button, 15, GumpButtonType.Reply, 0);

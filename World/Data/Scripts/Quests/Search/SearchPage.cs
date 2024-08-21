@@ -159,6 +159,7 @@ namespace Server.Items
 					thisMap = Server.Misc.Worlds.GetMyDefaultMap( finding.Land );
 					realMap = finding.Map;
 					thisPlace = Server.Misc.Worlds.GetRegionName( finding.Map, finding.Location );
+					thisWorld = Lands.LandName( finding.Land );
 				}
 			}
 

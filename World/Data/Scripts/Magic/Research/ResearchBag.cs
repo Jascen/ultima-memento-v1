@@ -1243,24 +1243,6 @@ namespace Server.Items
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		public string BarsCast1;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string Bars_Cast1 { get { return BarsCast1; } set { BarsCast1 = value; InvalidateProperties(); } }
-
-		public string BarsCast2;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string Bars_Cast2 { get { return BarsCast2; } set { BarsCast2 = value; InvalidateProperties(); } }
-
-		public string BarsCast3;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string Bars_Cast3 { get { return BarsCast3; } set { BarsCast3 = value; InvalidateProperties(); } }
-
-		public string BarsCast4;
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string Bars_Cast4 { get { return BarsCast4; } set { BarsCast4 = value; InvalidateProperties(); } }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 		public ResearchBag(Serial serial) : base(serial)
 		{
 		}
@@ -1268,7 +1250,7 @@ namespace Server.Items
 		public override void Serialize(GenericWriter writer)
 		{
 			base.Serialize(writer);
-			writer.Write((int)1);
+			writer.Write((int)2);
 
             writer.Write( (Mobile)BagOwner );
             writer.Write( BagInk );
@@ -1299,17 +1281,13 @@ namespace Server.Items
             writer.Write( ResearchItem );
             writer.Write( ResearchPrep1 );
             writer.Write( ResearchPrep2 );
-
-            writer.Write( BarsCast1 );
-            writer.Write( BarsCast2 );
-            writer.Write( BarsCast3 );
-            writer.Write( BarsCast4 );
 		}
 
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize(reader);
 			int version = reader.ReadInt();
+			string nul = "";
 
 			BagOwner = reader.ReadMobile();
 			BagInk = reader.ReadInt();
@@ -1365,10 +1343,13 @@ namespace Server.Items
 			ResearchPrep1 = reader.ReadString();
 			ResearchPrep2 = reader.ReadString();
 
-			BarsCast1 = reader.ReadString();
-			BarsCast2 = reader.ReadString();
-			BarsCast3 = reader.ReadString();
-			BarsCast4 = reader.ReadString();
+			if ( version < 2 )
+			{
+				nul = reader.ReadString();
+				nul = reader.ReadString();
+				nul = reader.ReadString();
+				nul = reader.ReadString();
+			}
 		}
 
 		private class SpellInformation : Gump

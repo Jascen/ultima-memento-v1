@@ -1432,6 +1432,12 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			if ( !from.InRange( this.GetWorldLocation(), 1 ) )
+			{
+				from.SendMessage( "That is too far away!" );
+				return;
+			}
+
 			bool WellNearby;
 			DrinkingFunctions.CheckWater( from, 3, out WellNearby );
 

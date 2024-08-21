@@ -1006,6 +1006,9 @@ namespace Server
 				SpellItems.setSpell( level, item );
 			}
 
+			if ( item == null )
+				item = Loot.RandomCoins( from );
+
 			RandomThings.SpecialName( item, from, from.Region );
 
 			if ( !Worlds.isSciFiRegion( from ) && item is BaseTrinket && item.Catalog == Catalogs.Jewelry )

@@ -545,7 +545,7 @@ namespace Server.Spells.Magical
 				{
 					Effects.PlaySound( m.Location, m.Map, 0x1FB );
 					m.PlaySound( 0x10B );
-					m.FixedParticles( 0x37CC, 1, 9, 9911, 0xB1F, 5, EffectLayer.Waist );
+					m.FixedParticles( 0x37CC, 1, 9, 9911, 0x916, 5, EffectLayer.Waist );
 					phy = 100;
 				}
 				else if ( spells == 42 ) // poison strike

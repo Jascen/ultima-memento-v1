@@ -137,9 +137,6 @@ namespace Server.Spells
 			m_Scroll = scroll;
 			m_Info = info;
 
-if ( m_Scroll != null )
-	Console.WriteLine( m_Scroll.Name );
-
 			caster.ItemCastSpell = false;
 			caster.ScrollCastSpell = false;
 			caster.NoManaUseSpell = false;
@@ -147,7 +144,7 @@ if ( m_Scroll != null )
 			{
 				if ( m_Scroll != null )
 					caster.ItemCastSpell = true;
-				if ( m_Scroll is SpellScroll || m_Scroll is RuneBag )
+				if ( m_Scroll is SpellScroll || m_Scroll is MagicRuneBag )
 					caster.ScrollCastSpell = true;
 				if ( m_Scroll.EnchantUsesMax == 0 && m_Scroll.Enchanted != MagicSpell.None )
 					caster.NoManaUseSpell = true;

@@ -143,6 +143,13 @@ namespace Server
 				pole.InfoText1 = "" + pole.Tap + "% Avoiding Traps";
 				pole.InfoText2 = "For Wall, Floor & Container Traps";
 			}
+			else if ( item is MagicRuneBag )
+			{
+				if ( reduce )
+					item.EnchantUsesMax = 200;
+				else
+					item.EnchantUsesMax = 200 + ( 200 * CraftResources.GetXtra( resource ) );
+			}
 			else if ( item is HorseArmor )
 			{
 				HorseArmor horse = (HorseArmor)item;
@@ -1611,6 +1618,8 @@ namespace Server
 			else if ( item is UndertakerKit && item.Hue == 0 && item.Resource == CraftResource.Iron )
 				item.Hue = WoodColor;
 			else if ( item is LeatherworkingTools && item.Hue == 0 && item.Resource == CraftResource.Iron )
+				item.Hue = HideColor;
+			else if ( item is MagicRuneBag && item.Hue == 0 && item.Resource == CraftResource.RegularLeather )
 				item.Hue = HideColor;
 			else if ( item is CulinarySet && item.Hue == 0 && item.Resource == CraftResource.Iron )
 				item.Hue = 0x99A;

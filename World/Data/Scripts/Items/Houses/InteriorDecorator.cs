@@ -90,7 +90,7 @@ namespace Server.Items
 			return false;
 		}
 
-		private class InternalGump : Gump
+		public class InternalGump : Gump
 		{
 			private InteriorDecorator m_Decorator;
 

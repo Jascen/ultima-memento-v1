@@ -374,6 +374,7 @@ namespace Server.Mobiles
 					realMap = finding.Map;
 					thisMap = Server.Misc.Worlds.GetMyDefaultMap( finding.Land );
 					thisPlace = Server.Misc.Worlds.GetRegionName( finding.Map, finding.Location );
+					thisWorld = Lands.LandName( finding.Land );
 					scroll.MsgComplete = 0;
 					scroll.MsgReward = Server.Difficult.GetDifficulty( finding.Location, finding.Map ) + 2;
 						if ( scroll.MsgReward < 2 ){ scroll.MsgReward = 2; }

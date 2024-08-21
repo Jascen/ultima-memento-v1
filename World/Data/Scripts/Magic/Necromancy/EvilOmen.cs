@@ -65,7 +65,7 @@ namespace Server.Spells.Necromancy
 					m_Table[m] = mod;
 				}
 
-				TimeSpan duration = TimeSpan.FromSeconds((Caster.Skills[SkillName.Spiritualism].Value / 12) + 1.0);
+				TimeSpan duration = TimeSpan.FromSeconds((Spell.ItemSkillValue( Caster, SkillName.Spiritualism, false ) / 12) + 1.0);
 
 				Timer.DelayCall(duration, new TimerStateCallback(EffectExpire_Callback), m);
 

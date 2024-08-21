@@ -1023,7 +1023,6 @@ namespace Server.Engines.Craft
 			if ( CheckSkills( from, typeRes, craftSystem, ref ignored, ref allRequiredSkills ) )
 			{
 				int que = CraftSystem.CraftGetQueue( from );
-				// ???
 
 				// Resource
 				int resHue = 0;

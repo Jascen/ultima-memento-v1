@@ -1,5 +1,5 @@
 using System;
-using Server; 
+using Server;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Mobiles;
@@ -543,7 +543,7 @@ namespace Server.Items
 											Effects.SendLocationParticles( EffectItem.Create( enchant.Location, enchant.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
 											Effects.PlaySound( enchant.Location, enchant.Map, 0x1ED );
 
-											string checkItem = enchant.GetType().ToString();  
+											string checkItem = enchant.GetType().ToString();
 											int index = checkItem.LastIndexOf(".");
 											string[] getItem = new string[] {checkItem.Substring(0, index), checkItem.Substring(index + 1)};
 
@@ -788,17 +788,14 @@ namespace Server.Items
 							Item feath = m.Backpack.FindItemByType( typeof ( GoldenFeathers ) );
 
 							int RidOf = 0;
+							bool run = true;
 
 							GoldenFeathers goldfeather = (GoldenFeathers)feath;
 							if ( goldfeather.owner == m )
 							{
-								foreach ( Item enchant in m.GetItemsInRange( 20 ) )
+								foreach ( Item enchant in m.GetItemsInRange( 10 ) )
 								{
-									if ( enchant.NotModAble || enchant.ArtifactLevel > 0 )
-									{
-										// SKIP
-									}
-									else if ( enchant.X>=5203 && enchant.Y>=1301 && enchant.X<=5205 && enchant.Y<=1305 )
+									if ( !enchant.NotModAble && run && enchant.ArtifactLevel == 0 && ( enchant is BaseArmor || enchant is BaseWeapon || enchant is BaseClothing ) && enchant.X>=5203 && enchant.Y>=1301 && enchant.X<=5205 && enchant.Y<=1305 && enchant.Resource != CraftResource.None )
 									{
 										ResourceMods.SetResource( enchant, CraftResource.GildedSpec );
 										Item mod = (Item)enchant;
@@ -807,6 +804,7 @@ namespace Server.Items
 										Effects.SendLocationParticles( EffectItem.Create( enchant.Location, enchant.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
 										Effects.PlaySound( enchant.Location, enchant.Map, 0x1ED );
 										RidOf = 1;
+										run = false;
 									}
 								}
 
@@ -831,11 +829,11 @@ namespace Server.Items
 				{
 					if ( m.Skills[SkillName.Elementalism].Base >= 80 || m.Skills[SkillName.Magery].Base >= 80 || m.Skills[SkillName.Necromancy].Base >= 80 )
 					{
-						if ( 	m.Backpack.FindItemByType( typeof ( StaffPartVenom ) ) != null && 
-								m.Backpack.FindItemByType( typeof ( StaffPartCaddellite ) ) != null && 
-								m.Backpack.FindItemByType( typeof ( StaffPartFire ) ) != null && 
-								m.Backpack.FindItemByType( typeof ( StaffPartLight ) ) != null && 
-								m.Backpack.FindItemByType( typeof ( StaffPartEnergy ) ) != null 
+						if ( 	m.Backpack.FindItemByType( typeof ( StaffPartVenom ) ) != null &&
+								m.Backpack.FindItemByType( typeof ( StaffPartCaddellite ) ) != null &&
+								m.Backpack.FindItemByType( typeof ( StaffPartFire ) ) != null &&
+								m.Backpack.FindItemByType( typeof ( StaffPartLight ) ) != null &&
+								m.Backpack.FindItemByType( typeof ( StaffPartEnergy ) ) != null
 						)
 						{
 							Item piece1 = m.Backpack.FindItemByType( typeof ( StaffPartVenom ) );
@@ -853,7 +851,7 @@ namespace Server.Items
 								if ( m.Skills[SkillName.Elementalism].Base > m.Skills[SkillName.Magery].Base ){ magic = 2; }
 								if ( m.Skills[SkillName.Elementalism].Base > m.Skills[SkillName.Necromancy].Base ){ magic = 2; }
 
-							StaffFiveParts staff = new StaffFiveParts( m, magic ); 
+							StaffFiveParts staff = new StaffFiveParts( m, magic );
 							staff.MoveToWorld (new Point3D(5693, 1913, 2), Map.Sosaria);
 							Effects.SendLocationParticles( EffectItem.Create( staff.Location, staff.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
 							Effects.PlaySound( staff.Location, staff.Map, 0x1ED );

@@ -380,6 +380,16 @@ namespace Server.Items
 			}
 		}
 
+		public override bool OnDragLift( Mobile from )
+		{
+			if ( !NotModAble )
+			{
+				NotModAble = true;
+				OnDoubleClick( from );
+			}
+			return true;
+		}
+
 		public override void AddNameProperties( ObjectPropertyList list )
 		{
 			base.AddNameProperties( list );

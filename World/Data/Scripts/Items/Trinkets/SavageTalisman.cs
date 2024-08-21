@@ -39,7 +39,7 @@ namespace Server.Items
 		{
 			if ( this.ItemOwner != from )
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0xB1F, true, "This talisman belongs to another!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "This talisman belongs to another!" );
 				return false;
 			}
 			return true;

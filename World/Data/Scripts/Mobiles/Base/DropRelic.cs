@@ -491,20 +491,14 @@ namespace Server.Misc
 					SlayerEntry wizardrykiller = SlayerGroup.GetEntryByName( SlayerName.WizardSlayer );
 					if ( wizardrykiller.Slays(from) )
 					{
-						if ( Utility.Random( 4 ) == 1 )
-						{
-							Item wand = new MagicalWand(0); c.DropItem(wand);
-						}
+						if ( Utility.Random( 25 ) == 0 )
+							c.DropItem( new MagicalWand(0) ); 
 
-						if ( Utility.Random( 20 ) == 1 )
-						{
+						if ( Utility.Random( 100 ) == 0 )
 							c.DropItem( Loot.RandomRuneMagic() );
-						}
 
-						if ( Utility.Random( 4 ) == 1 && Server.Items.BaseWizardStaff.HasStaff( killer ) )
-						{
+						if ( Utility.Random( 4 ) == 0 && Server.Items.BaseWizardStaff.HasStaff( killer ) )
 							c.DropItem( new MageEye( Utility.RandomMinMax( 1, Server.Misc.IntelligentAction.GetCreatureLevel( from ) ) ) );
-						}
 					}
 
 					// HIGH SEAS /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

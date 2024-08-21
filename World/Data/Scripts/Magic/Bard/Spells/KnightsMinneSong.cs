@@ -40,7 +40,7 @@ namespace Server.Spells.Song
 
 				foreach ( Mobile m in Caster.GetMobilesInRange( 10 ) )
 				{
-					if ( isFriendly( Caster, m ) )
+					if ( isFriendly( Caster, m ) && m.PhysicalResistance < MySettings.S_MaxResistance )
 						targets.Add( m );
 				}
 
@@ -50,6 +50,9 @@ namespace Server.Spells.Song
 					
 					TimeSpan duration = TimeSpan.FromSeconds( (double)(MusicSkill( Caster ) * 2) );
                     int amount = MyServerSettings.PlayerLevelMod( (int)(MusicSkill( Caster ) / 16), Caster );
+
+					if ( ( amount + m.PhysicalResistance ) > MySettings.S_MaxResistance )
+						amount = MySettings.S_MaxResistance - m.PhysicalResistance;
 	
 					m.SendMessage( "Your resistance to physical attacks has increased." );
 					ResistanceMod mod1 = new ResistanceMod( ResistanceType.Physical, + amount );

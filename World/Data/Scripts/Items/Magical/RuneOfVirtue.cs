@@ -42,17 +42,17 @@ namespace Server.Items
 			Hue = 0; if ( ItemSide > 0 ){ Hue = 0xB20; }
 			if ( this.ItemOwner != from )
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0xB1F, true, "This rune belongs to another!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "This rune belongs to another!" );
 				return false;
 			}
 			else if ( ItemSide > 0 && from.Karma > 0 )
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0xB1F, true, "Your morality is too virtuous to wield that!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "Your morality is too virtuous to wield that!" );
 				return false;
 			}
 			else if ( ItemSide < 1 && from.Karma < 0 )
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0xB1F, true, "Your morality is too corrupt to wield that!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "Your morality is too corrupt to wield that!" );
 				return false;
 			}
 			return true;
@@ -68,13 +68,13 @@ namespace Server.Items
 
 					if ( stone.ItemSide > 0 && from.Karma > 0 )
 					{
-						from.LocalOverheadMessage( MessageType.Emote, 0xB1F, true, "Your morality is too virtuous to wield that rune!" );
+						from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "Your morality is too virtuous to wield that rune!" );
 						from.AddToBackpack ( rune );
 						from.InvalidateProperties();
 					}
 					else if ( stone.ItemSide < 1 && from.Karma < 0 )
 					{
-						from.LocalOverheadMessage( MessageType.Emote, 0xB1F, true, "Your morality is too corrupt to wield that rune!" );
+						from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "Your morality is too corrupt to wield that rune!" );
 						from.AddToBackpack ( rune );
 						from.InvalidateProperties();
 					}

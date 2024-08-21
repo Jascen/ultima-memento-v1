@@ -3615,7 +3615,7 @@ namespace Server.Misc
 				int duration = Utility.RandomMinMax(4, 12);
 				m.Paralyze(TimeSpan.FromSeconds(duration));
 				m.Warmode = false;
-				m.LocalOverheadMessage( MessageType.Emote, 0xB1F, true, "You are hit with a stunning punch!" );
+				m.LocalOverheadMessage( MessageType.Emote, 0x916, true, "You are hit with a stunning punch!" );
 			}
 		}
 
@@ -3654,7 +3654,7 @@ namespace Server.Misc
 
 				Effects.SendLocationEffect( m.Location, m.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 				Effects.PlaySound( m, m.Map, 0x201 );
-				m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "You have been poisoned!");
+				m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You have been poisoned!");
 			}
 		}
 
@@ -3750,7 +3750,7 @@ namespace Server.Misc
 						foreach ( Item stuff in belongings )
 						{
 							o++;
-							if ( c == o ){ ((BaseCreature)m).PackItem( stuff ); from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, m.Name + " stole something from you!"); }
+							if ( c == o ){ ((BaseCreature)m).PackItem( stuff ); from.LocalOverheadMessage(MessageType.Emote, 0x916, true, m.Name + " stole something from you!"); }
 						}
 					}
 				}

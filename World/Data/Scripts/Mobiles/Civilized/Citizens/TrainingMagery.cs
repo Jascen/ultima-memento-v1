@@ -466,7 +466,7 @@ namespace Server.Items
 				{
 					Effects.PlaySound( mSp.Location, mSp.Map, 0x1FB );
 					mSp.PlaySound( 0x10B );
-					mSp.FixedParticles( 0x37CC, 1, 9, 9911, 0xB1F, 5, EffectLayer.Waist );
+					mSp.FixedParticles( 0x37CC, 1, 9, 9911, 0x916, 5, EffectLayer.Waist );
 				}
 				else if ( spells == 42 ) // poison strike
 				{

@@ -43,7 +43,7 @@ namespace Server.Spells.Necromancy
 			m.PlaySound( 0x17F );
 			m.FixedParticles( 0x374A, 1, 15, 9902, 1108, 4, EffectLayer.Waist );
 
-			int wraithLeech = (5 + (int)((15 * m.Skills.Spiritualism.Value) / 100)); // Wraith form gives an additional 5-20% mana leech
+			int wraithLeech = (5 + (int)((15 * Spell.ItemSkillValue( m, SkillName.Spiritualism, false )) / 100)); // Wraith form gives an additional 5-20% mana leech
 			string args = String.Format("{0}", wraithLeech);
 			BuffInfo.RemoveBuff( m, BuffIcon.WraithForm );
 			BuffInfo.AddBuff( m, new BuffInfo(BuffIcon.WraithForm, 1063607, 1063608, args.ToString(), true));

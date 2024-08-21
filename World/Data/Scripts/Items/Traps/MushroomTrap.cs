@@ -69,7 +69,7 @@ namespace Server.Items
 						Spells.SpellHelper.Damage( TimeSpan.FromSeconds( 0.5 ), from, from, itHurts );
 						from.FixedParticles( 0x36BD, 20, 10, 5044, EffectLayer.Head );
 						from.PlaySound( 0x307 );
-						from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "A mushroom exploded near you!");
+						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A mushroom exploded near you!");
 
 					break;
 
@@ -92,7 +92,7 @@ namespace Server.Items
 
 						Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 						Effects.PlaySound( this.Location, this.Map, 0x231 );
-						from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "A mushroom released odd spores!");
+						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A mushroom released odd spores!");
 
 					break;
 
@@ -101,7 +101,7 @@ namespace Server.Items
 						from.BoltEffect( 0 );
 						itHurts = (int)( (Utility.RandomMinMax(40,200) * ( 100 - from.EnergyResistance ) ) / 100 );
 						from.Damage( itHurts, from );
-						from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "A mushroom released strange energy!");
+						from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A mushroom released strange energy!");
 
 					break;
 			}

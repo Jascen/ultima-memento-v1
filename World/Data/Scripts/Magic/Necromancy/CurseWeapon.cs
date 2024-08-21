@@ -52,11 +52,9 @@ namespace Server.Spells.Necromancy
 
 				int nBenefit = 0;
 				if ( Caster is PlayerMobile )
-				{
 					nBenefit = (int)(Caster.Skills[SkillName.Necromancy].Value);
-				}
 
-				TimeSpan duration = TimeSpan.FromSeconds( (Caster.Skills[SkillName.Spiritualism].Value / 3.4) + 1.0 + nBenefit );
+				TimeSpan duration = TimeSpan.FromSeconds( (Spell.ItemSkillValue( Caster, SkillName.Spiritualism, false ) / 3.4) + 1.0 + nBenefit );
 
 				Timer t = (Timer)m_Table[weapon];
 

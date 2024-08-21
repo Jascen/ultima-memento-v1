@@ -34,22 +34,24 @@ namespace Server.Items
 		public override bool OnDragDropInto( Mobile from, Item dropped, Point3D p )
         {
 			if ( isAlchemy( dropped ) )
-			{
 				return base.OnDragDropInto(from, dropped, p);
-			}
+			else if ( dropped.Catalog == Catalogs.Potion )
+				from.SendMessage("That particular item cannot be used in this pouch.");
+			else
+				from.SendMessage("This belt pouch is for alchemy potions.");
 
-			from.SendMessage("This belt pouch is for alchemy potions.");
 			return false;
         }
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
         {
 			if ( isAlchemy( dropped ) )
-			{
 				return base.OnDragDrop(from, dropped);
-			}
+			else if ( dropped.Catalog == Catalogs.Potion )
+				from.SendMessage("That particular item cannot be used in this pouch.");
+			else
+				from.SendMessage("This belt pouch is for alchemy potions.");
 
-			from.SendMessage("This belt pouch is for alchemy potions.");
 			return false;
         }
 

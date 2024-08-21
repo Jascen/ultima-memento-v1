@@ -30,7 +30,7 @@ namespace Server.Items
 			}
 			else if ( m is PlayerMobile && m.Blessed == false && m.Alive && m.AccessLevel == AccessLevel.Player && Server.Misc.SeeIfGemInBag.GemInPocket( m ) == false && Server.Misc.SeeIfJewelInBag.JewelInPocket( m ) == false )
 			{
-				m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "You made a fatal mistake!");
+				m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You made a fatal mistake!");
 				m.Damage( 10000, m );
 				LoggingFunctions.LogKillTile( m, this.Name );
 			}

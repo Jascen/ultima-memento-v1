@@ -957,7 +957,6 @@ namespace Server.Gumps
             int HCICap = 45;
             int DCICap = 45;
             int FCCap = 4; // FC 4 For Paladin, otherwise FC 2 for Mage
-            int FCRCap = 4;
             int DamageIncreaseCap = 100;
             int SDICap = 1000000;
 				if ( SDICap > MyServerSettings.SpellDamageIncreaseVsMonsters() && MyServerSettings.SpellDamageIncreaseVsMonsters() > 0 ){ SDICap = MyServerSettings.SpellDamageIncreaseVsMonsters(); }
@@ -971,7 +970,7 @@ namespace Server.Gumps
             int HCI = AosAttributes.GetValue( from, AosAttribute.AttackChance ) > HCICap ? HCICap : AosAttributes.GetValue( from, AosAttribute.AttackChance );
             int DCI = AosAttributes.GetValue( from, AosAttribute.DefendChance ) > DCICap ? DCICap : AosAttributes.GetValue( from, AosAttribute.DefendChance );
             int FC = AosAttributes.GetValue( from, AosAttribute.CastSpeed ) > FCCap ? FCCap : AosAttributes.GetValue( from, AosAttribute.CastSpeed );
-            int FCR = AosAttributes.GetValue( from, AosAttribute.CastRecovery ) > FCRCap ? FCRCap : AosAttributes.GetValue( from, AosAttribute.CastRecovery );
+            int FCR = AosAttributes.GetValue( from, AosAttribute.CastRecovery );
             int DamageIncrease = AosAttributes.GetValue( from, AosAttribute.WeaponDamage ) > DamageIncreaseCap ? DamageIncreaseCap : AosAttributes.GetValue( from, AosAttribute.WeaponDamage );
             int SDI = AosAttributes.GetValue( from, AosAttribute.SpellDamage ) > SDICap ? SDICap : AosAttributes.GetValue( from, AosAttribute.SpellDamage );
             int ReflectDamage = AosAttributes.GetValue( from, AosAttribute.ReflectPhysical ) > ReflectDamageCap ? ReflectDamageCap : AosAttributes.GetValue( from, AosAttribute.ReflectPhysical );

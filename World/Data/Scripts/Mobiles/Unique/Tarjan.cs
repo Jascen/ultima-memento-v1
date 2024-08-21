@@ -175,6 +175,16 @@ namespace Server.Items
 		{
 		}
 
+		public override bool OnDragLift( Mobile from )
+		{
+			if ( !NotModAble )
+			{
+				NotModAble = true;
+				OnDoubleClick( from );
+			}
+			return true;
+		}
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( PlayerSettings.GetBardsTaleQuest( from, "BardsTaleKylearanKey" ) && PlayerSettings.GetBardsTaleQuest( from, "BardsTaleSpectreEye" ) )

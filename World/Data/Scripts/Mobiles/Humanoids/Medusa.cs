@@ -114,7 +114,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "One of your items has been turned to stone!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items has been turned to stone!");
 						m.PlaySound( 0x1FB );
 						Item rock = new BrokenGear();
 						rock.ItemID = iStone.GraphicID;

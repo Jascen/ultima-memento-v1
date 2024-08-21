@@ -60,7 +60,7 @@ namespace Server.Spells.Necromancy
 					SlayerEntry fey = SlayerGroup.GetEntryByName( SlayerName.Fey );
 
 					int level_corpse = IntelligentAction.GetCreatureLevel( m );
-					int level_caster = (int)( ( Caster.Skills[SkillName.Necromancy].Value + Caster.Skills[SkillName.Spiritualism].Value ) / 2 );
+					int level_caster = (int)( ( Spell.ItemSkillValue( Caster, SkillName.Necromancy, false ) + Spell.ItemSkillValue( Caster, SkillName.Spiritualism, false ) ) / 2 );
 						if ( level_caster > 100 ){ level_caster = 100; }
 
 					int slots_max = (int)(level_corpse/20);
@@ -82,7 +82,7 @@ namespace Server.Spells.Necromancy
 					}
 					else if ( slots_limit >= slots_max )
 					{
-						TimeSpan duration = TimeSpan.FromSeconds( ( ( Caster.Skills[SkillName.Necromancy].Value + Caster.Skills[SkillName.Spiritualism].Value) / 2 ) * 9 );
+						TimeSpan duration = TimeSpan.FromSeconds( ( ( Spell.ItemSkillValue( Caster, SkillName.Necromancy, false ) + Spell.ItemSkillValue( Caster, SkillName.Spiritualism, false )) / 2 ) * 9 );
 
 						BaseCreature bc = (BaseCreature)m;
 

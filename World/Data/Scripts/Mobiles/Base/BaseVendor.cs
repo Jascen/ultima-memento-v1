@@ -2664,7 +2664,12 @@ namespace Server.Mobiles
 
             protected override void OnTarget(Mobile from, object targeted)
 			{
-				if ( targeted is Item && ((Item)targeted).Enchanted != MagicSpell.None && ((Item)targeted).EnchantUsesMax > 0 )
+				if ( targeted is MagicRuneBag )
+				{
+					m_Vendor.SayTo( from, "Place some gold in the bag and I will charge it by that amount." );
+					return;
+				}
+				else if ( targeted is Item && ((Item)targeted).Enchanted != MagicSpell.None && ((Item)targeted).EnchantUsesMax > 0 )
 				{
 					Item rep = (Item)targeted;
 					Container pack = from.Backpack;

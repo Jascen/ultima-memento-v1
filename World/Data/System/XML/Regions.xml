@@ -79,7 +79,7 @@
 			<rect x="5312" y="2914" width="98" height="90" />
 			<rect x="5283" y="2922" width="64" height="44" />
 		</region>
-		<region type="CaveRegion" priority="65" name="the Conjurerer's Cave">
+		<region type="CaveRegion" priority="65" name="the Conjurer's Cave">
 			<rect x="5222" y="2835" width="59" height="68" />
 		</region>
 

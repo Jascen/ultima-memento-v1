@@ -65,17 +65,20 @@ namespace Server.Items
 
 				level = Utility.RandomMinMax( (level-1), level );
 
-				if ( level < 2 )
-					spawner = new Spawn_A();
-				else if ( level < 4 )
-					spawner = new Spawn_B();
-				else if ( level < 5 )
-					spawner = new Spawn_C();
-				else
-					spawner = new Spawn_D();
-
 				while ( bc == null && cyc < 20 )
 				{
+					if ( spawner != null )
+						spawner.Delete();
+
+					if ( level < 2 )
+						spawner = new Spawn_A();
+					else if ( level < 4 )
+						spawner = new Spawn_B();
+					else if ( level < 5 )
+						spawner = new Spawn_C();
+					else
+						spawner = new Spawn_D();
+
 					cyc++;
 					bc = (BaseCreature)(SpawnList.RandomSpawn( spawner, chest.Land, p, map ) );
 				}

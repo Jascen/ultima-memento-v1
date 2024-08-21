@@ -14,6 +14,7 @@ using Server.Items;
 using Server.Spells.Fifth;
 using System.IO;
 using System.Xml;
+using System.Text;
 
 namespace Server.Misc
 {
@@ -21,39 +22,33 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: Magician (16 July 2024)";
+			return "Version: Hegran (DD MMM YYYY)";
 		}
 
 		public static string Versions()
         {
-			string versionTEXT = ""
+			const string SEPARATOR_LINE = "<BR>---------------------------------------------------------------------------------<BR><BR>";
+			var builder = new StringBuilder();
 
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			builder.Append("Core update - 20 August 2024<br>");
+			builder.Append("- Update to Adventurers of Akalabeth version 'Knight - 16 August 2024'");
+			builder.Append(SEPARATOR_LINE);
 
-				+ "Inception - 4 August 2024<br>"
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				+ "<br>"
+			builder.Append("Inception - 4 August 2024<br>");
+			builder.Append(SEPARATOR_LINE);
 
-				+ sepLine()
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			builder.Append("Necromancer - 26 July 2024<br>");
+			builder.Append("<br>");
+			builder.Append("- Ultima: Memento begins using this Adventurers of Akalabeth patch<br>");
+			builder.Append("<br>");
 
-				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-				+ "Necromancer - 26 July 2024<br>"
-
-				+ "<br>"
-
-				+ "- Ultima: Memento begins using this Adventurers of Akalabeth patch<br>"
-				+ "<br>"
-
-			+ "";
-
-			return versionTEXT;
-		}
-
-		public static string sepLine()
-		{
-			return "---------------------------------------------------------------------------------<BR><BR>";
+			return builder.ToString();
 		}
 	}
 }

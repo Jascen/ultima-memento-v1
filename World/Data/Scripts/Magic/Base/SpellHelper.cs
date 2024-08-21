@@ -807,7 +807,7 @@ namespace Server.Spells
 			{
 				if ( context.Type == typeof( WraithFormSpell ) )
 				{
-					int wraithLeech = ( 5 + (int)( ( 15 * from.Skills.Spiritualism.Value ) / 100 ) ); // Wraith form gives 5-20% mana leech
+					int wraithLeech = ( 5 + (int)( ( 15 * Spell.ItemSkillValue( from, SkillName.Spiritualism, false ) ) / 100 ) ); // Wraith form gives 5-20% mana leech
 					int manaLeech = AOS.Scale( damageGiven, wraithLeech );
 					if ( manaLeech != 0 )
 					{

@@ -468,6 +468,9 @@ namespace Server
     {
 		public static Terrain GetTerrain( Map map, Point3D location, int x, int y )
 		{
+			if ( map == Map.Internal || x < 0 || y < 0 )
+				return Terrain.None;
+
 			LandTile LTile = map.Tiles.GetLandTile( x, y );
 
 			int[] WaterTerrain = { 0x00A8, 0x00A9, 0x00AA, 0x00AB, 0x0136, 0x0138 };

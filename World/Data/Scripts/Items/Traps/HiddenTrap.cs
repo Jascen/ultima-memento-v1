@@ -127,7 +127,7 @@ namespace Server.Items
 							textLog = "a statically charged tile";
 						}
 
-						if ( m.Hidden != false ){ m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay); sTrapType = textLog; }
+						if ( m.Hidden != false ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay); sTrapType = textLog; }
 					}
 					else if ( nTrapType == 2 && SavingThrow( m, "Agility", true, this ) == false ) // TRIP WIRE
 					{
@@ -162,7 +162,7 @@ namespace Server.Items
 										box.DropItem(stuff);
 								}
 								box.MoveToWorld( this.Location, this.Map );
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 								m.PlaySound( m.Female ? 812 : 1086 );
 								sTrapType = textLog;
 							}
@@ -182,7 +182,7 @@ namespace Server.Items
 
 							if ( iTripped != null )
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 								m.PlaySound( m.Female ? 812 : 1086 );
 								iTripped.MoveToWorld( this.Location, this.Map );
 								sTrapType = textLog;
@@ -230,7 +230,7 @@ namespace Server.Items
 						}
 						if ( nDull > 0 )
 						{
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
 							m.PlaySound( 0x1E1 );
 						}
@@ -272,7 +272,7 @@ namespace Server.Items
 
 									if ( CraftResources.GetType( iRuined.Resource ) == CraftResourceType.Metal )
 									{
-										m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+										m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 										RustyJunk broke = new RustyJunk();
 										broke.ItemID = iRuined.GraphicID;
 										broke.Name = "rusted item";
@@ -287,7 +287,7 @@ namespace Server.Items
 
 									if ( CraftResources.GetType( iRuined.Resource ) == CraftResourceType.Metal )
 									{
-										m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+										m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 										RustyJunk broke = new RustyJunk();
 										broke.ItemID = iRuined.ItemID;
 										broke.Name = "rusted item";
@@ -305,7 +305,7 @@ namespace Server.Items
 										textSay = "You stepped over a molecular oxidizer, ruining one of your equipped items!";
 									}
 
-									m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+									m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 									BrokenGear broke = new BrokenGear();
 									broke.ItemID = iRuined.ItemID;
 									broke.Name = "Ruined Item";
@@ -336,7 +336,7 @@ namespace Server.Items
 									textLog = "a bacterial contamination";
 								}
 
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 								m.FixedParticles( 0x3779, 10, 15, 5009, EffectLayer.Waist );
 								m.PlaySound( 0x1E6 );
 								m.RawStr = m.RawStr - 1; 
@@ -356,7 +356,7 @@ namespace Server.Items
 									textLog = "a bacterial contamination";
 								}
 
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 								m.FixedParticles( 0x3779, 10, 15, 5002, EffectLayer.Head );
 								m.PlaySound( 0x1DF );
 								m.RawDex = m.RawDex - 1; 
@@ -376,7 +376,7 @@ namespace Server.Items
 									textLog = "a bacterial contamination";
 								}
 
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 								m.FixedParticles( 0x3779, 10, 15, 5004, EffectLayer.Head );
 								m.PlaySound( 0x1E4 );
 								m.RawInt = m.RawInt - 1;
@@ -415,7 +415,7 @@ namespace Server.Items
 
 						Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 						Effects.PlaySound( this.Location, this.Map, 0x231 );
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 
 						sTrapType = textLog;
 					}
@@ -434,7 +434,7 @@ namespace Server.Items
 								textLog = "a radioactive spill";
 							}
 
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							m.FixedParticles( 0x3779, 10, 15, 5009, EffectLayer.Waist );
 							m.PlaySound( 0x1E6 );
 							m.Hits = 1; 
@@ -451,7 +451,7 @@ namespace Server.Items
 								textLog = "a radioactive spill";
 							}
 
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							m.FixedParticles( 0x3779, 10, 15, 5002, EffectLayer.Head );
 							m.PlaySound( 0x1DF );
 							m.Stam = 0; 
@@ -468,7 +468,7 @@ namespace Server.Items
 								textLog = "a radioactive spill";
 							}
 
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							m.FixedParticles( 0x3779, 10, 15, 5004, EffectLayer.Head );
 							m.PlaySound( 0x1E4 );
 							m.Mana = 0; 
@@ -515,7 +515,7 @@ namespace Server.Items
 							rocks.Weight = nAmount * 5.0;
 							rocks.RuinedCount = nAmount;
 							m.AddToBackpack ( rocks );
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
 							m.PlaySound( 0x1E1 );
 							sTrapType = textLog;
@@ -525,18 +525,18 @@ namespace Server.Items
 					{
 						int nAmount = 0;
 
-						List<Item> regv = new List<Item>();
-						foreach( Item i in m.Backpack.Items )
+						if ( m != null && m.Backpack != null )
 						{
-							if ( i.Catalog == Catalogs.Reagent )
+							List<Item> list = new List<Item>();
+							(m.Backpack).RecurseItems( list );
+							foreach ( Item i in list )
 							{
-								nAmount = nAmount + i.Amount;
-								regv.Add(i);
+								if ( i.Catalog == Catalogs.Reagent )
+								{
+									nAmount = nAmount + i.Amount;
+									i.Delete();
+								}
 							}
-						}
-						foreach ( Item regt in regv )
-						{
-							regt.Delete();
 						}
 
 						if ( nAmount > 0 )
@@ -550,7 +550,7 @@ namespace Server.Items
 							m.AddToBackpack ( regs );
 							Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 							Effects.PlaySound( this.Location, this.Map, 0x231 );
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							sTrapType = textLog;
 						}
 					}
@@ -609,7 +609,7 @@ namespace Server.Items
 
 							m.AddToBackpack ( box );
 
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "A trap triggered, locking your books in a magic box!");
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A trap triggered, locking your books in a magic box!");
 							m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
 							m.PlaySound( 0x1E1 );
 							sTrapType = "a book bound trap";
@@ -634,7 +634,7 @@ namespace Server.Items
 							Server.Mobiles.BaseCreature.TeleportPets( m, p, map );
 							m.MoveToWorld( p, map );
 							Effects.PlaySound( m.Location, m.Map, 0x1FC );
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							sTrapType = textLog;
 						}
 					}
@@ -645,7 +645,7 @@ namespace Server.Items
 						if ( FameLoss > 0 )
 						{
 							m.Fame = FameLoss;
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "A trap triggered, causing some of your deeds to be forgotten!");
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A trap triggered, causing some of your deeds to be forgotten!");
 							m.FixedParticles( 0x374A, 10, 15, 5032, EffectLayer.Head );
 							m.PlaySound( 0x1F8 );
 							sTrapType = "a forgotten fame trap";
@@ -664,7 +664,7 @@ namespace Server.Items
 							}
 							else
 							{
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "A trap triggered, putting a curse on one of your equipped items!");
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "A trap triggered, putting a curse on one of your equipped items!");
 								m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
 								m.PlaySound( 0x1E1 );
 
@@ -685,7 +685,7 @@ namespace Server.Items
 						if ( Utility.RandomMinMax( 1, 2 ) == 1 ){ Effects.SendLocationEffect( this.Location, this.Map, 4506 + 1, 18, 3, 0, 0 ); }
 						else { Effects.SendLocationEffect( this.Location, this.Map, 4512 + 1, 18, 3, 0, 0 ); }
 						Effects.PlaySound( this.Location, this.Map, 0x22C );
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "You triggered a spike trap!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a spike trap!");
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.PhysicalResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = "a spike trap";
@@ -695,7 +695,7 @@ namespace Server.Items
 						if ( Utility.RandomMinMax( 1, 2 ) == 1 ){ Effects.SendLocationEffect( this.Location, this.Map, 0x11AC + 1, 6, 3, 0, 0 ); }
 						else { Effects.SendLocationEffect( this.Location, this.Map, 0x11B1 + 1, 6, 3, 0, 0 ); }
 						Effects.PlaySound( this.Location, this.Map, 0x21C );
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "You triggered a saw blade trap!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a saw blade trap!");
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.PhysicalResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = "a saw blade trap";
@@ -713,7 +713,7 @@ namespace Server.Items
 
 						Effects.SendLocationParticles( EffectItem.Create( this.Location, this.Map, EffectItem.DefaultDuration ), 0x3709, 10, 30, 5052 );
 						Effects.PlaySound( this.Location, this.Map, 0x225 );
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.FireResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = textLog;
@@ -722,7 +722,7 @@ namespace Server.Items
 					{
 						Effects.SendLocationEffect( this.Location, this.Map, 0x1D99, 48, 2, 0, 0 );
 						Effects.PlaySound( this.Location, this.Map, 0x22C );
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "You triggered a giant spike trap!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a giant spike trap!");
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.PhysicalResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = "a giant spike trap";
@@ -740,7 +740,7 @@ namespace Server.Items
 
 						m.FixedParticles( 0x36BD, 20, 10, 5044, EffectLayer.Head );
 						m.PlaySound( 0x307 );
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.FireResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = textLog;
@@ -757,7 +757,7 @@ namespace Server.Items
 						}
 
 						m.BoltEffect( 0 );
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 						int itHurts = (int)( (Utility.RandomMinMax(50,200) * ( 100 - m.EnergyResistance ) ) / 100 );
 						m.Damage( itHurts, m );
 						sTrapType = textLog;
@@ -813,7 +813,7 @@ namespace Server.Items
 								wood.Amount = nAmount;
 								m.AddToBackpack ( wood );
 
-								m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+								m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 								m.PlaySound( m.Female ? 812 : 1086 );
 								sTrapType = textLog;
 							}
@@ -846,7 +846,7 @@ namespace Server.Items
 
 							Effects.SendLocationEffect( this.Location, this.Map, 0x11A8 - 2, 16, 3, 0, 0 );
 							Effects.PlaySound( this.Location, this.Map, 0x231 );
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "You walked into a noxious cloud, tainting your bandages!");
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You walked into a noxious cloud, tainting your bandages!");
 
 							sTrapType = "a noxious cloud trap";
 						}
@@ -856,20 +856,20 @@ namespace Server.Items
 						List<Item> items = new List<Item>();
 						int nBroken = 0;
 
-						foreach( Item i in m.Backpack.Items )
+						if ( m != null && m.Backpack != null )
 						{
-							if ( i.Catalog == Catalogs.Potion )
+							List<Item> list = new List<Item>();
+							(m.Backpack).RecurseItems( list );
+							foreach ( Item i in list )
 							{
-								items.Add(i);
-								nBroken = 1;
+								if ( i.Catalog == Catalogs.Potion )
+								{
+									nBroken = 1;
+									i.Delete();
+								}
 							}
 						}
 
-						foreach ( Item item in items )
-						{
-							if ( item != null )
-								item.Delete();
-						}
 						if ( nBroken > 0 )
 						{
 							textSay = "You tripped over a wire and broke all of your potion bottles!";
@@ -881,7 +881,7 @@ namespace Server.Items
 								textLog = "a loose deck plate";
 							}
 
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							m.PlaySound( 0x040 );
 							sTrapType = textLog;
 						}
@@ -890,28 +890,26 @@ namespace Server.Items
 					{
 						int puddle = 0;
 
-						List<Item> jewelry = new List<Item>();
-						foreach( Item j in m.Backpack.Items )
+						if ( m != null && m.Backpack != null )
 						{
-							if ( j is BaseTrinket && j.Catalog == Catalogs.Jewelry )
+							List<Item> list = new List<Item>();
+							Item jw;
+
+							if ( m.FindItemOnLayer( Layer.Bracelet ) != null ) { jw = m.FindItemOnLayer( Layer.Bracelet ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
+							if ( m.FindItemOnLayer( Layer.Ring ) != null ) { jw = m.FindItemOnLayer( Layer.Ring ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
+							if ( m.FindItemOnLayer( Layer.Helm ) != null ) { jw = m.FindItemOnLayer( Layer.Helm ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
+							if ( m.FindItemOnLayer( Layer.Neck ) != null ) { jw = m.FindItemOnLayer( Layer.Neck ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
+							if ( m.FindItemOnLayer( Layer.Earrings ) != null ) { jw = m.FindItemOnLayer( Layer.Earrings ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ list.Add(jw); } }
+
+							(m.Backpack).RecurseItems( list );
+							foreach ( Item i in list )
 							{
-								if ( j.LootType != LootType.Blessed )
-									jewelry.Add(j);
+								if ( i is BaseTrinket && i.Catalog == Catalogs.Jewelry )
+								{
+									i.Delete();
+									puddle++;
+								}
 							}
-						}
-
-						Item jw;
-
-						if ( m.FindItemOnLayer( Layer.Bracelet ) != null ) { jw = m.FindItemOnLayer( Layer.Bracelet ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ jewelry.Add(jw); } }
-						if ( m.FindItemOnLayer( Layer.Ring ) != null ) { jw = m.FindItemOnLayer( Layer.Ring ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ jewelry.Add(jw); } }
-						if ( m.FindItemOnLayer( Layer.Helm ) != null ) { jw = m.FindItemOnLayer( Layer.Helm ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ jewelry.Add(jw); } }
-						if ( m.FindItemOnLayer( Layer.Neck ) != null ) { jw = m.FindItemOnLayer( Layer.Neck ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ jewelry.Add(jw); } }
-						if ( m.FindItemOnLayer( Layer.Earrings ) != null ) { jw = m.FindItemOnLayer( Layer.Earrings ); if ( jw.LootType != LootType.Blessed && jw is BaseTrinket && jw.Catalog == Catalogs.Jewelry ){ jewelry.Add(jw); } }
-
-						foreach ( Item jl in jewelry )
-						{
-							jl.Delete();
-							puddle++;
 						}
 
 						if ( puddle > 0 )
@@ -925,7 +923,7 @@ namespace Server.Items
 								textLog = "an exposed power relay";
 							}
 
-							m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+							m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 							RustyJunk broke = new RustyJunk();
 							broke.ItemID = 0x122A;
 							broke.Name = "melted jewelry";
@@ -955,7 +953,7 @@ namespace Server.Items
 
 						Server.Mobiles.BaseCreature.TeleportPets( m, b, map );
 						m.MoveToWorld( p, map );
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 						sTrapType = textLog;
 					}
 					else if ( nTrapType == 25 && m.Karma != 0 && SavingThrow( m, "Magic", true, this ) == false ) // ALIGNMENT TRAP
@@ -963,7 +961,7 @@ namespace Server.Items
 						m.Karma = m.Karma * -1;
 						textSay = "A trap triggered, making your mind warp your morality!";
 						textLog = "a mind warping trap";
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, textSay);
 						m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
 						m.PlaySound( 0x1E1 );
 						sTrapType = textLog;

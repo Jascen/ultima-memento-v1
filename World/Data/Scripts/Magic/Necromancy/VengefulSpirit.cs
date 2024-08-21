@@ -58,9 +58,7 @@ namespace Server.Spells.Necromancy
 
 				int nBenefit = 0;
 				if ( Caster is PlayerMobile )
-				{
 					nBenefit = (int)(Caster.Skills[SkillName.Necromancy].Value / 2);
-				}
 
 				/* Summons a Revenant which haunts the target until either the target or the Revenant is dead.
 				 * Revenants have the ability to track down their targets wherever they may travel.

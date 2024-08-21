@@ -153,7 +153,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "One of your items is wrapped in weeds!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items is wrapped in weeds!");
 						m.PlaySound( 0x1BB );
 						Container box = new WeededItem();
 						box.DropItem(iWrapped);

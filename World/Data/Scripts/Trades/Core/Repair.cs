@@ -108,6 +108,30 @@ namespace Server.Engines.Craft
 				bool usingDeed = (m_Deed != null);
 				bool toDelete = false;
 
+				bool canRepair = false;
+
+				if ( targeted is Item && ((Item)targeted).Resource != CraftResource.None )
+				{
+					if ( m_CraftSystem is DefTailoring && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Fabric )
+						canRepair = true;
+					else if ( m_CraftSystem is DefLeatherworking && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Leather )
+						canRepair = true;
+					else if ( m_CraftSystem is DefLeatherworking && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Leather )
+						canRepair = true;
+					else if ( m_CraftSystem is DefBonecrafting && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Skeletal )
+						canRepair = true;
+					else if ( m_CraftSystem is DefStitching && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Skin )
+						canRepair = true;
+					else if ( m_CraftSystem is DefLapidary && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Block )
+						canRepair = true;
+					else if ( m_CraftSystem is DefDraconic && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Scales )
+						canRepair = true;
+					else if ( m_CraftSystem is DefCarpentry && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Wood )
+						canRepair = true;
+					else if ( m_CraftSystem is DefBlacksmithy && CraftResources.GetType( ((Item)targeted).Resource ) == CraftResourceType.Metal )
+						canRepair = true;
+				}
+
 				//TODO: Make a IRepairable
 				
 				if ( m_CraftSystem.CanCraft( from, m_Tool, targeted.GetType() ) == 1044267 )
@@ -181,25 +205,9 @@ namespace Server.Engines.Craft
 				{
 					BaseWeapon weapon = (BaseWeapon)targeted;
 					SkillName skill = m_CraftSystem.MainSkill;
-					int toWeaken = 0;
+					int toWeaken = 1;
 
-					if ( Core.AOS )
-					{
-						toWeaken = 1;
-					}
-					else if ( skill != SkillName.Tailoring )
-					{
-						double skillLevel = (usingDeed)? m_Deed.SkillLevel : from.Skills[skill].Base;
-
-						if ( skillLevel >= 90.0 )
-							toWeaken = 1;
-						else if ( skillLevel >= 70.0 )
-							toWeaken = 2;
-						else
-							toWeaken = 3;
-					}
-
-					if ( m_CraftSystem.CraftItems.SearchForSubclass( weapon.GetType() ) == null )
+					if ( m_CraftSystem.CraftItems.SearchForSubclass( weapon.GetType() ) == null && !canRepair )
 					{
 						number = (usingDeed)? 1061136 : 1044277; // That item cannot be repaired. // You cannot repair that item with this type of repair contract.
 					}
@@ -242,25 +250,9 @@ namespace Server.Engines.Craft
 				{
 					BaseArmor armor = (BaseArmor)targeted;
 					SkillName skill = m_CraftSystem.MainSkill;
-					int toWeaken = 0;
+					int toWeaken = 1;
 
-					if ( Core.AOS )
-					{
-						toWeaken = 1;
-					}
-					else if ( skill != SkillName.Tailoring )
-					{
-						double skillLevel = (usingDeed)? m_Deed.SkillLevel : from.Skills[skill].Base;
-
-						if ( skillLevel >= 90.0 )
-							toWeaken = 1;
-						else if ( skillLevel >= 70.0 )
-							toWeaken = 2;
-						else
-							toWeaken = 3;
-					}
-
-					if ( m_CraftSystem.CraftItems.SearchForSubclass( armor.GetType() ) == null )
+					if ( m_CraftSystem.CraftItems.SearchForSubclass( armor.GetType() ) == null && !canRepair )
 					{
 						number = (usingDeed)? 1061136 : 1044277; // That item cannot be repaired. // You cannot repair that item with this type of repair contract.
 					}
@@ -303,25 +295,9 @@ namespace Server.Engines.Craft
 				{
 					BaseClothing clothing = (BaseClothing)targeted;
 					SkillName skill = m_CraftSystem.MainSkill;
-					int toWeaken = 0;
+					int toWeaken = 1;
 
-					if ( Core.AOS )
-					{
-						toWeaken = 1;
-					}
-					else if ( skill != SkillName.Tailoring )
-					{
-						double skillLevel = (usingDeed) ? m_Deed.SkillLevel : from.Skills[skill].Base;
-
-						if ( skillLevel >= 90.0 )
-							toWeaken = 1;
-						else if ( skillLevel >= 70.0 )
-							toWeaken = 2;
-						else
-							toWeaken = 3;
-					}
-
- 					if (m_CraftSystem.CraftItems.SearchForSubclass(clothing.GetType()) == null && !((targeted is TribalMask) || (targeted is HornedTribalMask)) )
+ 					if ( m_CraftSystem.CraftItems.SearchForSubclass(clothing.GetType()) == null && !canRepair )
  					{
 						number = (usingDeed) ? 1061136 : 1044277; // That item cannot be repaired. // You cannot repair that item with this type of repair contract.
 					}

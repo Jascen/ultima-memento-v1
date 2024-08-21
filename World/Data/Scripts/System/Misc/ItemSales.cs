@@ -53,9 +53,6 @@ namespace Server
 
 		public static int AddUpBenefits( Item item, int price, bool checkCrafted )
 		{
-			if ( !MySettings.S_QualityPrices )
-				return price;
-
 			if ( item.CoinPrice > 0 )
 			{
 				if ( item.NotIdentified )
@@ -63,6 +60,8 @@ namespace Server
 
 				return ( item.CoinPrice * 2 );
 			}
+			else if ( !MySettings.S_QualityPrices )
+				return price;
 			else if (	( item is BaseArmor && ((BaseArmor)item).Quality == ArmorQuality.Low ) || 
 					( item is BaseClothing && ((BaseClothing)item).Quality == ClothingQuality.Low ) || 
 					( item is BaseQuiver && ((BaseQuiver)item).Quality == ClothingQuality.Low ) || 
@@ -3357,8 +3356,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	Xen	),	100	,	0	,	0	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	Ylem	),	100	,	0	,	0	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	Zu	),	100	,	0	,	0	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
-			new ItemSalesInfo( typeof(	RuneBag	),	400	,	0	,	0	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
-			new ItemSalesInfo( typeof(	RuneJournal	),	1000	,	0	,	0	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
+			new ItemSalesInfo( typeof(	MagicRuneBag	),	400	,	0	,	0	,	World.None	,	Category.Rune	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	RusticShirt	),	21	,	15	,	0	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	RusticVest	),	12	,	15	,	0	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	SackFlour	),	3	,	15	,	0	,	World.None	,	Category.None	,	Material.None	,	Market.Mill	),

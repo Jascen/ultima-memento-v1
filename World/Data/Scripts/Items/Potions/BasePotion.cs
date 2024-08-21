@@ -285,9 +285,6 @@ namespace Server.Items
 
 		public static TimeSpan Scale( Mobile m, TimeSpan v )
 		{
-			if ( !Core.AOS )
-				return v;
-
 			double scalar = 1.0 + ( 0.01 * EnhancePotions( m ) );
 
 			return TimeSpan.FromSeconds( v.TotalSeconds * scalar );
@@ -295,9 +292,6 @@ namespace Server.Items
 
 		public static double Scale( Mobile m, double v )
 		{
-			if ( !Core.AOS )
-				return v;
-
 			double scalar = 1.0 + ( 0.01 * EnhancePotions( m ) );
 
 			return v * scalar;
@@ -305,9 +299,6 @@ namespace Server.Items
 
 		public static int Scale( Mobile m, int v )
 		{
-			if ( !Core.AOS )
-				return v;
-
 			return AOS.Scale( v, 100 + EnhancePotions( m ) );
 		}
 

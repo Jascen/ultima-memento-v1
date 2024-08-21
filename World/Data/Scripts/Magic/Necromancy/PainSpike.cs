@@ -58,9 +58,7 @@ namespace Server.Spells.Necromancy
 
 				int nBenefit = 0;
 				if ( Caster is PlayerMobile )
-				{
 					nBenefit = (int)(Caster.Skills[SkillName.Necromancy].Value / 5);
-				}
 
 				damage = damage + nBenefit;
 

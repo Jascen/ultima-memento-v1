@@ -492,7 +492,7 @@ namespace Server.Items
 							else
 							{
 								from.SendMessage( "" );
-								from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "The tablet for the " + stone.SearchItem + " seems to be false.");
+								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The tablet for the " + stone.SearchItem + " seems to be false.");
 								from.PlaySound( 0x5B3 );
 							}
 
@@ -568,7 +568,7 @@ namespace Server.Items
 							else
 							{
 								from.SendMessage( "" );
-								from.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "The legends of the " + page.SearchItem + " seemed to be false.");
+								from.LocalOverheadMessage(MessageType.Emote, 0x916, true, "The legends of the " + page.SearchItem + " seemed to be false.");
 								from.PlaySound( 0x249 );
 							}
 							scroll.Delete();

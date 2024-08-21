@@ -35,7 +35,7 @@ namespace Server.Spells.Necromancy
 
 		public override bool CheckCast()
 		{
-			if( Caster.Skills.Spiritualism.Value < 100.0 )
+			if( Spell.ItemSkillValue( Caster, SkillName.Spiritualism, false ) < 100.0 )
 			{
 				Caster.SendLocalizedMessage( 1072112 ); // You must have GM Spiritualism to use this spell
 				return false;
@@ -86,7 +86,7 @@ namespace Server.Spells.Necromancy
 				else if (CheckHSequence(m))
 				{
 					int exChance = (int)(m.Fame/200)+10;
-					if ( Caster.Skills[SkillName.Necromancy].Value >= Utility.RandomMinMax( 1, exChance ) )
+					if ( Spell.ItemSkillValue( Caster, SkillName.Necromancy, false ) >= Utility.RandomMinMax( 1, exChance ) )
 					{
 						if (undead.Slays(m))
 						{

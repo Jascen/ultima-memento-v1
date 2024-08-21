@@ -63,7 +63,7 @@ namespace Server.Items
 						if ( Utility.RandomMinMax( 1, 2 ) == 1 ){ Effects.SendLocationEffect( this.Location, this.Map, 4506 + 1, 18, 3, 0, 0 ); }
 						else { Effects.SendLocationEffect( this.Location, this.Map, 4512 + 1, 18, 3, 0, 0 ); }
 						Effects.PlaySound( this.Location, this.Map, 0x22C );
-						if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "You triggered a trap!"); }
+						if ( m is PlayerMobile ){ m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You triggered a trap!"); }
 						int itHurts = (int)( (Utility.RandomMinMax(StrMin,StrMax) * ( 100 - m.PhysicalResistance ) ) / 100 ) + 10;
 						m.Damage( itHurts, owner );
 					}

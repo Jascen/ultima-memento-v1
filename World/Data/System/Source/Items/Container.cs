@@ -1037,6 +1037,24 @@ namespace Server.Items
 			return m_FindItemsList.ToArray();
 		}
 
+		public void RecurseItems( List<Item> list )
+		{
+			if ( this != null && this.Items.Count > 0 )
+			{
+				List<Item> items = this.Items;
+
+				for ( int i = 0; i < items.Count; ++i )
+				{
+					Item item = items[i];
+
+					list.Add( item );
+
+					if ( item is Container )
+						((Container)item).RecurseItems( list );
+				}
+			}
+		}
+
 		private static void RecurseFindItemsByType( Item current, Type type, bool recurse, List<Item> list )
 		{
 			if ( current != null && current.Items.Count > 0 )

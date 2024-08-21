@@ -12,6 +12,7 @@ namespace Server.Items
 		{
 			Name = "hiking boots";
 			ItemID = 0x2FC4;
+			CoinPrice = 5;
 		}
 
 		public override bool OnEquip( Mobile from )

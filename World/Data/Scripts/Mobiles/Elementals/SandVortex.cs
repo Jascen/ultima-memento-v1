@@ -108,7 +108,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-						m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, "One of your items was carried into the wind!");
+						m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "One of your items was carried into the wind!");
 						m.PlaySound( 0x10B );
 						PackItem( iSucked );
 					}

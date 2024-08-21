@@ -72,7 +72,7 @@ namespace Server.Spells.Necromancy
 			}
 
             //Calculations for the buff bar
-            double spiritlevel = Caster.Skills[SkillName.Spiritualism].Value / 10;
+            double spiritlevel = Spell.ItemSkillValue( Caster, SkillName.Spiritualism, false ) / 10;
             if (spiritlevel < 4)
                 spiritlevel = 4;
             int d_MinDamage = 4;
@@ -146,11 +146,9 @@ namespace Server.Spells.Necromancy
 
 				int nBenefit = 0;
 				if ( from is PlayerMobile )
-				{
 					nBenefit = (int)(from.Skills[SkillName.Necromancy].Value / 25);
-				}
 
-				double spiritLevel = (from.Skills[SkillName.Spiritualism].Value / 10) + nBenefit;
+				double spiritLevel = (Spell.ItemSkillValue( from, SkillName.Spiritualism, false ) / 10) + nBenefit;
 
 				m_MinBaseDamage = spiritLevel - 2;
 				m_MaxBaseDamage = spiritLevel + 1;

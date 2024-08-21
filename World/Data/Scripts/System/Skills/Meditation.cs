@@ -15,7 +15,7 @@ namespace Server.SkillHandlers
 			if ( item == null )
 				return true;
 
-			if ( item is Spellbook || item is Runebook || item is BaseTrinket || item is BaseEquipableLight )
+			if ( item is Spellbook || item is MagicRuneBag || item is BaseTool || item is BaseHarvestTool || item is BaseTrinket || item is BaseEquipableLight )
 				return true;
 
 			if ( item is BaseWeapon && ((BaseWeapon)item).Attributes.SpellChanneling != 0 )

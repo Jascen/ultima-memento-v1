@@ -2398,47 +2398,46 @@ namespace Server.Mobiles
 				Stam = StamMax;
 				Mana = ManaMax;
 
-				List<Item> stuff = new List<Item>();
-				foreach( Item c in this.Backpack.Items )
+				if ( this.Backpack != null )
 				{
-					if ( c.LootType != LootType.Blessed )
+					List<Item> list = new List<Item>();
+					(this.Backpack).RecurseItems( list );
+					foreach ( Item c in list )
 					{
-						if (
-								c.Catalog == Catalogs.Jewelry || 
-								c.Catalog == Catalogs.Reagent || 
-								c.Catalog == Catalogs.Potion || 
-								c.Catalog == Catalogs.Body || 
-								c.Stackable || 
-								c is BaseTool || 
-								c is BaseHarvestTool || 
-								c is MagicalWand || 
-								c is BaseBeverage || 
-								c is ManyArrows100 || 
-								c is ManyBolts100 || 
-								c is ManyArrows1000 || 
-								c is ManyBolts1000 || 
-								c is Bedroll || 
-								c is SmallTent || 
-								c is CampersTent || 
-								c is SkeletonsKey || 
-								c is MasterSkeletonsKey || 
-								c is Scissors || 
-								c is PolishBoneBrush || 
-								c is Torch || 
-								c is Candle || 
-								c is Lantern || 
-								c is DyeTub || 
-								c is Dyes 
-						)
+						if ( c.LootType != LootType.Blessed )
 						{
-							stuff.Add(c);
+							if (
+									c.Catalog == Catalogs.Jewelry || 
+									c.Catalog == Catalogs.Reagent || 
+									c.Catalog == Catalogs.Potion || 
+									c.Catalog == Catalogs.Body || 
+									c.Stackable || 
+									c is BaseTool || 
+									c is BaseHarvestTool || 
+									c is MagicalWand || 
+									c is BaseBeverage || 
+									c is ManyArrows100 || 
+									c is ManyBolts100 || 
+									c is ManyArrows1000 || 
+									c is ManyBolts1000 || 
+									c is Bedroll || 
+									c is SmallTent || 
+									c is CampersTent || 
+									c is SkeletonsKey || 
+									c is MasterSkeletonsKey || 
+									c is Scissors || 
+									c is PolishBoneBrush || 
+									c is Torch || 
+									c is Candle || 
+									c is Lantern || 
+									c is DyeTub || 
+									c is Dyes 
+							)
+							{
+								c.Delete();
+							}
 						}
 					}
-				}
-
-				foreach ( Item item in stuff )
-				{
-					item.Delete();
 				}
 
 				return false;

@@ -350,52 +350,56 @@ namespace Server.Items
 
 			if ( qty > 0 )
 			{
-				List<Item> belongings = new List<Item>();
-				foreach( Item i in from.Backpack.Items )
+				if ( from != null && from.Backpack != null )
 				{
-					if ( item == "black pearls" && i is BlackPearl ){ carry = carry + i.Amount; }
-					else if ( item == "blood mosses" && i is Bloodmoss ){ carry = carry + i.Amount; }
-					else if ( item == "cloves of garlic" && i is Garlic ){ carry = carry + i.Amount; }
-					else if ( item == "ginsengs" && i is Ginseng ){ carry = carry + i.Amount; }
-					else if ( item == "mandrake roots" && i is MandrakeRoot ){ carry = carry + i.Amount; }
-					else if ( item == "nightshades" && i is Nightshade ){ carry = carry + i.Amount; }
-					else if ( item == "spider silks" && i is SpidersSilk ){ carry = carry + i.Amount; }
-					else if ( item == "sulfurous ashes" && i is SulfurousAsh ){ carry = carry + i.Amount; }
-					else if ( item == "grave dusts" && i is GraveDust ){ carry = carry + i.Amount; }
-					else if ( item == "nox crystals" && i is NoxCrystal ){ carry = carry + i.Amount; }
-					else if ( item == "vials of daemon blood" && i is DaemonBlood ){ carry = carry + i.Amount; }
-					else if ( item == "bat wings" && i is BatWing ){ carry = carry + i.Amount; }
-					else if ( item == "pig irons" && i is PigIron ){ carry = carry + i.Amount; }
-					else if ( item == "eye of toad" && i is EyeOfToad ){ carry = carry + i.Amount; }
-					else if ( item == "fairy egg" && i is FairyEgg ){ carry = carry + i.Amount; }
-					else if ( item == "gargoyle ear" && i is GargoyleEar ){ carry = carry + i.Amount; }
-					else if ( item == "beetle shell" && i is BeetleShell ){ carry = carry + i.Amount; }
-					else if ( item == "moon crystal" && i is MoonCrystal ){ carry = carry + i.Amount; }
-					else if ( item == "pixie skull" && i is PixieSkull ){ carry = carry + i.Amount; }
-					else if ( item == "red lotus" && i is RedLotus ){ carry = carry + i.Amount; }
-					else if ( item == "sea salt" && i is SeaSalt ){ carry = carry + i.Amount; }
-					else if ( item == "silver widow" && i is SilverWidow ){ carry = carry + i.Amount; }
-					else if ( item == "swamp berries" && i is SwampBerries ){ carry = carry + i.Amount; }
-					else if ( item == "brimstone" && i is Brimstone ){ carry = carry + i.Amount; }
-					else if ( item == "butterfly wings" && i is ButterflyWings ){ carry = carry + i.Amount; }
-					else if ( item == "bitter root" && i is BitterRoot ){ carry = carry + i.Amount; }
-					else if ( item == "black sand" && i is BlackSand ){ carry = carry + i.Amount; }
-					else if ( item == "blood rose" && i is BloodRose ){ carry = carry + i.Amount; }
-					else if ( item == "dried toad" && i is DriedToad ){ carry = carry + i.Amount; }
-					else if ( item == "maggot" && i is Maggot ){ carry = carry + i.Amount; }
-					else if ( item == "mummy wrap" && i is MummyWrap ){ carry = carry + i.Amount; }
-					else if ( item == "violet fungus" && i is VioletFungus ){ carry = carry + i.Amount; }
-					else if ( item == "werewolf claw" && i is WerewolfClaw ){ carry = carry + i.Amount; }
-					else if ( item == "wolfsbane" && i is Wolfsbane ){ carry = carry + i.Amount; }
-					else if ( item == "star sapphires" && i is StarSapphire ){ carry = carry + i.Amount; }
-					else if ( item == "emeralds" && i is Emerald ){ carry = carry + i.Amount; }
-					else if ( item == "sapphires" && i is Sapphire ){ carry = carry + i.Amount; }
-					else if ( item == "rubies" && i is Ruby ){ carry = carry + i.Amount; }
-					else if ( item == "citrines" && i is Citrine ){ carry = carry + i.Amount; }
-					else if ( item == "amethysts" && i is Amethyst ){ carry = carry + i.Amount; }
-					else if ( item == "tourmalines" && i is Tourmaline ){ carry = carry + i.Amount; }
-					else if ( item == "ambers" && i is Amber ){ carry = carry + i.Amount; }
-					else if ( item == "diamonds" && i is Diamond ){ carry = carry + i.Amount; }
+					List<Item> list = new List<Item>();
+					(from.Backpack).RecurseItems( list );
+					foreach ( Item i in list )
+					{
+						if ( item == "black pearls" && i is BlackPearl ){ carry = carry + i.Amount; }
+						else if ( item == "blood mosses" && i is Bloodmoss ){ carry = carry + i.Amount; }
+						else if ( item == "cloves of garlic" && i is Garlic ){ carry = carry + i.Amount; }
+						else if ( item == "ginsengs" && i is Ginseng ){ carry = carry + i.Amount; }
+						else if ( item == "mandrake roots" && i is MandrakeRoot ){ carry = carry + i.Amount; }
+						else if ( item == "nightshades" && i is Nightshade ){ carry = carry + i.Amount; }
+						else if ( item == "spider silks" && i is SpidersSilk ){ carry = carry + i.Amount; }
+						else if ( item == "sulfurous ashes" && i is SulfurousAsh ){ carry = carry + i.Amount; }
+						else if ( item == "grave dusts" && i is GraveDust ){ carry = carry + i.Amount; }
+						else if ( item == "nox crystals" && i is NoxCrystal ){ carry = carry + i.Amount; }
+						else if ( item == "vials of daemon blood" && i is DaemonBlood ){ carry = carry + i.Amount; }
+						else if ( item == "bat wings" && i is BatWing ){ carry = carry + i.Amount; }
+						else if ( item == "pig irons" && i is PigIron ){ carry = carry + i.Amount; }
+						else if ( item == "eye of toad" && i is EyeOfToad ){ carry = carry + i.Amount; }
+						else if ( item == "fairy egg" && i is FairyEgg ){ carry = carry + i.Amount; }
+						else if ( item == "gargoyle ear" && i is GargoyleEar ){ carry = carry + i.Amount; }
+						else if ( item == "beetle shell" && i is BeetleShell ){ carry = carry + i.Amount; }
+						else if ( item == "moon crystal" && i is MoonCrystal ){ carry = carry + i.Amount; }
+						else if ( item == "pixie skull" && i is PixieSkull ){ carry = carry + i.Amount; }
+						else if ( item == "red lotus" && i is RedLotus ){ carry = carry + i.Amount; }
+						else if ( item == "sea salt" && i is SeaSalt ){ carry = carry + i.Amount; }
+						else if ( item == "silver widow" && i is SilverWidow ){ carry = carry + i.Amount; }
+						else if ( item == "swamp berries" && i is SwampBerries ){ carry = carry + i.Amount; }
+						else if ( item == "brimstone" && i is Brimstone ){ carry = carry + i.Amount; }
+						else if ( item == "butterfly wings" && i is ButterflyWings ){ carry = carry + i.Amount; }
+						else if ( item == "bitter root" && i is BitterRoot ){ carry = carry + i.Amount; }
+						else if ( item == "black sand" && i is BlackSand ){ carry = carry + i.Amount; }
+						else if ( item == "blood rose" && i is BloodRose ){ carry = carry + i.Amount; }
+						else if ( item == "dried toad" && i is DriedToad ){ carry = carry + i.Amount; }
+						else if ( item == "maggot" && i is Maggot ){ carry = carry + i.Amount; }
+						else if ( item == "mummy wrap" && i is MummyWrap ){ carry = carry + i.Amount; }
+						else if ( item == "violet fungus" && i is VioletFungus ){ carry = carry + i.Amount; }
+						else if ( item == "werewolf claw" && i is WerewolfClaw ){ carry = carry + i.Amount; }
+						else if ( item == "wolfsbane" && i is Wolfsbane ){ carry = carry + i.Amount; }
+						else if ( item == "star sapphires" && i is StarSapphire ){ carry = carry + i.Amount; }
+						else if ( item == "emeralds" && i is Emerald ){ carry = carry + i.Amount; }
+						else if ( item == "sapphires" && i is Sapphire ){ carry = carry + i.Amount; }
+						else if ( item == "rubies" && i is Ruby ){ carry = carry + i.Amount; }
+						else if ( item == "citrines" && i is Citrine ){ carry = carry + i.Amount; }
+						else if ( item == "amethysts" && i is Amethyst ){ carry = carry + i.Amount; }
+						else if ( item == "tourmalines" && i is Tourmaline ){ carry = carry + i.Amount; }
+						else if ( item == "ambers" && i is Amber ){ carry = carry + i.Amount; }
+						else if ( item == "diamonds" && i is Diamond ){ carry = carry + i.Amount; }
+					}
 				}
 
 				if ( carry >= qty )

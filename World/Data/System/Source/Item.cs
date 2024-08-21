@@ -866,6 +866,10 @@ namespace Server
 			}
 		}
 
+		public int m_EnchantMod;
+		[CommandProperty(AccessLevel.Owner)]
+		public int EnchantMod { get { return m_EnchantMod; } set { m_EnchantMod = value; InvalidateProperties(); } }
+
 		public int m_EnchantUses;
 		[CommandProperty(AccessLevel.Owner)]
 		public int EnchantUses
@@ -1489,7 +1493,7 @@ namespace Server
 			if ( ColorText2 != null )
 				list.Add( 1072172, "{0}\t{1}", CHue2, ColorText2 );
 
-			if ( ColorText1 == null || ( !IsStandardResource( Resource ) && Catalog != Catalogs.Book ) )
+			if ( ColorText1 == null || ( !IsStandardResource( Resource ) && Catalog != Catalogs.Book && Catalog != Catalogs.Trinket ) )
 				AddNameProperty( list );
 
 			if ( CoinPrice > 0 && NotIdentified && Movable )
@@ -1525,6 +1529,9 @@ namespace Server
 					list.Add( 1068253, "{0}\t{1}", m_EnchantUses.ToString(), m_EnchantUsesMax.ToString() );
 				else
 					list.Add( 1068254, m_EnchantUses.ToString() );
+
+				if ( m_EnchantMod > 0 )
+					list.Add( 1068252, m_EnchantMod.ToString() );
 			}
 
 			if ( InfoText1 != null )
@@ -2613,8 +2620,9 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-			writer.Write( 12 ); // version
+			writer.Write( 13 ); // version
 
+			writer.Write( EnchantMod );
 			writer.Write( ColorHue1 );
 			writer.Write( ColorText1 );
 			writer.Write( ColorHue2 );
@@ -2981,6 +2989,11 @@ namespace Server
 
 			switch ( version )
 			{
+				case 13:
+					{
+						m_EnchantMod = reader.ReadInt();
+						goto case 12;
+					}
 				case 12:
 					{
 						ColorHue1 = reader.ReadString();
@@ -6776,7 +6789,13 @@ namespace Server
 
 		public void ConsumeEnchants( int amount )
 		{
-			--EnchantUses;
+			if ( EnchantMod > 0 )
+				EnchantUses -= EnchantMod;
+			else
+				--EnchantUses;
+
+			if ( EnchantUses < 1 )
+				EnchantUses = 0;
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -7316,6 +7335,24 @@ namespace Server
 		SummonSnakes,
 		SummonDragon,
 		SummonSkeleton,
-		Identify
+		Identify,
+
+		CurseWeapon,
+		BloodOath,
+		CorpseSkin,
+		EvilOmen,
+		PainSpike,
+		WraithForm,
+		MindRot,
+		SummonFamiliar,
+		AnimateDead,
+		HorrificBeast,
+		PoisonStrike,
+		Wither,
+		Strangle,
+		LichForm,
+		Exorcism,
+		VengefulSpirit,
+		VampiricEmbrace
 	}
 }

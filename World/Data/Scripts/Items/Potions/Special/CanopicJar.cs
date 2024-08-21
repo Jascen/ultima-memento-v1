@@ -1,6 +1,8 @@
 using System;
 using Server;
 using Server.Mobiles;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Server.Items
 {
@@ -141,12 +143,17 @@ namespace Server.Items
 
 				int barrel = 0;
 
-				foreach( Item i in from.Backpack.Items )
+				if ( from != null && from.Backpack != null )
 				{
-					if ( barrel == 0 && i is PotionKeg )
+					List<Item> list = new List<Item>();
+					(from.Backpack).RecurseItems( list );
+					foreach ( Item i in list )
 					{
-						PotionKeg p = (PotionKeg)i;
-						if ( p.Held < 1 ){ barrel = 1; keg = p; }
+						if ( barrel == 0 && i is PotionKeg )
+						{
+							PotionKeg p = (PotionKeg)i;
+							if ( p.Held < 1 ){ barrel = 1; keg = p; }
+						}
 					}
 				}
 

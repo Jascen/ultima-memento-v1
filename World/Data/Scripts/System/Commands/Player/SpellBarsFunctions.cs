@@ -106,10 +106,10 @@ namespace Server.Misc
 
 		public static void InitializeToolBar( Mobile m, string ToolBar )
 		{
-			if ( ToolBar == "SetupBarsArch1" && ((PlayerMobile)m).SpellBarsArch1 == null ){ Server.Misc.ResearchSettings.ResearchTransfer( m, 1 ); }
-			else if ( ToolBar == "SetupBarsArch2" && ((PlayerMobile)m).SpellBarsArch2 == null ){ Server.Misc.ResearchSettings.ResearchTransfer( m, 2 ); }
-			else if ( ToolBar == "SetupBarsArch3" && ((PlayerMobile)m).SpellBarsArch3 == null ){ Server.Misc.ResearchSettings.ResearchTransfer( m, 3 ); }
-			else if ( ToolBar == "SetupBarsArch4" && ((PlayerMobile)m).SpellBarsArch4 == null ){ Server.Misc.ResearchSettings.ResearchTransfer( m, 4 ); }
+			if ( ToolBar == "SetupBarsArch1" && ( ((PlayerMobile)m).SpellBarsArch1 == null || (((PlayerMobile)m).SpellBarsArch1).Length < 132 ) ){ ((PlayerMobile)m).SpellBarsArch1 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#"; }
+			else if ( ToolBar == "SetupBarsArch2" && ( ((PlayerMobile)m).SpellBarsArch2 == null || (((PlayerMobile)m).SpellBarsArch2).Length < 132 ) ){ ((PlayerMobile)m).SpellBarsArch2 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#"; }
+			else if ( ToolBar == "SetupBarsArch3" && ( ((PlayerMobile)m).SpellBarsArch3 == null || (((PlayerMobile)m).SpellBarsArch3).Length < 132 ) ){ ((PlayerMobile)m).SpellBarsArch3 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#"; }
+			else if ( ToolBar == "SetupBarsArch4" && ( ((PlayerMobile)m).SpellBarsArch4 == null || (((PlayerMobile)m).SpellBarsArch4).Length < 132 ) ){ ((PlayerMobile)m).SpellBarsArch4 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#"; }
 			else if ( ToolBar == "SetupBarsMage1" && ((PlayerMobile)m).SpellBarsMage1 == null ){ ((PlayerMobile)m).SpellBarsMage1 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#"; }
 			else if ( ToolBar == "SetupBarsMage2" && ((PlayerMobile)m).SpellBarsMage2 == null ){ ((PlayerMobile)m).SpellBarsMage2 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#"; }
 			else if ( ToolBar == "SetupBarsMage3" && ((PlayerMobile)m).SpellBarsMage3 == null ){ ((PlayerMobile)m).SpellBarsMage3 = "0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#0#"; }

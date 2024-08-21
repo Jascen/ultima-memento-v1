@@ -108,7 +108,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.LocalOverheadMessage( MessageType.Emote, 0xB1F, true, "The magic drains from the staff!" );
+				from.LocalOverheadMessage( MessageType.Emote, 0x916, true, "The magic drains from the staff!" );
 				BrokenGear broke = new BrokenGear();
 				broke.ItemID = this.ItemID;
 				broke.Hue = 0x47E;
