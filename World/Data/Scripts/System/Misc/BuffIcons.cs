@@ -400,7 +400,8 @@ namespace Server
 			if( length < TimeSpan.Zero )
 				length = TimeSpan.Zero;
 
-			m_Stream.Write( (short)length.TotalSeconds );	//Time in seconds
+			// Keep the (de)buff applied longer rather than shorter
+			m_Stream.Write( (short)Math.Ceiling(length.TotalSeconds) );	//Time in seconds
 
 			m_Stream.Fill( 3 );
 			m_Stream.Write( (int)titleCliloc );
