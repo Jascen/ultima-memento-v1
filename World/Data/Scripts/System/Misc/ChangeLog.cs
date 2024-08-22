@@ -44,6 +44,7 @@ namespace Server.Misc
 			builder.Append("- Item - (bug?) Magic horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Item - The luck bonus for Magic horse shoe is now 100 per item<br>");
 			builder.Append("- Misc - (bug) (De)buffs could end on the Client before they finished on the Server<br>");
+			builder.Append("- Quest - Sage Artifact quest now always costs 10,000 gold<br>");
 			builder.Append("- Skill - Healing is now an activatable* skill that can remove poison/mortal wound or heal you<br>"); // TODO: Update documentation, Make usable in client files
 			builder.Append("- Spell - (bug) BloodOath could linger up to 1s too long on the Server<br>");
 			builder.Append(SEPARATOR_LINE);
