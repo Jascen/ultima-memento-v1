@@ -6,11 +6,11 @@ namespace Server.Misc
 {
 	public class Arty
 	{
-		public static void ArtySetup( Item item, int points, string extra )
+		public static void ArtySetup( Item item, int itemPowerLevel, string extra )
 		{
-			points = points * 10;
-			points = 200 - points;
-			if ( points < 50 ){ points = 50; }
+			// Points are inversely correlated to the innate strength of the artifact.
+			int points = 200 - itemPowerLevel * 10;
+			points = Math.Min(50, points / 2);
 
 			if ( item is BaseGiftArmor )
 			{
