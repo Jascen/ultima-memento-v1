@@ -40,7 +40,7 @@ namespace Server.SkillHandlers
 
                     if (!m.CheckSkill(SkillName.Healing, -50, 99.9))
                     {
-                        m.SendMessage("You're distracted, but heal some wounds.");
+                        m.SendMessage("You are distracted, but heal some wounds.");
                         amount = (int)(amount * 0.75);
                     }
                     else
