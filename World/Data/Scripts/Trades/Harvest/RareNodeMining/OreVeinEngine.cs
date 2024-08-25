@@ -10,7 +10,7 @@ namespace Server.Engines.Harvest
         public const int EXECUTE_INTERVAL_HOURS = 1;
         public const string UNKNOWN_REGION_NAME = "$None";
         private static readonly Dictionary<Serial, OreVeinSpawner> _spawnRegistry = new Dictionary<Serial, OreVeinSpawner>();
-        private static Dictionary<Map, Dictionary<string, OreVeinConfig>> _configByMapByRegion = new Dictionary<Map, Dictionary<string, OreVeinConfig>>();
+        private static readonly Dictionary<Map, Dictionary<string, OreVeinConfig>> _configByMapByRegion = new Dictionary<Map, Dictionary<string, OreVeinConfig>>();
         private static OreVeinEngine m_Engine;
         private InternalTimer _timer;
 
