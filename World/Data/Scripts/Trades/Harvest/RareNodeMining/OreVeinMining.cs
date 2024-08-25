@@ -42,8 +42,8 @@ namespace Server.Engines.Harvest
                 EffectActions = new int[] { 11 },
                 EffectSounds = new int[] { 0x125, 0x126 },
                 EffectCounts = new int[] { 3, 3, 3, 4, 4, 5 },
-                EffectDelay = TimeSpan.FromSeconds(1.6),
-                EffectSoundDelay = TimeSpan.FromSeconds(0.9),
+                EffectDelay = TimeSpan.FromSeconds(0.8),
+                EffectSoundDelay = TimeSpan.FromSeconds(0.45),
                 NoResourcesMessage = 503040, // There is no metal here to mine.
                 DoubleHarvestMessage = 50304, // Someone has gotten to the metal before you.
                 TimedOutOfRangeMessage = 503041, // You have moved too far away to continue mining.
@@ -228,8 +228,7 @@ namespace Server.Engines.Harvest
 
         private static int[] m_RareNodeItemIds = new int[] // Warning: Sorted during Configure
         {
-            0x223A, 0x223B, 0x223C, 0x223D, 0x223E, 0x223F,
-            0x2240, 0x2241, 0x2242, 0x2243, 0x2244, 0x2245, 0x2246, 0x2247, 0x2248, 0x2249
+            0x176C, 0x178A
         };
 
         #endregion Tile lists

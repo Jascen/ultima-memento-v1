@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Server.Items;
 using Server.Items.Abstractions;
 
 namespace Server.Engines.Harvest
@@ -13,7 +12,6 @@ namespace Server.Engines.Harvest
         public OreVeinMineable() : base(Utility.RandomList(OreVeinMining.System.RareNodeDefinition.Tiles))
         {
             Name = "A glistening ore vein";
-            Hue = 0x433; // Bronze
         }
 
         public OreVeinMineable(OreVeinSpawner parent) : this()
