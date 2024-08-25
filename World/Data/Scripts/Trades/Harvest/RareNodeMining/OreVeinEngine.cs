@@ -36,6 +36,7 @@ namespace Server.Engines.Harvest
 
         public void AddConfig(Map map, OreVeinConfig config)
         {
+            // GetOrCreate lookup
             Dictionary<string, OreVeinConfig> configByRegion;
             if (!_configByMapByRegion.TryGetValue(map, out configByRegion)) _configByMapByRegion[map] = configByRegion = new Dictionary<string, OreVeinConfig>();
 
