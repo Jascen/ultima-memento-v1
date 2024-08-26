@@ -6,7 +6,7 @@ namespace Server.Engines.Harvest
 {
     public class OreVeinMineable : Item
     {
-        private OreVeinSpawner _parent;
+        private readonly OreVeinSpawner _parent;
         private DateTime m_nextSound;
 
         public OreVeinMineable() : base(Utility.RandomList(OreVeinMining.System.RareNodeDefinition.Tiles))
