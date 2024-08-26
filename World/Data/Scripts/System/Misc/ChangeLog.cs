@@ -29,6 +29,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Sawing logs now automatically checks against each log individually<br>");
 			builder.Append("- Gather - Smelting ore now automatically checks against each ore individually<br>");
 			builder.Append("- Gather - Removed ore size variations<br>");
+			builder.Append("- Gather - (bug) Added system message when digging up Dwarven ore/granite<br>");
 			builder.Append("- Item - Increased the cost of all Powerscrolls<br>");
 			builder.Append("- Item - (bug?) Magic horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Item - The luck bonus for Magic horse shoe is now 100 per item<br>");
