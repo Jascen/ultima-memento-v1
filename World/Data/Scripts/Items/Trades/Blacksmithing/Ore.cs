@@ -78,6 +78,61 @@ namespace Server.Items
 			}
 		}
 
+		public bool SmeltAll(Mobile from, object targeted)
+		{
+			if ( Deleted )
+				return false;
+		
+			double difficulty = CraftResources.GetSkill( Resource );
+
+			if ( difficulty < 50.0 )
+				difficulty = 50.0;
+
+			double minSkill = difficulty - 25.0;
+			double maxSkill = difficulty + 25.0;
+			
+			if ( difficulty > 50.0 && difficulty > from.Skills[SkillName.Mining].Value || from.Skills[SkillName.Mining].Value < minSkill)
+			{
+				from.SendLocalizedMessage( 501986 ); // You have no idea how to smelt this strange ore!
+				return false;
+			}
+
+			int lost = 0;
+			int remaining = Amount;
+			while(0 < remaining)
+			{
+				if (maxSkill < from.Skills[SkillName.Mining].Value) break; // Short-circuit if they exceed the max skill
+
+				if (!from.CheckTargetSkill(SkillName.Mining, targeted, minSkill, maxSkill))
+					lost++;
+
+				remaining--;
+			}
+
+			from.PlaySound( 0x208 );
+
+			int boards = Amount - lost;
+			if (0 < lost)
+			{
+				from.SendLocalizedMessage( 501990 ); // You burn away the impurities but are left with less useable metal.
+			}
+			else
+			{
+				from.SendLocalizedMessage( 501988 ); // You smelt the ore removing the impurities and put the metal in your backpack.
+			}
+
+			if (0 < boards)
+			{
+				Item ingot = GetIngot();
+				ingot.Amount = boards;
+				from.AddToBackpack(ingot);
+			}
+
+			Delete();
+
+			return true;
+		}
+
 		private class InternalTarget : Target
 		{
 			private BaseOre m_Ore;
@@ -89,187 +144,19 @@ namespace Server.Items
 
 			protected override void OnTarget( Mobile from, object targeted )
 			{
-				if ( m_Ore.Deleted )
-					return;
-
 				if ( !from.InRange( m_Ore.GetWorldLocation(), 2 ) )
 				{
 					from.SendLocalizedMessage( 501976 ); // The ore is too far away.
 					return;
 				}
 				
-				#region Combine Ore
-				if ( targeted is BaseOre )
+				if ( !Server.Engines.Craft.DefBlacksmithy.IsForge( targeted ) )
 				{
-					BaseOre ore = (BaseOre)targeted;
-					if ( !ore.Movable )
-						return;
-					else if ( m_Ore == ore )
-					{
-						from.SendLocalizedMessage( 501972 ); // Select another pile or ore with which to combine this.
-						from.Target = new InternalTarget( ore );
-						return;
-					}
-					else if ( ore.Resource != m_Ore.Resource )
-					{
-						from.SendLocalizedMessage( 501979 ); // You cannot combine ores of different metals.
-						return;
-					}
-
-					int worth = ore.Amount;
-					if ( ore.ItemID == 0x19B9 )
-						worth *= 8;
-					else if ( ore.ItemID == 0x19B7 )
-						worth *= 2;
-					else 
-						worth *= 4;
-					int sourceWorth = m_Ore.Amount;
-					if ( m_Ore.ItemID == 0x19B9 )
-						sourceWorth *= 8;
-					else if ( m_Ore.ItemID == 0x19B7 )
-						sourceWorth *= 2;
-					else
-						sourceWorth *= 4;
-					worth += sourceWorth;
-
-					int plusWeight = 0;
-					int newID = ore.ItemID;
-					if ( ore.DefaultWeight != m_Ore.DefaultWeight )
-					{
-						if ( ore.ItemID == 0x19B7 || m_Ore.ItemID == 0x19B7 )
-						{
-							newID = 0x19B7;
-						}
-						else if ( ore.ItemID == 0x19B9 )
-						{
-							newID = m_Ore.ItemID;
-							plusWeight = (int)(ore.Amount * 0.5);
-						}
-						else
-						{
-							plusWeight = (int)(ore.Amount * 0.5);
-						}
-					}
-
-					if ( (ore.ItemID == 0x19B9 && worth > 120000) || (( ore.ItemID == 0x19B8 || ore.ItemID == 0x19BA ) && worth > 60000) || (ore.ItemID == 0x19B7 && worth > 30000))
-					{
-						from.SendLocalizedMessage( 1062844 ); // There is too much ore to combine.
-						return;
-					}
-					else if ( ore.RootParent is Mobile && (plusWeight + ((Mobile)ore.RootParent).Backpack.TotalWeight) > ((Mobile)ore.RootParent).Backpack.MaxWeight )
-					{ 
-						from.SendLocalizedMessage( 501978 ); // The weight is too great to combine in a container.
-						return;
-					}
-
-					ore.ItemID = newID;
-					if ( ore.ItemID == 0x19B9 )
-					{
-						ore.Amount = worth / 8;
-						m_Ore.Delete();
-					}
-					else if ( ore.ItemID == 0x19B7 )
-					{
-						ore.Amount = worth / 2;
-						m_Ore.Delete();
-					}
-					else
-					{
-						ore.Amount = worth / 4;
-						m_Ore.Delete();
-					}	
+					from.SendMessage("That is not a forge.");
 					return;
 				}
-				#endregion
 
-				if ( Server.Engines.Craft.DefBlacksmithy.IsForge( targeted ) )
-				{
-					double difficulty = CraftResources.GetSkill( m_Ore.Resource );
-
-					if ( difficulty < 50.0 )
-						difficulty = 50.0;
-
-					double minSkill = difficulty - 25.0;
-					double maxSkill = difficulty + 25.0;
-					
-					if ( difficulty > 50.0 && difficulty > from.Skills[SkillName.Mining].Value )
-					{
-						from.SendLocalizedMessage( 501986 ); // You have no idea how to smelt this strange ore!
-						return;
-					}
-					
-					if ( m_Ore.Amount <= 1 && m_Ore.ItemID == 0x19B7 )
-					{
-						from.SendLocalizedMessage( 501987 ); // There is not enough metal-bearing ore in this pile to make an ingot.
-						return;
-					}
-
-					if ( from.CheckTargetSkill( SkillName.Mining, targeted, minSkill, maxSkill ) )
-					{
-						if ( m_Ore.Amount <= 0 )
-						{
-							from.SendLocalizedMessage( 501987 ); // There is not enough metal-bearing ore in this pile to make an ingot.
-						}
-						else
-						{
-							int amount = m_Ore.Amount;
-							if ( m_Ore.Amount > 30000 )
-								amount = 30000;
-
-							Item ingot = m_Ore.GetIngot();
-							
-							if ( m_Ore.ItemID == 0x19B7 )
-							{
-								if ( m_Ore.Amount % 2 == 0 )
-								{
-									amount /= 2;
-									m_Ore.Delete();
-								}
-								else
-								{
-									amount /= 2;
-									m_Ore.Amount = 1;
-								}
-							}
-								
-							else if ( m_Ore.ItemID == 0x19B9 )
-							{
-								amount *= 2;
-								m_Ore.Delete();
-							}
-							
-							else
-							{
-								amount /= 1;
-								m_Ore.Delete();
-							}
-
-							ingot.Amount = amount;
-							from.AddToBackpack( ingot );
-							from.PlaySound( 0x208 );
-
-							from.SendLocalizedMessage( 501988 ); // You smelt the ore removing the impurities and put the metal in your backpack.
-						}
-					}
-					else if ( m_Ore.Amount < 2 && m_Ore.ItemID == 0x19B9 )
-					{
-						from.SendLocalizedMessage( 501990 ); // You burn away the impurities but are left with less useable metal.
-						m_Ore.ItemID = 0x19B8;
-						from.PlaySound( 0x208 );
-					}
-					else if ( m_Ore.Amount < 2 && m_Ore.ItemID == 0x19B8 || m_Ore.ItemID == 0x19BA )
-					{
-						from.SendLocalizedMessage( 501990 ); // You burn away the impurities but are left with less useable metal.
-						m_Ore.ItemID = 0x19B7;
-						from.PlaySound( 0x208 );
-					}
-					else
-					{
-						from.SendLocalizedMessage( 501990 ); // You burn away the impurities but are left with less useable metal.
-						m_Ore.Amount /= 2;
-						from.PlaySound( 0x208 );
-					}
-				}
+				m_Ore.SmeltAll(from, targeted);
 			}
 		}
 	}
