@@ -207,6 +207,9 @@ namespace Server.Engines.Harvest
                         {
                             OreVeinUtilities.GetCandidate(map, x, y, ValidateRegion, (hasMiningNode, landTile, region, regionName) =>
                             {
+                                // Note: Remove this if you want ALL edges
+                                if (!hasMiningNode) return;
+
                                 List<string> points;
                                 if (!pointsByRegion.TryGetValue(regionName, out points))
                                     pointsByRegion[regionName] = points = new List<string>();
