@@ -1,19 +1,3 @@
-using System;
-using Server;
-using System.Collections;
-using Server.Misc;
-using Server.Network;
-using Server.Commands;
-using Server.Commands.Generic;
-using Server.Mobiles;
-using Server.Accounting;
-using Server.Regions;
-using Server.Targeting;
-using System.Collections.Generic;
-using Server.Items;
-using Server.Spells.Fifth;
-using System.IO;
-using System.Xml;
 using System.Text;
 
 namespace Server.Misc
@@ -42,6 +26,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Add 'Glistening Ore Vein' to give Mining a more active playstyle<br>");
 			builder.Append("- Gather - Dwarven ore can now only be acquired via 'Glistening Ore Vein'<br>");
 			builder.Append("- Gather - Increased Nepturite spawn rate<br>");
+			builder.Append("- Gather - Sawing logs now automatically checks against each log individually<br>");
 			builder.Append("- Item - Increased the cost of all Powerscrolls<br>");
 			builder.Append("- Item - (bug?) Magic horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Item - The luck bonus for Magic horse shoe is now 100 per item<br>");
