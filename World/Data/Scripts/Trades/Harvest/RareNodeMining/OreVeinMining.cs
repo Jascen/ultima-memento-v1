@@ -38,6 +38,7 @@ namespace Server.Engines.Harvest
                 Tiles = m_RareNodeItemIds,
                 MaxRange = 3,
                 ConsumedPerHarvest = int.MaxValue,
+                ConsumedPerIslesDreadHarvest = int.MaxValue,
 
                 EffectActions = new int[] { 11 },
                 EffectSounds = new int[] { 0x125, 0x126 },
