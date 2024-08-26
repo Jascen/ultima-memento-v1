@@ -31,6 +31,8 @@ namespace Server.Misc
 			builder.Append("- Gather - Removed ore size variations<br>");
 			builder.Append("- Gather - (bug) Added system message when digging up Dwarven ore/granite<br>");
 			builder.Append("- Gather - Increase automatic harvest distance for crops to 1 tile<br>");
+			builder.Append("- Gather - Increase log weight to 1 stone each<br>");
+			builder.Append("- Gather - Increase ore weight to 2 stones each<br>");
 			builder.Append("- Item - Increased the cost of all Powerscrolls<br>");
 			builder.Append("- Item - (bug?) Magic horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Item - The luck bonus for Magic horse shoe is now 100 per item<br>");
