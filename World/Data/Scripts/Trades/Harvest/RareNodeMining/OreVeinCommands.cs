@@ -14,6 +14,7 @@ namespace Server.Engines.Harvest
         private static readonly HashSet<string> ForceIncludedRegions = new HashSet<string>
         {
             "the Mines of Morinia",
+            "the Ancient Crash Site"
         };
 
         private static readonly HashSet<string> IgnoredRegions = new HashSet<string>
@@ -24,20 +25,12 @@ namespace Server.Engines.Harvest
             "a Dungeon Dwelling",
             "Sky Home",
             "Lyceum",
-
-            // These Caves are hacky and use Cave as Statics rather than LandTile
-            "Nightshadow Cave",
-            "the Ambrosian Cavern",
-            "the Volcanic Pass",
-            "the Mines of Moon",
-            "the Elidor Tunnel",
-            "Junglewall Cave",
-            "Avalanche Grotto",
-            "Mountain Crest Mine",
-            "the Core of the Moon",
-            "Hot Spring Cave",
-            "the Cave of Virtue",
-            "the Devil's Mine",
+            "Shimazu's Dojo",
+            "the City of the Dead",
+            "the Tomb of Zoda the Jedi Master",
+            "Seggallions's Cave",
+            "the Chamber of Virtue",
+            "Cavern of Sermillon",
         };
 
         private static readonly Type[] IgnoredRegionTypes = new[]
