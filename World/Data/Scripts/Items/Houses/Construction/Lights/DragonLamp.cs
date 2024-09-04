@@ -83,6 +83,7 @@ namespace Server.Items
 			{
 				case 0:
 				{
+					m_Resource = (CraftResource) reader.ReadEncodedInt();
 					LampName = reader.ReadString();
 					LampColor = reader.ReadString();
 					break;

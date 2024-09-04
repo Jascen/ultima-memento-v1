@@ -35,6 +35,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Increase ore weight to 2 stones each<br>");
 			builder.Append("- Item - Increased the cost of all Powerscrolls<br>");
 			builder.Append("- Item - (bug?) Magic horse shoe now work on Instruments and Quivers<br>");
+			builder.Append("- Item - (bug) Fixed an issue where DragonLamp would fail to load<br>");
 			builder.Append("- Item - The luck bonus for Magic horse shoe is now 100 per item<br>");
 			builder.Append("- Item - Artifact enchantment points have been reduced by half (min is still 50) <br>");
 			builder.Append("- Misc - (bug) (De)buffs could end on the Client before they finished on the Server<br>");
