@@ -217,7 +217,7 @@ namespace Server
 				price +=		(int)(((BaseWeapon)item).SkillBonuses.Skill_4_Value * 2);
 				price +=		(int)(((BaseWeapon)item).SkillBonuses.Skill_5_Value * 2);
 
-				if ((item is PugilistGloves) == false)
+				if ((item is PugilistGloves || item is ThrowingGloves) == false)
 					price +=		((BaseWeapon)item).Attributes.SpellChanneling * 200;
 
 				price +=		((BaseWeapon)item).Attributes.DefendChance * 10;
