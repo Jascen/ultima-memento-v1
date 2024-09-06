@@ -80,7 +80,7 @@ namespace Server
 
 	// The percent chance a floor trap will trigger in whole number format and no less than 5 percent.
 
-		public static int S_FloorTrapTrigger = 25;
+		public static int S_FloorTrapTrigger = 75;
 
 	// If true, anytime a character makes a saving throw to avoid a trap will be notified. Otherwise, they will never know they avoided it.
 
