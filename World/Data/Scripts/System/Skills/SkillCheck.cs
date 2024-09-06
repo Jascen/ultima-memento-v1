@@ -162,19 +162,19 @@ namespace Server.Misc
 			if (from is PlayerMobile)
 			{	
 				if (skill.Base <= 50)
-					gc *= 4;
-				else if (skill.Base <= 70)
-					gc *= 3;
-				else if (skill.Base <= 85)
-					gc *= 2;
-				else if (skill.Base <= 95)
 					gc *= 1.5;
-				else if (skill.Base <= 105)
+				else if (skill.Base <= 70)
 					gc *= 1;
-				else if (skill.Base <= 110)
+				else if (skill.Base <= 85)
 					gc *= 0.75;
-				else if (skill.Base <= 115)
+				else if (skill.Base <= 95)
 					gc *= 0.5;
+				else if (skill.Base <= 105)
+					gc *= 0.46;
+				else if (skill.Base <= 110)
+					gc *= 0.42;
+				else if (skill.Base <= 115)
+					gc *= 0.38;
 				else if (skill.Base <= 120)
 					gc *= 0.38;
 				else if (skill.Base <= 125)
