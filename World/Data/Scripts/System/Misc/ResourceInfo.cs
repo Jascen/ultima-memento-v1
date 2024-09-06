@@ -1311,18 +1311,26 @@ namespace Server.Items
                     return 3; // Guess
 
                 case CraftResource.Fabric:
+                    return 1;
+
                 case CraftResource.FurryFabric:
                 case CraftResource.WoolyFabric:
                 case CraftResource.SilkFabric:
+					return 2; // Guess
+
                 case CraftResource.HauntedFabric:
                 case CraftResource.ArcticFabric:
                 case CraftResource.PyreFabric:
+					return 3; // Guess
+
                 case CraftResource.VenomousFabric:
                 case CraftResource.MysteriousFabric:
                 case CraftResource.VileFabric:
+					return 4; // Guess
+
                 case CraftResource.DivineFabric:
                 case CraftResource.FiendishFabric:
-                    return 3; // Guess
+                    return 5; // Guess
 
                 case CraftResource.RegularWood:
                     return 1;
