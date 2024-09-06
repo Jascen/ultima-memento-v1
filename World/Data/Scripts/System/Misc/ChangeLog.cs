@@ -38,7 +38,8 @@ namespace Server.Misc
 			builder.Append("- Item - (bug?) Magic horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Item - (bug) Fixed an issue where DragonLamp would fail to load<br>");
 			builder.Append("- Item - The luck bonus for Magic horse shoe is now 100 per item<br>");
-			builder.Append("- Item - Artifact enchantment points have been reduced by half (min is still 50) <br>");
+			builder.Append("- Item - Artifact enchantment points have been reduced by half (min is still 50)<br>");
+			builder.Append("- Item - Fixed an issue where SpellChanneling was incorrectly boosting sell price for Pugilist gloves<br>");
 			builder.Append("- Misc - (bug) (De)buffs could end on the Client before they finished on the Server<br>");
 			builder.Append("- Misc - (bug) Set Map when [scan players<br>");
 			builder.Append("- Quest - Sage Artifact quest now always costs 10,000 gold<br>");
