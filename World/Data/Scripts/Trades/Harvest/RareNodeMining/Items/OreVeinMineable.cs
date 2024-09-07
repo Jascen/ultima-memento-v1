@@ -67,10 +67,10 @@ namespace Server.Engines.Harvest
         {
             if (from.InRange(this.GetWorldLocation(), 2) && from.Map == Map)
             {
-                Item pickaxe = from.FindItemOnLayer(Layer.OneHanded);
-                if (pickaxe is IPickaxe)
+                var tool = from.FindItemOnLayer(Layer.OneHanded) as IHarvestTool;
+                if (tool is Item && tool != null && tool.HarvestSystem == Mining.System)
                 {
-                    ((IPickaxe)pickaxe).HarvestSystem.StartHarvesting(from, pickaxe, this);
+                    tool.HarvestSystem.StartHarvesting(from, (Item)tool, this);
                 }
                 else
                 {
