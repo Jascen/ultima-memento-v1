@@ -513,9 +513,7 @@ namespace Server.Engines.Harvest
 							IUsesRemaining toolWithUses = (IUsesRemaining)tool;
 
 							toolWithUses.ShowUsesRemaining = true;
-
-							if ( toolWithUses.UsesRemaining > 0 )
-								--toolWithUses.UsesRemaining;
+							toolWithUses.UsesRemaining -= item.Amount;
 
 							if ( toolWithUses.UsesRemaining < 1 )
 							{
