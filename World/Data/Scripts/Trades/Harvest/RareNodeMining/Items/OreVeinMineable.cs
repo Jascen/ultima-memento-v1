@@ -68,14 +68,24 @@ namespace Server.Engines.Harvest
         {
             if (from.InRange(this.GetWorldLocation(), 2) && from.Map == Map)
             {
+                Item harvestTool = null;
+
                 var tool = from.FindItemOnLayer(Layer.OneHanded) as IHarvestTool;
-                if (tool is Item && tool != null && tool.HarvestSystem == Mining.System)
+                if (tool is Item && tool != null && tool.HarvestSystem == Mining.System) harvestTool = (Item)tool; // Pickaxe
+
+                if (harvestTool == null)
+                {
+                    tool = from.FindItemOnLayer(Layer.TwoHanded) as IHarvestTool;
+                    if (tool is Item && tool != null && tool.HarvestSystem == Mining.System) harvestTool = (Item)tool; // Shovel
+                }
+
+                if (harvestTool != null)
                 {
                     tool.HarvestSystem.StartHarvesting(from, (Item)tool, this);
                 }
                 else
                 {
-                    from.SendMessage("This looks like you can mine it with a pickaxe.");
+                    from.SendMessage("This looks like you can mine it with a pickaxe or shovel.");
                 }
             }
         }
