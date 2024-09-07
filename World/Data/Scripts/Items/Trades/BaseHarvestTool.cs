@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Items.Abstractions;
 using Server.Mobiles;
 using Server.Network;
 using Server.Engines.Craft;
@@ -14,7 +15,7 @@ namespace Server.Items
 		bool ShowUsesRemaining{ get; set; }
 	}
 
-	public abstract class BaseHarvestTool : Item, IUsesRemaining, ICraftable
+	public abstract class BaseHarvestTool : Item, IUsesRemaining, ICraftable, IHarvestTool
 	{
 		public override string DefaultDescription{ get{ return "These tools are used for harvesting resources, that are used in various crafting trades. They must be equipped to be used and have a limited amount of uses before they break."; } }
 
@@ -89,7 +90,8 @@ namespace Server.Items
 		public bool ShowUsesRemaining{ get{ return true; } set{} }
 
 		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
-
+		
+		public bool HasHarvestSystem { get { return HarvestSystem != null; } }
 		public abstract HarvestSystem HarvestSystem{ get; }
 
 		public BaseHarvestTool( int itemID ) : this( 50, itemID )

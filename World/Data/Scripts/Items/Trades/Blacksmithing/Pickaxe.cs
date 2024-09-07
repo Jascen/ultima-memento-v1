@@ -7,7 +7,7 @@ using Server.Engines.Harvest;
 namespace Server.Items
 {
 	[FlipableAttribute( 0xE86, 0xE85 )]
-	public class Pickaxe : BaseAxe, IUsesRemaining, IPickaxe
+	public class Pickaxe : BaseAxe, IUsesRemaining
 	{
 		public override string DefaultDescription{ get{ return "These picks are used by miners, to dig up ore in caves and on mountain stone."; } }
 
