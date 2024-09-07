@@ -35,6 +35,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Increase log weight to 1 stone each<br>");
 			builder.Append("- Gather - Increase ore weight to 2 stones each<br>");
 			builder.Append("- Gather - Reduce mining vein size from 10-34 to 5-17<br>");
+			builder.Append("- Gather - (bug) Drop harvested items to ground when backpack is full<br>");
 			builder.Append("- Item - Increased the cost of all Powerscrolls<br>");
 			builder.Append("- Item - (bug?) Magic horse shoe now work on Instruments and Quivers<br>");
 			builder.Append("- Item - (bug) Fixed an issue where DragonLamp would fail to load<br>");
