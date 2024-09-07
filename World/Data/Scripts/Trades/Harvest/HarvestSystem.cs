@@ -565,7 +565,7 @@ namespace Server.Engines.Harvest
 
 		public virtual bool Give( Mobile m, Item item, bool placeAtFeet )
 		{
-			BaseContainer.PutStuffInContainer( m, 3, item );
+			if (BaseContainer.PutStuffInContainer( m, 3, item )) return true;
 
 			if ( !placeAtFeet )
 				return false;
