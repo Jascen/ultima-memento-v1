@@ -887,7 +887,7 @@ namespace Server.Engines.Harvest
 			return base.Construct( type, from );
 		}
 
-		public override bool Give( Mobile m, Item item )
+		public override bool Give( Mobile m, Item item, bool placeAtFeet )
 		{
 			if ( item is TreasureMap || item is MessageInABottle || item is FishingNet || item is SpecialFishingNet || item is FabledFishingNet || item is NeptunesFishingNet  )
 			{
@@ -941,7 +941,7 @@ namespace Server.Engines.Harvest
 				fishy.FishGoldValue = fishy.FishGoldValue * nFishingSkill;
 			}
 
-			return base.Give( m, item );
+			return base.Give( m, item, placeAtFeet );
 		}
 
 		public override void SendSuccessTo( Mobile from, Item item, HarvestResource resource )
