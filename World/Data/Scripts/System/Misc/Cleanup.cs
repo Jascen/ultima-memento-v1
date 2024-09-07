@@ -392,7 +392,6 @@ namespace Server.Misc
 
 		public static void RemoveScript( string script )
 		{
-			return;
 			if ( System.IO.File.Exists( "Data/Scripts/Obsolete/" + script + ".cs" ) )
 			{
 				if ( System.IO.File.Exists( "Data/Obsolete/" + script + ".cs" ) )
