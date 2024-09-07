@@ -12,6 +12,7 @@ namespace Server.Engines.Harvest
         public OreVeinMineable() : base(Utility.RandomList(OreVeinMining.System.RareNodeDefinition.Tiles))
         {
             Name = "A glistening ore vein";
+            Light = LightType.Circle300;
         }
 
         public OreVeinMineable(OreVeinSpawner parent) : this()
