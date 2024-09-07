@@ -44,6 +44,7 @@ namespace Server.Misc
 			builder.Append("- Item - (bug) SpellChanneling no longer boosts sell price for Throwing/Pugilist gloves<br>");
 			builder.Append("- Misc - (bug) (De)buffs could end on the Client before they finished on the Server<br>");
 			builder.Append("- Misc - (bug) Set Map when [scan players<br>");
+			builder.Append("- Misc - (bug) Stop deleting an item when it's stacked with itself<br>");
 			builder.Append("- Quest - Sage Artifact quest now always costs 10,000 gold<br>");
 			builder.Append("- Settings - Lower Mana Cost (LMC) is now capped at 40%<br>");
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
