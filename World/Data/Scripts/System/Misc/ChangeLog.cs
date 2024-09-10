@@ -51,6 +51,7 @@ namespace Server.Misc
 			builder.Append("- Quest - Sage Artifact quest now always costs 10,000 gold<br>");
 			builder.Append("- Settings - Lower Mana Cost (LMC) is now capped at 40%<br>");
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
+			builder.Append("- Settings - Added a setting to require eating Powerscrolls in order<br>");
 			builder.Append("- Skill - Healing is now an activatable* skill that can remove poison/mortal wound or heal you<br>"); // TODO: Update documentation, Make usable in client files
 			builder.Append("- Spell - (bug) BloodOath could linger up to 1s too long on the Server<br>");
 			builder.Append("- Stats - Mana Regen is now defaultly capped at 18<br>");

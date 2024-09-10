@@ -236,7 +236,9 @@ namespace Server
 		public static int S_MinGold = 500;
 		public static int S_MaxGold = 600;
 
+	// If true, powerscrolls must be eaten in order 105 -> 110 -> 115 -> 120 -> 125
 
+		public static bool S_RequirePreviousPowerscroll = true;
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
