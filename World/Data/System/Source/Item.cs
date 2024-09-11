@@ -5260,6 +5260,14 @@ namespace Server
 			}
 		}
 
+		private bool m_NoMoveHS;
+
+		public bool NoMoveHS
+		{
+			get { return m_NoMoveHS; }
+			set { m_NoMoveHS = value; }
+		}
+
 		public void ProcessDelta()
 		{
 			ItemDelta flags = m_DeltaFlags;
@@ -5794,6 +5802,7 @@ namespace Server
 								eable.Free();
 							}
 
+							Point3D oldLoc = m_Location;
 							m_Location = value;
 							ReleaseWorldPackets();
 
@@ -5805,7 +5814,7 @@ namespace Server
 							{
 								Mobile m = state.Mobile;
 
-								if ( m.CanSee( this ) && m.InRange( m_Location, GetUpdateRange( m ) ) )
+								if ( m.CanSee( this ) && m.InRange( m_Location, GetUpdateRange( m ) ) && ( !state.HighSeas || !m_NoMoveHS || ( m_DeltaFlags & ItemDelta.Update ) != 0 || !m.InRange( oldLoc, GetUpdateRange( m ) ) ) )
 									SendInfoTo( state );
 							}
 
