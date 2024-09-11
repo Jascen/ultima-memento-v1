@@ -397,9 +397,6 @@ namespace Server.Engines.Craft
 		public void CraftItem( CraftItem item )
 		{
 			int num = m_CraftSystem.CanCraft( m_From, m_Tool, item.ItemType );
-
-			int extra = 0;
-
 			bool CraftMany = CraftSystem.CraftingMany( m_From );
 
 			CraftSystem.CraftStarting( m_From );
@@ -418,9 +415,6 @@ namespace Server.Engines.Craft
 				if ( CraftMany )
 				{
 					m_From.EndAction( typeof( CraftSystem ) );
-					extra++;
-					if ( extra > MyServerSettings.StatGainDelayNum() ){ extra = 1; }
-					Server.Misc.SkillCheck.ResetStatGain( m_From, extra );
 				}
 
 				if ( num > 0 )
