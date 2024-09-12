@@ -22,6 +22,7 @@ namespace Server.Misc
 			builder.Append("- Craft - Resist bonus for exceptional hats is now a function of Arms Lore skill level (reduces bonus from 15 to 7)<br>");
 			builder.Append("- Craft - Bulk crafting no longer resets Stat Gain cooldown<br>");
 			builder.Append("- Craft - Add ability to break down all items in a container<br>");
+			builder.Append("- Craft - Items can only be enhanced if they are basic resources<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - (bug?) The 'Resources' server setting is now limited by the amount of resources in the harvest bank<br>");
