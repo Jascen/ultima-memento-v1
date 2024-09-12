@@ -2,6 +2,8 @@ using System;
 using Server;
 using Server.Targeting;
 using Server.Items;
+using System.Linq;
+using Server.Gumps;
 
 namespace Server.Engines.Craft
 {
@@ -63,8 +65,12 @@ namespace Server.Engines.Craft
 
 					if ( CraftResources.GetType( resource ) == m_CraftSystem.BreakDownTypeAlt && m_CraftSystem.BreakDownTypeAlt != CraftResourceType.None )
 						canBreakDown = true;
-
+						
 					if ( !canBreakDown )
+						return BreakDownResult.Invalid;
+
+					CraftItem craftItem = m_CraftSystem.CraftItems.SearchFor( item.GetType() );
+					if ( craftItem == null || craftItem.Resources.Count == 0 )
 						return BreakDownResult.Invalid;
 
 					CraftResourceInfo info = CraftResources.GetInfo( resource );
@@ -158,6 +164,51 @@ namespace Server.Engines.Craft
 						}
 						
 						from.SendGump( new CraftGump( from, m_CraftSystem, m_Tool, num ) );
+					}
+					else if ( targeted is Container )
+					{
+						var container = (Container)targeted;
+						var confirmationGump = new ConfirmationGump(
+							from,
+							"Break down container contents",
+							"Are you absolutely sure you want to break down all " + container.TotalItems + " items in " + container.Name + "?",
+							() =>
+								{
+									if (!from.Alive) return;
+
+									var success = false;
+									var noSkill = false;
+									var invalid = false;
+
+									foreach (var item in container.Items.ToList())
+									{
+										if (item is Container) continue;
+
+										BreakDownResult result = BreakDown(from, item, item.Resource);
+										switch (result)
+										{
+											default:
+											case BreakDownResult.Invalid: invalid = true; break;
+											case BreakDownResult.NoSkill: noSkill = true; break;
+											case BreakDownResult.Success: success = true; break;
+										}
+									}
+
+									if (invalid) from.SendLocalizedMessage(1044272); // You can't seem to break that item down.
+									if (noSkill) from.SendLocalizedMessage(1044149); // You have no idea how to break this item down.
+									if (success) from.SendLocalizedMessage(1044148); // You break the item down into ordinary resources.
+
+									from.SendGump(new CraftGump(from, m_CraftSystem, m_Tool, null));
+								},
+							() =>
+								{
+									if (!from.Alive) return;
+
+									from.SendGump(new CraftGump(from, m_CraftSystem, m_Tool, null));
+								}
+						);
+
+						from.SendGump(confirmationGump);
 					}
 					else
 					{
