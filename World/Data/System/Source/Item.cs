@@ -1826,7 +1826,7 @@ namespace Server
 
 		public bool ResourceCanChange()
 		{
-			if ( ArtifactLevel > 0 || NotModAble )
+			if ( NotModAble )
 				return false;
 
 			return true;
