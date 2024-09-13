@@ -230,6 +230,79 @@ namespace Server
 			return skillTitle;
 		}
 
+		public bool IsSecondarySkill()
+		{
+			switch(SkillName)
+			{
+				// Crafting skills
+				case SkillName.Alchemy:
+				case SkillName.Blacksmith:
+				case SkillName.Bowcraft:
+				case SkillName.Carpentry:
+				case SkillName.Cooking:
+				case SkillName.Inscribe:
+				case SkillName.Tailoring:
+				case SkillName.Tinkering:
+					return true;
+
+				// Gathering skills
+				case SkillName.Forensics:
+				case SkillName.Lumberjacking:
+				case SkillName.Mining:
+					return true;
+
+				case SkillName.Anatomy:
+				case SkillName.Druidism:
+				case SkillName.Mercantile:
+				case SkillName.ArmsLore:
+				case SkillName.Parry:
+				case SkillName.Begging:
+				case SkillName.Peacemaking:
+				case SkillName.Camping:
+				case SkillName.Cartography:
+				case SkillName.Searching:
+				case SkillName.Discordance:
+				case SkillName.Psychology:
+				case SkillName.Healing:
+				case SkillName.Seafaring:
+				case SkillName.Herding:
+				case SkillName.Hiding:
+				case SkillName.Provocation:
+				case SkillName.Lockpicking:
+				case SkillName.Magery:
+				case SkillName.MagicResist:
+				case SkillName.Tactics:
+				case SkillName.Snooping:
+				case SkillName.Musicianship:
+				case SkillName.Poisoning:
+				case SkillName.Marksmanship:
+				case SkillName.Spiritualism:
+				case SkillName.Stealing:
+				case SkillName.Taming:
+				case SkillName.Tasting:
+				case SkillName.Tracking:
+				case SkillName.Veterinary:
+				case SkillName.Swords:
+				case SkillName.Bludgeoning:
+				case SkillName.Fencing:
+				case SkillName.FistFighting:
+				case SkillName.Meditation:
+				case SkillName.Stealth:
+				case SkillName.RemoveTrap:
+				case SkillName.Necromancy:
+				case SkillName.Focus:
+				case SkillName.Knightship:
+				case SkillName.Bushido:
+				case SkillName.Ninjitsu:
+				case SkillName.Elementalism:
+				case SkillName.Mysticism:
+				case SkillName.Imbuing:
+				case SkillName.Throwing:
+				default:
+					return false;
+			}
+		}
+
 		public Skill( Skills owner, SkillInfo info, GenericReader reader )
 		{
 			m_Owner = owner;
@@ -400,8 +473,10 @@ namespace Server
 
 				if ( m_Base != sv )
 				{
-					m_Owner.Total = (m_Owner.Total - m_Base) + sv;
+					if (!IsSecondarySkill()) // Secondary skills don't affect Total
+						m_Owner.Total = (m_Owner.Total - m_Base) + sv;
 
+					int delta = value - sv;
 					m_Base = sv;
 
 					m_Owner.OnSkillChange( this );
@@ -1127,7 +1202,8 @@ namespace Server
 				else
 				{
 					sk.Serialize( writer );
-					m_Total += sk.BaseFixedPoint;
+					if (!sk.IsSecondarySkill()) // Secondary skills don't affect Total
+						m_Total += sk.BaseFixedPoint;
 				}
 			}
 		}
@@ -1183,7 +1259,8 @@ namespace Server
 							if ( sk.BaseFixedPoint != 0 || sk.CapFixedPoint != 1000 || sk.Lock != SkillLock.Up )
 							{
 								m_Skills[i] = sk;
-								m_Total += sk.BaseFixedPoint;
+								if (!sk.IsSecondarySkill()) // Secondary skills don't affect Total
+									m_Total += sk.BaseFixedPoint;
 							}
 						}
 						else

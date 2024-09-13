@@ -393,12 +393,15 @@ namespace Server.Misc
 					toGain = Utility.Random( 4 ) + 1;
 
 				Skills skills = from.Skills;
+				bool isSecondarySkill = skill.IsSecondarySkill();
 
-				if ( from.Player && ( skills.Total / skills.Cap ) >= Utility.RandomDouble() )
+				// Secondary skills don't cause you to lose skill
+				if ( !isSecondarySkill && from.Player && ( skills.Total / skills.Cap ) >= Utility.RandomDouble() )
 				{
 					for ( int i = 0; i < skills.Length; ++i )
 					{
 						Skill toLower = skills[i];
+						if (toLower.IsSecondarySkill()) continue; // Can't decrease Secondary skills
 
 						if ( toLower != skill && toLower.Lock == SkillLock.Down && toLower.BaseFixedPoint >= toGain )
 						{
@@ -416,7 +419,8 @@ namespace Server.Misc
 					toGain *= Utility.RandomMinMax(2, 5);
 					#endregion
 
-				if ( !from.Player || (skills.Total + toGain) <= skills.Cap )
+				// Secondary skills ignore the skill cap
+				if ( !from.Player || isSecondarySkill || (skills.Total + toGain) <= skills.Cap )
 				{
 					skill.BaseFixedPoint += toGain;
 

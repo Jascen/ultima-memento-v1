@@ -51,6 +51,9 @@ namespace Server.Misc
 			builder.Append("- Item - Artifact enchantment points have been reduced by half (min is still 50)<br>");
 			builder.Append("- Item - (bug) SpellChanneling no longer boosts sell price for Throwing/Pugilist gloves<br>");
 			builder.Append("- Misc - Add smooth boat movement<br>");
+			builder.Append("- Misc - Add Secondary Skills that do not impact total skill cap<br>");
+			builder.Append("        Alchemy, Blacksmith, Bowcraft, Carpentry, Cooking, Inscription, Tailoring, Tinkering<br>");
+			builder.Append("        Forensics, Lumberjacking, Mining<br>");
 			builder.Append("- Misc - (bug) (De)buffs could end on the Client before they finished on the Server<br>");
 			builder.Append("- Misc - (bug) Set Map when [scan players<br>");
 			builder.Append("- Misc - (bug) Stop deleting an item when it's stacked with itself<br>");
