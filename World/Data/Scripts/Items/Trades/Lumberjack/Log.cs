@@ -75,12 +75,7 @@ namespace Server.Items
 			if ( !Movable )
 				return;
 			
-			if ( RootParent is BaseCreature )
-			{
-				from.SendLocalizedMessage( 500447 ); // That is not accessible
-				return;
-			}
-			else if ( from.InRange( this.GetWorldLocation(), 2 ) )
+			if ( from.InRange( this.GetWorldLocation(), 2 ) )
 			{
 				from.SendMessage( "Select the saw mill on which to cut the logs." );
 				from.Target = new InternalTarget( this );
