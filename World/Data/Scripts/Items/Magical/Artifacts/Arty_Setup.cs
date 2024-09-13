@@ -10,7 +10,7 @@ namespace Server.Misc
 		{
 			// Points are inversely correlated to the innate strength of the artifact.
 			int points = 200 - itemPowerLevel * 10;
-			points = Math.Min(50, points / 2);
+			points = Math.Max(50, Math.Min(50, points / 2));
 
 			if ( item is BaseGiftArmor )
 			{
