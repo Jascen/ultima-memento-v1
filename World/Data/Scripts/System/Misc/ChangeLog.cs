@@ -53,6 +53,7 @@ namespace Server.Misc
 			builder.Append("- Misc - (bug) Stop deleting an item when it's stacked with itself<br>");
 			builder.Append("- Misc - (bug) Aliens no longer start with gold<br>");
 			builder.Append("- Misc - (bug) Monster races now get configured starting gold<br>");
+			builder.Append("- Misc - Reduce packhorse max weight to 2400 (down from 65k)<br>");
 			builder.Append("- Quest - Sage Artifact quest now always costs 10,000 gold<br>");
 			builder.Append("- Settings - Lower Mana Cost (LMC) is now capped at 40%<br>");
 			builder.Append("- Settings - Lower Reagent Cost (LRC) is now capped at 100%<br>");
