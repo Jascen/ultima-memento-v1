@@ -71,9 +71,6 @@ namespace Server.Items
 
 					double difficulty = CraftResources.GetSkill( resource );
 
-					if ( difficulty < 50.0 )
-						difficulty = 50.0;
-
 					if ( difficulty > from.Skills.Tailoring.Value )
 						msg = "You are not skilled enough to cut that material.";
 					else
@@ -82,7 +79,7 @@ namespace Server.Items
 						Item resc = (Item)Activator.CreateInstance( resourceType );
 
 						resc.Amount = (int)(item.Weight);
-							if ( resc.Amount < 1 ){ resc.Amount = 1; }
+						if ( resc.Amount < 1 ){ resc.Amount = 1; }
 
 						if ( extraCloth )
 							resc.Amount = resc.Amount * 10;

@@ -84,12 +84,12 @@ namespace Server.Items
 				return false;
 		
 			double difficulty = CraftResources.GetSkill( Resource );
-
-			if ( difficulty < 50.0 )
-				difficulty = 50.0;
-
 			double minSkill = difficulty - 25.0;
 			double maxSkill = difficulty + 25.0;
+
+			// Increase Iron so that it can at least unlock Dull Copper
+			if (Resource == CraftResource.Iron)
+				maxSkill = CraftResources.GetSkill( CraftResource.DullCopper ) + 10;
 			
 			if ( difficulty > 50.0 && difficulty > from.Skills[SkillName.Mining].Value || from.Skills[SkillName.Mining].Value < minSkill)
 			{

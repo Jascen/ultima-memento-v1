@@ -24,6 +24,8 @@ namespace Server.Misc
 			builder.Append("- Craft - Add ability to break down all items in a container<br>");
 			builder.Append("- Craft - Items can only be enhanced if they are basic resources<br>");
 			builder.Append("- Craft - Artifacts can now be enhanced<br>");
+			builder.Append("- Craft - Breakdown no longer requires 50 skill<br>");
+			builder.Append("- Craft - Cutting regular cloth/leather no longer requires 50 Tailoring<br>");
 			builder.Append("- Enchantment - Lower Mana Cost (LMC) is now capped at 8%<br>");
 			builder.Append("- Enchantment - Lower Reagent Cost (LRC) is now capped at 20%<br>");
 			builder.Append("- Gather - (bug?) The 'Resources' server setting is now limited by the amount of resources in the harvest bank<br>");
@@ -39,6 +41,7 @@ namespace Server.Misc
 			builder.Append("- Gather - Increase log weight to 1 stone each<br>");
 			builder.Append("- Gather - Increase ore weight to 2 stones each<br>");
 			builder.Append("- Gather - Reduce mining vein size from 10-34 to 5-17<br>");
+			builder.Append("- Gather - Smelting iron ore no longer requires 50 Mining<br>");
 			builder.Append("- Gather - (bug) Drop harvested items to ground when backpack is full<br>");
 			builder.Append("- Gump - (bug) Alien Players who use Tithe to pay for a res from another player are no longer double penalized<br>");
 			builder.Append("- Item - Increased the cost of all Powerscrolls<br>");
