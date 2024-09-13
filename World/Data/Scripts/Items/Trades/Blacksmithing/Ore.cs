@@ -119,7 +119,7 @@ namespace Server.Items
 			if (0 < ingots)
 			{
 				Item ingot = GetIngot();
-				ingot.Amount = ingots;
+				ingot.Amount = ingots * 2;
 				from.AddToBackpack(ingot);
 			}
 
