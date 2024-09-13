@@ -111,7 +111,7 @@ namespace Server.Items
 
 			from.PlaySound( 0x208 );
 
-			int boards = Amount - lost;
+			int ingots = Amount - lost;
 			if (0 < lost)
 			{
 				from.SendLocalizedMessage( 501990 ); // You burn away the impurities but are left with less useable metal.
@@ -121,10 +121,10 @@ namespace Server.Items
 				from.SendLocalizedMessage( 501988 ); // You smelt the ore removing the impurities and put the metal in your backpack.
 			}
 
-			if (0 < boards)
+			if (0 < ingots)
 			{
 				Item ingot = GetIngot();
-				ingot.Amount = boards;
+				ingot.Amount = ingots;
 				from.AddToBackpack(ingot);
 			}
 
