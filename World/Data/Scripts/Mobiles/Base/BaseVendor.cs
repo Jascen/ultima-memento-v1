@@ -1946,6 +1946,9 @@ namespace Server.Mobiles
 
 		public virtual bool CheckVendorAccess( Mobile from )
 		{
+			if (AccessLevel.Counselor <= from.AccessLevel)
+				return true;
+
 			PlayerMobile pm = (PlayerMobile)from;
 
 			if ( from.Blessed )
