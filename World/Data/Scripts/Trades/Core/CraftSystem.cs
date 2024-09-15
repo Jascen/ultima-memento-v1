@@ -27,6 +27,9 @@ namespace Server.Engines.Craft
 		private CraftGroupCol m_CraftGroups;
 		private CraftSubResCol m_CraftSubRes;
 
+		private List<int> m_Recipes;
+		private List<int> m_RareRecipes;
+
 		public int MinCraftEffect { get { return m_MinCraftEffect; } }
 		public int MaxCraftEffect { get { return m_MaxCraftEffect; } }
 		public double Delay { get { return m_Delay; } }
@@ -369,6 +372,9 @@ namespace Server.Engines.Craft
 			m_CraftGroups = new CraftGroupCol();
 			m_CraftSubRes = new CraftSubResCol();
 
+			m_Recipes = new List<int>();
+			m_RareRecipes = new List<int>();
+
 			InitCraftList();
 		}
 
@@ -388,6 +394,20 @@ namespace Server.Engines.Craft
 				realCraftItem.Craft( from, this, typeRes, tool );
 				//craftItem.Craft( from, this, typeRes, tool );
 			}
+		}
+
+		public int RandomRecipe()
+		{
+			if ( m_Recipes.Count == 0 ) return -1;
+
+			return m_Recipes[Utility.Random( m_Recipes.Count )];
+		}
+
+		public int RandomRareRecipe()
+		{
+			if ( m_RareRecipes.Count == 0 ) return -1;
+
+			return m_RareRecipes[Utility.Random( m_RareRecipes.Count )];
 		}
 
 		public int AddCraft( Type typeItem, TextDefinition group, TextDefinition name, double minSkill, double maxSkill, Type typeRes, TextDefinition nameRes, int amount )
@@ -494,6 +514,29 @@ namespace Server.Engines.Craft
 		{
 			CraftItem craftItem = m_CraftItems.GetAt(index);
 			craftItem.AddSkill(skillToMake, minSkill, maxSkill);
+		}
+
+		private void AddRecipeBase( int index, int id )
+		{
+			CraftItem craftItem = m_CraftItems.GetAt( index );
+			craftItem.AddRecipe( id, this );
+		}
+
+		public void AddRecipe( int index, int id )
+		{
+			AddRecipeBase( index, id );
+			m_Recipes.Add( id );
+		}
+
+		public void AddRareRecipe( int index, int id )
+		{
+			AddRecipeBase( index, id );
+			m_RareRecipes.Add( id );
+		}
+
+		public void AddQuestRecipe( int index, int id )
+		{
+			AddRecipeBase( index, id );
 		}
 
 		public void ForceNonExceptional( int index )

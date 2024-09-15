@@ -3312,6 +3312,23 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 39:
+				{
+					int recipeCount = reader.ReadInt();
+
+					if( recipeCount > 0 )
+					{
+						m_AcquiredRecipes = new Dictionary<int, bool>();
+
+						for( int i = 0; i < recipeCount; i++ )
+						{
+							int r = reader.ReadInt();
+							if( reader.ReadBool() )	// Don't add in recipies which we haven't gotten or have been removed
+								m_AcquiredRecipes.Add( r, true );
+						}
+					}
+					goto case 38;
+				}
 				case 38:
 				case 37:
 				{
@@ -3719,7 +3736,22 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 38 ); // version
+			writer.Write( (int) 39 ); // version
+			
+			if( m_AcquiredRecipes == null )
+			{
+				writer.Write( (int)0 );
+			}
+			else
+			{
+				writer.Write( m_AcquiredRecipes.Count );
+
+				foreach( KeyValuePair<int, bool> kvp in m_AcquiredRecipes )
+				{
+					writer.Write( kvp.Key );
+					writer.Write( kvp.Value );
+				}
+			}
 
 			writer.Write( m_DoubleClickID );
 
@@ -4639,6 +4671,59 @@ namespace Server.Mobiles
 
 			m_AutoStabled.Clear();
 		}
+
+		#region Recipes
+
+		private Dictionary<int, bool> m_AcquiredRecipes;
+
+		public virtual bool HasRecipe( Recipe r )
+		{
+			if( r == null )
+				return false;
+
+			return HasRecipe( r.ID );
+		}
+
+		public virtual bool HasRecipe( int recipeID )
+		{
+			if( m_AcquiredRecipes != null && m_AcquiredRecipes.ContainsKey( recipeID ) )
+				return m_AcquiredRecipes[recipeID];
+
+			return false;
+		}
+
+		public virtual void AcquireRecipe( Recipe r )
+		{
+			if( r != null )
+				AcquireRecipe( r.ID );
+		}
+
+		public virtual void AcquireRecipe( int recipeID )
+		{
+			if( m_AcquiredRecipes == null )
+				m_AcquiredRecipes = new Dictionary<int, bool>();
+
+			m_AcquiredRecipes[recipeID] = true;
+		}
+
+		public virtual void ResetRecipes()
+		{
+			m_AcquiredRecipes = null;
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int KnownRecipes
+		{
+			get
+			{
+				if( m_AcquiredRecipes == null )
+					return 0;
+
+				return m_AcquiredRecipes.Count;
+			}
+		}
+
+		#endregion
 	}
 
 	public enum NoLongUsedCellType
