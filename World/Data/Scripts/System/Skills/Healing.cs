@@ -12,13 +12,13 @@ namespace Server.SkillHandlers
 
         public static TimeSpan OnUse(Mobile m)
         {
-            if (m.Hunger < 1)
+            if (m.Hunger < 6)
             {
                 m.SendMessage("You are starving to death and cannot do that!");
             }
-            else if (m.Thirst < 1)
+            else if (Server.Items.MortalStrike.IsWounded(m))
             {
-                m.SendMessage("You are dying of thirst and cannot do that!");
+                m.SendLocalizedMessage(1005000); // You cannot heal yourself in your current state.
             }
             else if (m.Hits < m.HitsMax || m.Poisoned || BleedAttack.IsBleeding(m))
             {
@@ -50,14 +50,14 @@ namespace Server.SkillHandlers
 
                     m.Heal(amount, m, false);
                 }
-                      
+
                 return TimeSpan.FromSeconds(15.0);
             }
-            else 
+            else
             {
                 m.SendMessage("You already feel healthy.");
             }
-            
+
             return TimeSpan.FromSeconds(1.0);
         }
     }
