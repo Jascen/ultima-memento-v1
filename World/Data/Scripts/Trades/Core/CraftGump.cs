@@ -57,6 +57,8 @@ namespace Server.Engines.Craft
 			from.CloseGump( typeof( CraftGump ) );
 			from.CloseGump( typeof( CraftGumpItem ) );
 
+			bool needsRecipe = context.LastMade != null && context.LastMade.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( context.LastMade.Recipe );
+
 			if ( tool.Parent == from )
 			{
 				AddPage( 0 );
@@ -102,7 +104,11 @@ namespace Server.Engines.Craft
 					AddImageTiled(INFO_PANEL_START + 10, y, INFO_WINDOW_WIDTH - 15, BORDER_WIDTH, HORIZONTAL_LINE); // Top border -- Margin
 					y += 10;
 
-					if ( CraftSystem.AllowManyCraft( m_Tool ) )
+					if ( needsRecipe )
+					{
+						AddHtml( x, y, INFO_WINDOW_WIDTH, 40, String.Format( "<BASEFONT COLOR=#{0:X6}>You don't know this recipe</BASEFONT>", FontColor ), false, false );
+					}
+					else if ( CraftSystem.AllowManyCraft( m_Tool ) )
 					{
 						AddHtml( x, y, 100, 40, String.Format( "<BASEFONT COLOR=#{0:X6}>Craft Amount:</BASEFONT>", FontColor ), false, false );
 						AddTextField(x + 95, y, 125, 20, 1);
@@ -195,7 +201,7 @@ namespace Server.Engines.Craft
 				else if ( page == CraftPage.PickResource2 )
 					CreateResList( true, from );
 				else if ( context != null && context.LastGroupIndex > -1 )
-					CreateItemList( context.LastGroupIndex );
+					CreateItemList( context.LastGroupIndex, from );
 			}
 		}
 
@@ -311,7 +317,7 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		public void CreateItemList( int selectedGroup )
+		public void CreateItemList( int selectedGroup, Mobile from )
 		{
 			if ( selectedGroup == 501 ) // 501 : Last 10
 			{
@@ -346,24 +352,37 @@ namespace Server.Engines.Craft
 					}
 				}
 
+				bool needsRecipe = craftItem.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( craftItem.Recipe );
+
 				if ( CraftSystem.AllowManyCraft( m_Tool ) && MySettings.S_CraftButtons)
 				{
 					AddButton( 220, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
 
-					AddButton( 411, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
-					AddButton( 441, 60+moveDown + (index * 20), 11317, 11317, 1000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
-					AddButton( 476, 60+moveDown + (index * 20), 11318, 11318, 2000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+					if ( !needsRecipe )
+					{
+						AddButton( 411, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+						AddButton( 441, 60+moveDown + (index * 20), 11317, 11317, 1000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+						AddButton( 476, 60+moveDown + (index * 20), 11318, 11318, 2000+GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+					}
 				}
 				else
 				{
-					AddButton( 230, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 ); // ITEM LIST MAKE BUTTON
-					AddButton( 485, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
+					if ( !needsRecipe )
+					{
+						AddButton( 235, 60+moveDown + (index * 20), 11316, 11316, GetButtonID( 1, i ), GumpButtonType.Reply, 0 ); // ITEM LIST MAKE BUTTON
+						AddButton( 485, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
+					}
+					else
+					{
+						AddImage( 239, 65+moveDown + (index * 20), 2092 );
+						AddButton( 485, 60+moveDown + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 ); // ITEM LIST INFO BUTTON
+					}
 				}
 
 				if ( craftItem.NameNumber > 0 )
-					AddHtmlLocalized( 255, 62+moveDown + (index * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false );
+					AddHtmlLocalized( 265, 62+moveDown + (index * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false );
 				else
-					AddLabel( 255, 62+moveDown + (index * 20), LabelHue, craftItem.NameString );
+					AddLabel( 265, 62+moveDown + (index * 20), LabelHue, craftItem.NameString );
 			}
 		}
 
@@ -396,6 +415,10 @@ namespace Server.Engines.Craft
 
 		public void CraftItem( CraftItem item )
 		{
+			bool needsRecipe = item.Recipe != null && m_From is PlayerMobile && !((PlayerMobile)m_From).HasRecipe( item.Recipe );
+			if (needsRecipe)
+				return;
+
 			int num = m_CraftSystem.CanCraft( m_From, m_Tool, item.ItemType );
 			bool CraftMany = CraftSystem.CraftingMany( m_From );
 
