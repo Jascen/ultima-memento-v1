@@ -47,6 +47,7 @@ namespace Server.Misc
 			builder.Append("- Item - Increased the cost of all Powerscrolls<br>");
 			builder.Append("- Item - The luck bonus for Magic horse shoe is now 100 per item<br>");
 			builder.Append("- Item - Artifact enchantment points have been reduced by half (min is still 50)<br>");
+			builder.Append("- Item - Dungeon Chests now allow for multiple Stealing attempts<br>");
 			builder.Append("- Misc - Add smooth boat movement<br>");
 			builder.Append("- Misc - Add Secondary Skills that do not impact total skill cap<br>");
 			builder.Append("        Alchemy, Blacksmith, Bowcraft, Carpentry, Cooking, Inscription, Tailoring, Tinkering<br>");
